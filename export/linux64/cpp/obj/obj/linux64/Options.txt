@@ -1,0 +1,4 @@
+HXCPP_M64=1
+hxcpp=3.2.193
+hxcpp_api_level=321
+hxcpp=/home/justgage/haxelib/hxcpp/3,2,193/

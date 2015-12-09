@@ -1,0 +1,37 @@
+::::::::::::::
+log.txt
+::::::::::::::
+mkdir 15-F/Thurman_Jared_Daniel.dir 2> /dev/null ; 
+mv -f thurm112.tar 15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.tar; 
+tar -xf 15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.tar -C 15-F/Thurman_Jared_Daniel.dir; 
+rm -f 15-F/Thurman_Jared_Daniel.dir/*.o 15-F/Thurman_Jared_Daniel.dir/a.out
+perl /mnt/local/utilities/compileAll.pl 15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.tar 15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.out 2> 15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.compile
+cp 15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.tar 15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.html
+more log.txt     15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.compile       >> 15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.log 2> /dev/null ; 
+rm -f log.txt     15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.compile      
+::::::::::::::
+15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.compile
+::::::::::::::
+
+# mkdir 15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.tar.dir 2>> 15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.compile 
+
+# cp 15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.tar 15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.tar.dir/tar.tar 2>> 15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.compile 
+
+# tar -xf  15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.tar.dir/tar.tar -C 15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.tar.dir 2>> 15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.compile >> 15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.compile 
+
+# make a.out -C 15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.tar.dir 2>> 15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.compile >> 15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.compile 
+make: Entering directory `/home/burtons/cs241/prj10/15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.tar.dir'
+g++ -c game.cpp
+g++ -c uiInteract.cpp
+g++ -c uiDraw.cpp
+g++ -c point.cpp
+g++ -c bullet.cpp
+g++ -c rifle.cpp
+g++ -c flyingObj.cpp
+g++ -c bird.cpp 
+g++ game.o uiInteract.o uiDraw.o point.o bullet.o rifle.o flyingObj.o bird.o -lglut -lGLU -lGL
+make: Leaving directory `/home/burtons/cs241/prj10/15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.tar.dir'
+
+# mv 15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.tar.dir/a.out 15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.out 2>> 15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.compile >> 15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.compile 
+
+# rm -rf 15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.tar.dir 2>> 15-F/Thurman_Jared_Daniel.dir/Thurman_Jared_Daniel.compile 

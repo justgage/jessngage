@@ -1,0 +1,38 @@
+::::::::::::::
+log.txt
+::::::::::::::
+mkdir 15-F/Groom_Taylor.dir 2> /dev/null ; 
+mv -f tgroom15.tar 15-F/Groom_Taylor.dir/Groom_Taylor.tar; 
+tar -xf 15-F/Groom_Taylor.dir/Groom_Taylor.tar -C 15-F/Groom_Taylor.dir; 
+rm -f 15-F/Groom_Taylor.dir/*.o 15-F/Groom_Taylor.dir/a.out
+perl /mnt/local/utilities/compileAll.pl 15-F/Groom_Taylor.dir/Groom_Taylor.tar 15-F/Groom_Taylor.dir/Groom_Taylor.out 2> 15-F/Groom_Taylor.dir/Groom_Taylor.compile
+cp 15-F/Groom_Taylor.dir/Groom_Taylor.tar 15-F/Groom_Taylor.dir/Groom_Taylor.html
+more log.txt     15-F/Groom_Taylor.dir/Groom_Taylor.compile       >> 15-F/Groom_Taylor.dir/Groom_Taylor.log 2> /dev/null ; 
+rm -f log.txt     15-F/Groom_Taylor.dir/Groom_Taylor.compile      
+::::::::::::::
+15-F/Groom_Taylor.dir/Groom_Taylor.compile
+::::::::::::::
+
+# mkdir 15-F/Groom_Taylor.dir/Groom_Taylor.tar.dir 2>> 15-F/Groom_Taylor.dir/Groom_Taylor.compile 
+
+# cp 15-F/Groom_Taylor.dir/Groom_Taylor.tar 15-F/Groom_Taylor.dir/Groom_Taylor.tar.dir/tar.tar 2>> 15-F/Groom_Taylor.dir/Groom_Taylor.compile 
+
+# tar -xf  15-F/Groom_Taylor.dir/Groom_Taylor.tar.dir/tar.tar -C 15-F/Groom_Taylor.dir/Groom_Taylor.tar.dir 2>> 15-F/Groom_Taylor.dir/Groom_Taylor.compile >> 15-F/Groom_Taylor.dir/Groom_Taylor.compile 
+
+# make a.out -C 15-F/Groom_Taylor.dir/Groom_Taylor.tar.dir 2>> 15-F/Groom_Taylor.dir/Groom_Taylor.compile >> 15-F/Groom_Taylor.dir/Groom_Taylor.compile 
+make: Entering directory `/home/burtons/cs241/prj10/15-F/Groom_Taylor.dir/Groom_Taylor.tar.dir'
+g++ -c game.cpp
+g++ -c uiInteract.cpp
+g++ -c uiDraw.cpp
+g++ -c point.cpp
+g++ -c rifle.cpp
+g++ -c velocity.cpp
+g++ -c bird.cpp
+g++ -c bullet.cpp
+g++ -c flyingobject.cpp
+g++ game.o uiInteract.o uiDraw.o point.o rifle.o velocity.o bird.o bullet.o flyingobject.o -lglut -lGLU -lGL
+make: Leaving directory `/home/burtons/cs241/prj10/15-F/Groom_Taylor.dir/Groom_Taylor.tar.dir'
+
+# mv 15-F/Groom_Taylor.dir/Groom_Taylor.tar.dir/a.out 15-F/Groom_Taylor.dir/Groom_Taylor.out 2>> 15-F/Groom_Taylor.dir/Groom_Taylor.compile >> 15-F/Groom_Taylor.dir/Groom_Taylor.compile 
+
+# rm -rf 15-F/Groom_Taylor.dir/Groom_Taylor.tar.dir 2>> 15-F/Groom_Taylor.dir/Groom_Taylor.compile 

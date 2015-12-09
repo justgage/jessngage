@@ -1,0 +1,427 @@
+<html><head><title>15-F/Brewerton_David_Peter</title>
+<style><!--
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+  {margin:0in;margin-bottom:.0001pt;font-size:11.0pt;
+   font-family:"Arial","sans-serif";}
+h1
+  {margin-top:0.0pt;margin-right:0in; margin-bottom:0.0pt;
+   margin-left:0in;page-break-after:avoid;background:white;
+   border:none;padding:0in;font-size:14.0pt;color:#4F81BD;
+   font-family:"Arial","sans-serif";font-weight:normal;}
+p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
+  {margin:0in;margin-bottom:.0001pt;font-size:8.0pt;
+   font-family:Consolas;}
+@page WordSection1
+  {size:8.5in 11.0in;
+   margin: 0in .5in 0in .5in;
+   mso-header-margin:.5in;mso-footer-margin:.5in;}
+div.WordSection1
+  {page:WordSection1;}
+--></style>
+</head>
+<body><div class=WordSection1><table border=1 cellspacing=0 cellpadding=0 width="100%"
+       style='width:100.0%;background:#4F81BD;
+              mso-padding-alt:0in 0in 0in 0in;
+              border-collapse:collapse;border:none;'>
+  <tr>
+    <td width="37%" valign=top 
+        style='width:37.18%;
+               border-top:solid windowtext 2.25pt;
+               border-bottom:solid windowtext 2.25pt;
+               border-left:none;border-right:none;
+               padding:0in 0in 0in 0in'>
+      <p class=MsoNormal style='font-size:6.0pt'>&nbsp;</p>
+      <p class=MsoNormal><b>
+       <span style='font-size:14.0pt;color:white'>&nbsp;Brewerton, David Peter  </span></b></p>
+    <p class=MsoNormal style='font-size:6.0pt'>&nbsp;</p>
+</td>
+  <td width="14%" valign=top 
+      style='width:14.24%;
+             border-top:solid windowtext 2.25pt;
+             border-bottom:solid windowtext 2.25pt;
+             border-left:none;border-right:none;
+             padding:0in 0in 0in 0in'>
+  <p class=MsoNormal style='font-size:6.0pt'>&nbsp;</p>
+  <p class=MsoNormal align=center style='text-align:center'><b>
+     <span style='font-size:14.0pt;color:white'>CS 241     </span></b></p>
+  </td>
+  <td width="48%" valign=top 
+       style='width:48.58%;
+              border-top:solid windowtext 2.25pt;
+              border-bottom:solid windowtext 2.25pt;
+              border-left:none;border-right:none;
+              padding:0in 0in 0in 0in'>
+     <p class=MsoNormal style='font-size:6.0pt'>&nbsp;</p>
+     <p class=MsoNormal align=right style='text-align:right'><b>
+       <span style='font-size:14.0pt;color:white'>Assignment 12&nbsp;</span></b></p></td></tr></table><p>&nbsp;</p>
+<p style="font-family:Consolas;font-size:11;margin-top:6pt;margin-bottom:6pt"><span style="color:#929ca0">/***********************************************************************<br/>
+*&nbsp;Program:<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;Assignment&nbsp;12,&nbsp;Spellcheck<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;Brother&nbsp;Burton,&nbsp;CS241<br/>
+*&nbsp;Author:<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;David&nbsp;Brewerton<br/>
+*&nbsp;Summary:&nbsp;<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;To&nbsp;sort&nbsp;a&nbsp;bank&nbsp;of&nbsp;words&nbsp;into&nbsp;the&nbsp;program,&nbsp;and&nbsp;then&nbsp;be&nbsp;able&nbsp;to&nbsp;search&nbsp;for&nbsp;words<br/>
+************************************************************************/</span><br/>
+<br/>
+<span style="color:#2c62ba">#include</span>&nbsp;&lt;iostream&gt;<br/>
+<span style="color:#2c62ba">#include</span>&nbsp;&lt;vector&gt;<br/>
+<span style="color:#2c62ba">#include</span>&nbsp;&lt;string&gt;<br/>
+<span style="color:#2c62ba">#include</span>&nbsp;&lt;set&gt;<br/>
+<span style="color:#2c62ba">#include</span>&nbsp;&lt;fstream&gt;<br/>
+<span style="color:#2c62ba">using</span>&nbsp;<span style="color:#2c62ba">namespace</span>&nbsp;<span style="color:#2c62ba">std</span>;<br/>
+<br/>
+<span style="color:#929ca0">/**********************************************************************<br/>
+&nbsp;*&nbsp;Function:&nbsp;sort<br/>
+&nbsp;*&nbsp;Purpose:&nbsp;to&nbsp;sort&nbsp;the&nbsp;file&nbsp;into&nbsp;the&nbsp;program<br/>
+&nbsp;***********************************************************************/</span><br/>
+<span style="color:#2c62ba">void</span>&nbsp;sort(<span style="color:#2c62ba">char</span>&nbsp;filename[],&nbsp;set&nbsp;&lt;string&gt;&nbsp;&amp;myWords,&nbsp;<span style="color:#2c62ba">vector</span>&nbsp;&lt;string&gt;&nbsp;&amp;words)<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">ifstream</span>&nbsp;<span style="color:#2c62ba">fin</span>(filename);<br/>
+&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">if</span>&nbsp;(<span style="color:#2c62ba">fin</span>.fail())<br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Failure"</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">return</span>;<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">else</span><br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Word&nbsp;bank&nbsp;loaded."</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#2c62ba">endl</span>;<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">string</span>&nbsp;word;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">while</span>&nbsp;(<span style="color:#2c62ba">fin</span>&nbsp;&gt;&gt;&nbsp;word)<br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myWords.insert(word);<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">fin</span>.close();<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">for</span>&nbsp;(set&nbsp;&lt;string&gt;::iterator&nbsp;it&nbsp;=&nbsp;myWords.begin();&nbsp;it&nbsp;!=&nbsp;myWords.end();&nbsp;it++)<br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;words.push_back(*it);<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+<br/>
+<span style="color:#929ca0">/**********************************************************************<br/>
+&nbsp;*&nbsp;Function:&nbsp;prompt<br/>
+&nbsp;*&nbsp;Purpose:&nbsp;to&nbsp;get&nbsp;the&nbsp;filename<br/>
+&nbsp;***********************************************************************/</span><br/>
+<span style="color:#2c62ba">void</span>&nbsp;prompt(<span style="color:#2c62ba">char</span>&nbsp;filename[])<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Enter&nbsp;word&nbsp;bank&nbsp;file:&nbsp;"</span>;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cin</span>&nbsp;&gt;&gt;&nbsp;filename;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#929ca0">//cin.ignore();</span><br/>
+}<br/>
+<br/>
+<br/>
+<span style="color:#929ca0">/**********************************************************************<br/>
+&nbsp;*&nbsp;Function:&nbsp;Check<br/>
+&nbsp;*&nbsp;Purpose:&nbsp;To&nbsp;see&nbsp;if&nbsp;the&nbsp;word&nbsp;is&nbsp;inside&nbsp;the&nbsp;word&nbsp;list<br/>
+&nbsp;***********************************************************************/</span><br/>
+<span style="color:#2c62ba">void</span>&nbsp;check(set&nbsp;&lt;string&gt;&nbsp;&amp;myWords,&nbsp;<span style="color:#2c62ba">vector</span>&nbsp;&lt;string&gt;&nbsp;&amp;words)<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">string</span>&nbsp;word;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">while</span>&nbsp;(word&nbsp;!=&nbsp;<span style="color:#466ba6">"quit"</span>)<br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Enter&nbsp;word:&nbsp;"</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cin</span>&nbsp;&gt;&gt;&nbsp;word;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">bool</span>&nbsp;inSet&nbsp;=&nbsp;<span style="color:#2c62ba">false</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">if</span>&nbsp;(word&nbsp;==&nbsp;<span style="color:#466ba6">"quit"</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Goodbye\n"</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">break</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#929ca0">/*for&nbsp;(set&nbsp;&lt;string&gt;::iterator&nbsp;it&nbsp;=&nbsp;myWords.begin();&nbsp;it&nbsp;!=&nbsp;myWords.end();&nbsp;it++)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(myWords.find(word)&nbsp;==&nbsp;it)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;"Correct&nbsp;spelling"&nbsp;&lt;&lt;&nbsp;end;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inSet&nbsp;=&nbsp;true;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(inSet&nbsp;==&nbsp;false)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;"Incorrect&nbsp;spelling"&nbsp;&lt;&lt;&nbsp;endl;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}*/</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set&lt;string&gt;::&nbsp;iterator&nbsp;it;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it&nbsp;=&nbsp;myWords.find(word);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">if</span>(it&nbsp;!=&nbsp;myWords.end())<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">char</span>&nbsp;letter;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">if</span>&nbsp;(word.size()&nbsp;==&nbsp;1)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;letter&nbsp;=&nbsp;word.at(0);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">else</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;letter&nbsp;=&nbsp;word.at(word.size()-2);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#929ca0">//letter&nbsp;=&nbsp;word.at(0);</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Correct&nbsp;spelling"</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#2c62ba">endl</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inSet&nbsp;=&nbsp;<span style="color:#2c62ba">true</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Matching&nbsp;words:\n"</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">while</span>&nbsp;(letter&nbsp;==&nbsp;it-&gt;at(it-&gt;size()-2))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"&nbsp;&nbsp;"</span>&nbsp;&lt;&lt;&nbsp;*it&nbsp;&lt;&lt;&nbsp;<span style="color:#2c62ba">endl</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it++;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">else</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Incorrect&nbsp;spelling"</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#2c62ba">endl</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Matching&nbsp;words:\n"</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">char</span>&nbsp;letter;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">char</span>&nbsp;letter2;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">if</span>&nbsp;(word.size()&nbsp;==&nbsp;1)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;letter&nbsp;=&nbsp;word.at(0);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">else</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;letter2&nbsp;=&nbsp;word.at(0);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;letter&nbsp;=&nbsp;word.at(word.size()-1);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vector&lt;string&gt;::&nbsp;iterator&nbsp;it;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">for</span>&nbsp;(it&nbsp;=&nbsp;words.begin();&nbsp;it&nbsp;!=&nbsp;words.end();&nbsp;it++)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">if</span>&nbsp;(word.compare(*it)&nbsp;&lt;&nbsp;0&nbsp;&amp;&amp;&nbsp;word.at(0)&nbsp;==&nbsp;it-&gt;at(0))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">break</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">while</span>&nbsp;(word.compare(*it)&nbsp;&lt;&nbsp;0&nbsp;&amp;&amp;&nbsp;(letter&nbsp;==&nbsp;it-&gt;at(it-&gt;size()-1)&nbsp;||&nbsp;letter2&nbsp;==&nbsp;it-&gt;at(0)))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"&nbsp;&nbsp;"</span>&nbsp;&lt;&lt;&nbsp;*it&nbsp;&lt;&lt;&nbsp;<span style="color:#2c62ba">endl</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it++;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#2c62ba">endl</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+<br/>
+<br/>
+<span style="color:#929ca0">/**********************************************************************<br/>
+&nbsp;*&nbsp;Function:&nbsp;main<br/>
+&nbsp;*&nbsp;Purpose:&nbsp;This&nbsp;is&nbsp;the&nbsp;entry&nbsp;point&nbsp;and&nbsp;driver&nbsp;for&nbsp;the&nbsp;program.<br/>
+&nbsp;***********************************************************************/</span><br/>
+<span style="color:#2c62ba">int</span>&nbsp;<span style="color:#2c62ba">main</span>()<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">vector</span>&nbsp;&lt;string&gt;&nbsp;words;<br/>
+&nbsp;&nbsp;&nbsp;set&nbsp;&lt;string&gt;&nbsp;myWords;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">char</span>&nbsp;filename[256];<br/>
+&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;prompt(filename);<br/>
+&nbsp;&nbsp;&nbsp;sort(filename,&nbsp;myWords,&nbsp;words);<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#2c62ba">endl</span>;<br/>
+&nbsp;&nbsp;&nbsp;check(myWords,&nbsp;words);<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">return</span>&nbsp;0;<br/>
+}<br/>
+<br/>
+<br/>
+ </p>
+<div style='border-top:solid #4F81BD 3.0pt;border-left:none;
+     border-bottom:solid #4F81BD 3.0pt;border-right:none;
+     padding:1.0pt 0in 1.0pt 0in;background:white'>
+<h1>Compile Errors</h1></div>
+<div style='border-top:solid #4F81BD 3.0pt;border-left:none;
+     border-bottom:solid #4F81BD 3.0pt;border-right:none;
+     padding:1.0pt 0in 1.0pt 0in;background:white'>
+<h1>Test Bed Results</h1></div>
+<p style="font-family:Consolas;font-size:11;margin-top:6pt;margin-bottom:6pt"><br/>
+Brewerton_David_Peter.out:<br/>
+<br/>
+Started&nbsp;program<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Enter&nbsp;word&nbsp;bank&nbsp;file:&nbsp;<span style='text-decoration:underline'>/home/cs241/words_tiny.txt<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;Word&nbsp;bank&nbsp;loaded.<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Enter&nbsp;word:&nbsp;<span style='text-decoration:underline'>con<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;Incorrect&nbsp;spelling<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Matching&nbsp;words:<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;concessit<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;conflicted<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;confrontationist<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;conquistador<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;constitutionalist<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;contemplativeness<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>c</span><span style='color:white;background:red'>o</span><span style='color:white;background:red'>o</span><span style='color:white;background:red'>l</span><span style='color:white;background:red'>n</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>s</span><span style='color:white;background:red'>s</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>s</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>c</span><span style='color:white;background:red'>o</span><span style='font-weight:bold'>r</span><span style='color:white;background:red'>n</span><span style='color:white;background:red'>l</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>s</span><span style='color:white;background:red'>s</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Enter&nbsp;word:&nbsp;</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>c</span><span style='color:white;background:red'>o</span><span style='color:white;background:red'>w</span><span style='color:white;background:red'>i</span><span style='color:white;background:red'>n</span><span style='color:white;background:red'>n</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>s</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;[No&nbsp;output&nbsp;expected]</span><br/>
+<span style='text-decoration:underline'>conflicted<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>c</span><span style='font-weight:bold'>r</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>b</span><span style='color:white;background:red'>s</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Correct&nbsp;spelling\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>c</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>m</span><span style='color:white;background:red'>b</span><span style='color:white;background:red'>u</span><span style='color:white;background:red'>s</span><span style='color:white;background:red'>h</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Matching&nbsp;words:\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='font-weight:bold'>&nbsp;</span><span style='font-weight:bold'>&nbsp;</span><span style='font-weight:bold'>c</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>d</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'>e</span><span style='color:white;background:red'>s</span><span style='color:white;background:red'>s</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;conflicted\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>c</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>o</span><span style='color:white;background:red'>n</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>c</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>y</span><span style='color:white;background:red'>p</span><span style='color:white;background:red'>t</span><span style='font-weight:bold'>o</span><span style='color:white;background:red'>g</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>m</span><span style='color:white;background:red'>m</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>i</span><span style='color:white;background:red'>c</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Enter&nbsp;word:&nbsp;</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>c</span><span style='color:white;background:red'>u</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>i</span><span style='color:white;background:red'>o</span><span style='color:white;background:red'>u</span><span style='color:white;background:red'>s</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>s</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;[No&nbsp;output&nbsp;expected]</span><br/>
+<span style='text-decoration:underline'>quit<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>c</span><span style='color:white;background:red'>u</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>l</span><span style='font-weight:bold'>e</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Goodbye\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>c</span><span style='color:white;background:red'>u</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>l</span><span style='color:white;background:red'>y</span><span style='color:white;background:red'>h</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>d</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;[No&nbsp;output&nbsp;expected]</span><br/>
+Program&nbsp;terminated&nbsp;successfully<br/>
+<br/>
+Started&nbsp;program<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Enter&nbsp;word&nbsp;bank&nbsp;file:&nbsp;<span style='text-decoration:underline'>/home/cs241/words_tiny.txt<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;Word&nbsp;bank&nbsp;loaded.<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Enter&nbsp;word:&nbsp;<span style='text-decoration:underline'>asdklfj<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;Incorrect&nbsp;spelling<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Matching&nbsp;words:<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>s</span><span style='color:white;background:red'>l</span><span style='color:white;background:red'>o</span><span style='color:white;background:red'>p</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>s</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>h</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>n</span><span style='color:white;background:red'>o</span><span style='color:white;background:red'>l</span><span style='color:white;background:red'>i</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>h</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Enter&nbsp;word:&nbsp;</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>s</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>u</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;[No&nbsp;output&nbsp;expected]</span><br/>
+<span style='text-decoration:underline'>the<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>h</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>o</span><span style='font-weight:bold'>s</span><span style='color:white;background:red'>c</span><span style='color:white;background:red'>l</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>o</span><span style='color:white;background:red'>s</span><span style='color:white;background:red'>i</span><span style='color:white;background:red'>s</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Correct&nbsp;spelling\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>o</span><span style='color:white;background:red'>m</span><span style='color:white;background:red'>i</span><span style='color:white;background:red'>s</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Matching&nbsp;words:\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='font-weight:bold'>&nbsp;</span><span style='font-weight:bold'>&nbsp;</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>u</span><span style='color:white;background:red'>d</span><span style='color:white;background:red'>i</span><span style='color:white;background:red'>p</span><span style='color:white;background:red'>h</span><span style='color:white;background:red'>o</span><span style='color:white;background:red'>n</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;the\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='font-weight:bold'>&nbsp;</span><span style='font-weight:bold'>&nbsp;</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>u</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>o</span><span style='color:white;background:red'>p</span><span style='color:white;background:red'>h</span><span style='color:white;background:red'>o</span><span style='color:white;background:red'>b</span><span style='color:white;background:red'>i</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;theeked\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>u</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>c</span><span style='color:white;background:red'>o</span><span style='color:white;background:red'>l</span><span style='color:white;background:red'>o</span><span style='color:white;background:red'>g</span><span style='color:white;background:red'>i</span><span style='color:white;background:red'>c</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>l</span><span style='color:white;background:red'>l</span><span style='color:white;background:red'>y</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>u</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>o</span><span style='color:white;background:red'>p</span><span style='color:white;background:red'>s</span><span style='color:white;background:red'>i</span><span style='color:white;background:red'>s</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Enter&nbsp;word:&nbsp;</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>w</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'>t</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;[No&nbsp;output&nbsp;expected]</span><br/>
+<span style='text-decoration:underline'>cat<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>w</span><span style='color:white;background:red'>i</span><span style='color:white;background:red'>d</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Correct&nbsp;spelling\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Matching&nbsp;words:\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>E</span><span style='color:white;background:red'>n</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>w</span><span style='color:white;background:red'>o</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>d</span><span style='color:white;background:red'>:</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>C</span><span style='color:white;background:red'>o</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>c</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>s</span><span style='color:white;background:red'>p</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>l</span><span style='color:white;background:red'>l</span><span style='color:white;background:red'>i</span><span style='color:white;background:red'>n</span><span style='color:white;background:red'>g</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;cat\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>M</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>c</span><span style='color:white;background:red'>h</span><span style='color:white;background:red'>i</span><span style='color:white;background:red'>n</span><span style='color:white;background:red'>g</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>w</span><span style='color:white;background:red'>o</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>d</span><span style='color:white;background:red'>s</span><span style='color:white;background:red'>:</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;cata-\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='font-weight:bold'>&nbsp;</span><span style='font-weight:bold'>&nbsp;</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>h</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;catalan\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;cateran\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>E</span><span style='color:white;background:red'>n</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>w</span><span style='color:white;background:red'>o</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>d</span><span style='color:white;background:red'>:</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>C</span><span style='color:white;background:red'>o</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>c</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>s</span><span style='color:white;background:red'>p</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>l</span><span style='color:white;background:red'>l</span><span style='color:white;background:red'>i</span><span style='color:white;background:red'>n</span><span style='color:white;background:red'>g</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;cathection\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>M</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>c</span><span style='color:white;background:red'>h</span><span style='color:white;background:red'>i</span><span style='color:white;background:red'>n</span><span style='color:white;background:red'>g</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>w</span><span style='color:white;background:red'>o</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>d</span><span style='color:white;background:red'>s</span><span style='color:white;background:red'>:</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>c</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Enter&nbsp;word:&nbsp;</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>c</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>-</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;[No&nbsp;output&nbsp;expected]</span><br/>
+<span style='text-decoration:underline'>quit<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>c</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>l</span><span style='color:white;background:red'>a</span><span style='font-weight:bold'>n</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Goodbye\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>c</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>a</span><span style='color:white;background:red'>n</span><span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;[No&nbsp;output&nbsp;expected]</span><br/>
+Program&nbsp;terminated&nbsp;successfully<br/>
+<br/>
+Started&nbsp;program<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Enter&nbsp;word&nbsp;bank&nbsp;file:&nbsp;<span style='text-decoration:underline'>/home/cs241/words_tiny.txt<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;Word&nbsp;bank&nbsp;loaded.<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Enter&nbsp;word:&nbsp;<span style='text-decoration:underline'>b<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;Incorrect&nbsp;spelling<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Matching&nbsp;words:<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>\</span><span style='color:white;background:red'>n</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;babasu\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>E</span><span style='color:white;background:red'>n</span><span style='color:white;background:red'>t</span><span style='color:white;background:red'>e</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>w</span><span style='color:white;background:red'>o</span><span style='color:white;background:red'>r</span><span style='color:white;background:red'>d</span><span style='color:white;background:red'>:</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;baboons\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;backwashing\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;bake\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;barberess\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;barely\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;basidiomycetous\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;basketballer\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;battery-powered\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;bavin\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;beadleship\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;beaten\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;bensail\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;berating\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;beringleted\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;beswarming\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;bheesties\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;bibliomane\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;big-boned\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;bilk\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;black-and-tan\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;blackmail\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;blain\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;blennometritis\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;blindfolding\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;block-book\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;boanergism\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;bobowler\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;bogong\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;bombazette\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;booger\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;bopped\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;botticelli\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;brawlis\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;britchka\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;broken\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;brucite\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;buttered\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='font-weight:bold'><br/>
+Exp:&nbsp;\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Enter&nbsp;word:&nbsp;</span><br/>
+<span style='text-decoration:underline'>quit<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;Goodbye<br/>
+Program&nbsp;terminated&nbsp;successfully<br/>
+<br/>
+<span style='font-weight:bold'>Failed&nbsp;3/3&nbsp;tests<br/>
+</span><br/>
+</p>
+<p style="font-family:Consolas;font-size:11;margin-top:0pt;margin-bottom:0pt"><a href="mailto:bre14002@byui.edu?subject=CS%20241:%20Assignment%2012">bre14002@byui.edu</a></p>
+</div></body></html>

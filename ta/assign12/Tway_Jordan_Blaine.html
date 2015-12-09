@@ -1,0 +1,398 @@
+<html><head><title>15-F/Tway_Jordan_Blaine</title>
+<style><!--
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+  {margin:0in;margin-bottom:.0001pt;font-size:11.0pt;
+   font-family:"Arial","sans-serif";}
+h1
+  {margin-top:0.0pt;margin-right:0in; margin-bottom:0.0pt;
+   margin-left:0in;page-break-after:avoid;background:white;
+   border:none;padding:0in;font-size:14.0pt;color:#4F81BD;
+   font-family:"Arial","sans-serif";font-weight:normal;}
+p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
+  {margin:0in;margin-bottom:.0001pt;font-size:8.0pt;
+   font-family:Consolas;}
+@page WordSection1
+  {size:8.5in 11.0in;
+   margin: 0in .5in 0in .5in;
+   mso-header-margin:.5in;mso-footer-margin:.5in;}
+div.WordSection1
+  {page:WordSection1;}
+--></style>
+</head>
+<body><div class=WordSection1><table border=1 cellspacing=0 cellpadding=0 width="100%"
+       style='width:100.0%;background:#4F81BD;
+              mso-padding-alt:0in 0in 0in 0in;
+              border-collapse:collapse;border:none;'>
+  <tr>
+    <td width="37%" valign=top 
+        style='width:37.18%;
+               border-top:solid windowtext 2.25pt;
+               border-bottom:solid windowtext 2.25pt;
+               border-left:none;border-right:none;
+               padding:0in 0in 0in 0in'>
+      <p class=MsoNormal style='font-size:6.0pt'>&nbsp;</p>
+      <p class=MsoNormal><b>
+       <span style='font-size:14.0pt;color:white'>&nbsp;Tway, Jordan Blaine  </span></b></p>
+    <p class=MsoNormal style='font-size:6.0pt'>&nbsp;</p>
+</td>
+  <td width="14%" valign=top 
+      style='width:14.24%;
+             border-top:solid windowtext 2.25pt;
+             border-bottom:solid windowtext 2.25pt;
+             border-left:none;border-right:none;
+             padding:0in 0in 0in 0in'>
+  <p class=MsoNormal style='font-size:6.0pt'>&nbsp;</p>
+  <p class=MsoNormal align=center style='text-align:center'><b>
+     <span style='font-size:14.0pt;color:white'>CS 241     </span></b></p>
+  </td>
+  <td width="48%" valign=top 
+       style='width:48.58%;
+              border-top:solid windowtext 2.25pt;
+              border-bottom:solid windowtext 2.25pt;
+              border-left:none;border-right:none;
+              padding:0in 0in 0in 0in'>
+     <p class=MsoNormal style='font-size:6.0pt'>&nbsp;</p>
+     <p class=MsoNormal align=right style='text-align:right'><b>
+       <span style='font-size:14.0pt;color:white'>Assignment 12&nbsp;</span></b></p></td></tr></table><p>&nbsp;</p>
+<p style="font-family:Consolas;font-size:11;margin-top:6pt;margin-bottom:6pt"><span style="color:#929ca0">/*******************************************************<br/>
+&nbsp;*&nbsp;Assignment:&nbsp;Assignment&nbsp;12,&nbsp;Spelling<br/>
+&nbsp;*&nbsp;Instructor:&nbsp;Brother&nbsp;Burton<br/>
+&nbsp;*&nbsp;Author&nbsp;Name:&nbsp;Jordan&nbsp;Tway<br/>
+&nbsp;*<br/>
+&nbsp;*******************************************************/</span><br/>
+<span style="color:#2c62ba">#include</span>&nbsp;&lt;iostream&gt;<br/>
+<span style="color:#2c62ba">#include</span>&nbsp;&lt;string&gt;<br/>
+<span style="color:#2c62ba">#include</span>&nbsp;&lt;fstream&gt;<br/>
+<span style="color:#2c62ba">#include</span>&nbsp;&lt;vector&gt;<br/>
+<span style="color:#2c62ba">#include</span>&nbsp;&lt;set&gt;<br/>
+<br/>
+<span style="color:#2c62ba">using</span>&nbsp;<span style="color:#2c62ba">namespace</span>&nbsp;<span style="color:#2c62ba">std</span>;<br/>
+<br/>
+<span style="color:#2c62ba">string</span>&nbsp;promptFile()<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">string</span>&nbsp;name;<br/>
+&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Enter&nbsp;word&nbsp;bank&nbsp;file:&nbsp;"</span>;<br/>
+&nbsp;&nbsp;&nbsp;getline(cin,&nbsp;name);<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">return</span>&nbsp;name;&nbsp;&nbsp;<br/>
+}<br/>
+<br/>
+<span style="color:#2c62ba">void</span>&nbsp;readFile(<span style="color:#2c62ba">string</span>&nbsp;fileName,&nbsp;set&lt;string&gt;&nbsp;&amp;words)<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">ifstream</span>&nbsp;<span style="color:#2c62ba">fin</span>(fileName.c_str());<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">if</span>(<span style="color:#2c62ba">fin</span>.fail())<br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"ERROR&nbsp;READING&nbsp;FILE\n"</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">return</span>;<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">else</span><br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">string</span>&nbsp;word;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">while</span>(<span style="color:#2c62ba">fin</span>&nbsp;&gt;&gt;&nbsp;word)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;words.insert(word);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Word&nbsp;bank&nbsp;loaded.\n\n"</span>;<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+<br/>
+<span style="color:#2c62ba">string</span>&nbsp;promptWord()<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">string</span>&nbsp;temp;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Enter&nbsp;word:&nbsp;"</span>;<br/>
+&nbsp;&nbsp;&nbsp;getline(cin,&nbsp;temp);<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">return</span>&nbsp;temp;<br/>
+}<br/>
+<br/>
+<span style="color:#2c62ba">void</span>&nbsp;findMatchingWords(vector&lt;string&gt;&nbsp;&amp;words,&nbsp;<span style="color:#2c62ba">long</span>&nbsp;&amp;index,&nbsp;<span style="color:#2c62ba">string</span>&nbsp;&amp;word)<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">string</span>&nbsp;subWord;<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Matching&nbsp;words:\n"</span>;<br/>
+&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">do</span><br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;subWord&nbsp;=&nbsp;words[index].substr(0,&nbsp;word.size());<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;words[index]&nbsp;&lt;&lt;&nbsp;<span style="color:#2c62ba">endl</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index++;<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">while</span>(subWord.compare(word)&nbsp;==&nbsp;0);<br/>
+}<br/>
+<br/>
+<span style="color:#2c62ba">void</span>&nbsp;findWords(<span style="color:#2c62ba">string</span>&nbsp;&amp;word,&nbsp;vector&lt;string&gt;&nbsp;&amp;words)<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">bool</span>&nbsp;isFound&nbsp;=&nbsp;<span style="color:#2c62ba">false</span>;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">long</span>&nbsp;start,&nbsp;mid,&nbsp;end;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">string</span>&nbsp;subWord;<br/>
+&nbsp;&nbsp;&nbsp;mid&nbsp;=&nbsp;0;<br/>
+&nbsp;&nbsp;&nbsp;start&nbsp;=&nbsp;0;<br/>
+&nbsp;&nbsp;&nbsp;end&nbsp;=&nbsp;words.size()&nbsp;-&nbsp;1;<br/>
+&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">while</span>(!isFound&nbsp;&amp;&amp;&nbsp;start&nbsp;&lt;=&nbsp;end)<br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#929ca0">//find&nbsp;middle&nbsp;index</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mid&nbsp;=&nbsp;((end&nbsp;-&nbsp;start)&nbsp;/&nbsp;2)&nbsp;+&nbsp;start;<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;subWord&nbsp;=&nbsp;words[mid].substr(0,&nbsp;word.size());<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">if</span>(words[mid]&nbsp;==&nbsp;word)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Correct&nbsp;Spelling\n"</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isFound&nbsp;=&nbsp;<span style="color:#2c62ba">true</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;findMatchingWords(words,&nbsp;mid,&nbsp;word);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#929ca0">//change&nbsp;start&nbsp;or&nbsp;end&nbsp;points</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">if</span>(word&nbsp;&lt;&nbsp;words[mid])<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end&nbsp;=&nbsp;mid;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">else</span>&nbsp;<span style="color:#2c62ba">if</span>(word&nbsp;&gt;&nbsp;words[mid])<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start&nbsp;=&nbsp;mid;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+<br/>
+<span style="color:#2c62ba">int</span>&nbsp;<span style="color:#2c62ba">main</span>()<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#929ca0">//declare&nbsp;needed&nbsp;variables</span><br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">string</span>&nbsp;userWord,&nbsp;fileName;<br/>
+&nbsp;&nbsp;&nbsp;set&lt;string&gt;&nbsp;wordTree;<br/>
+&nbsp;&nbsp;&nbsp;vector&lt;string&gt;&nbsp;wordList;<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#929ca0">//get&nbsp;file&nbsp;from&nbsp;user</span><br/>
+&nbsp;&nbsp;&nbsp;fileName&nbsp;=&nbsp;promptFile();<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#929ca0">//read&nbsp;in&nbsp;file&nbsp;to&nbsp;set&nbsp;for&nbsp;auto&nbsp;sorting</span><br/>
+&nbsp;&nbsp;&nbsp;readFile(fileName,&nbsp;wordTree);<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#929ca0">//put&nbsp;words&nbsp;into&nbsp;vector&nbsp;for&nbsp;easy&nbsp;access</span><br/>
+&nbsp;&nbsp;&nbsp;set&lt;string&gt;::iterator&nbsp;it&nbsp;=&nbsp;wordTree.begin();<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">while</span>(it&nbsp;!=&nbsp;wordTree.end())<br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wordList.push_back((*it));<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++it;<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#929ca0">//get&nbsp;a&nbsp;word&nbsp;from&nbsp;user&nbsp;and&nbsp;continue&nbsp;process&nbsp;until&nbsp;they&nbsp;want&nbsp;to&nbsp;quit</span><br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">do</span><br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;userWord&nbsp;=&nbsp;promptWord();<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">if</span>(userWord&nbsp;!=&nbsp;<span style="color:#466ba6">"quit"</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;findWords(userWord,&nbsp;wordList);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">while</span>(userWord&nbsp;!=&nbsp;<span style="color:#466ba6">"quit"</span>);<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Goodbye\n"</span>;<br/>
+&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">return</span>&nbsp;0;<br/>
+}<br/>
+ </p>
+<div style='border-top:solid #4F81BD 3.0pt;border-left:none;
+     border-bottom:solid #4F81BD 3.0pt;border-right:none;
+     padding:1.0pt 0in 1.0pt 0in;background:white'>
+<h1>Compile Errors</h1></div>
+<div style='border-top:solid #4F81BD 3.0pt;border-left:none;
+     border-bottom:solid #4F81BD 3.0pt;border-right:none;
+     padding:1.0pt 0in 1.0pt 0in;background:white'>
+<h1>Test Bed Results</h1></div>
+<p style="font-family:Consolas;font-size:11;margin-top:6pt;margin-bottom:6pt"><br/>
+Tway_Jordan_Blaine.out:<br/>
+<br/>
+Started&nbsp;program<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Enter&nbsp;word&nbsp;bank&nbsp;file:&nbsp;<span style='text-decoration:underline'>/home/cs241/words_tiny.txt<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;Word&nbsp;bank&nbsp;loaded.<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Enter&nbsp;word:&nbsp;<span style='text-decoration:underline'>con<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Incorrect&nbsp;spelling\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Matching&nbsp;words:\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;concessit\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;conflicted\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;confrontationist\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;conquistador\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;constitutionalist\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;contemplativeness\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='font-weight:bold'><br/>
+Exp:&nbsp;\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Enter&nbsp;word:&nbsp;</span><br/>
+<span style='text-decoration:underline'>conflicted<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Correct&nbsp;spelling\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Matching&nbsp;words:\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;conflicted\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='font-weight:bold'><br/>
+Exp:&nbsp;\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Enter&nbsp;word:&nbsp;</span><br/>
+<span style='text-decoration:underline'>quit<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='font-weight:bold'><br/>
+Exp:&nbsp;Goodbye\n</span><br/>
+Program&nbsp;terminated&nbsp;successfully<br/>
+<br/>
+Started&nbsp;program<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Enter&nbsp;word&nbsp;bank&nbsp;file:&nbsp;<span style='text-decoration:underline'>/home/cs241/words_tiny.txt<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;Word&nbsp;bank&nbsp;loaded.<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Enter&nbsp;word:&nbsp;<span style='text-decoration:underline'>asdklfj<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Incorrect&nbsp;spelling\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Matching&nbsp;words:\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='font-weight:bold'><br/>
+Exp:&nbsp;\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Enter&nbsp;word:&nbsp;</span><br/>
+<span style='text-decoration:underline'>the<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Correct&nbsp;spelling\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Matching&nbsp;words:\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;the\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;theeked\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='font-weight:bold'><br/>
+Exp:&nbsp;\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Enter&nbsp;word:&nbsp;</span><br/>
+<span style='text-decoration:underline'>cat<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Correct&nbsp;spelling\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Matching&nbsp;words:\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;cat\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;cata-\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;catalan\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;cateran\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;cathection\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='font-weight:bold'><br/>
+Exp:&nbsp;\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Enter&nbsp;word:&nbsp;</span><br/>
+<span style='text-decoration:underline'>quit<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='font-weight:bold'><br/>
+Exp:&nbsp;Goodbye\n</span><br/>
+Program&nbsp;terminated&nbsp;successfully<br/>
+<br/>
+Started&nbsp;program<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Enter&nbsp;word&nbsp;bank&nbsp;file:&nbsp;<span style='text-decoration:underline'>/home/cs241/words_tiny.txt<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;Word&nbsp;bank&nbsp;loaded.<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Enter&nbsp;word:&nbsp;<span style='text-decoration:underline'>b<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Incorrect&nbsp;spelling\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Matching&nbsp;words:\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;babasu\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;baboons\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;backwashing\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;bake\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;barberess\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;barely\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;basidiomycetous\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;basketballer\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;battery-powered\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;bavin\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;beadleship\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;beaten\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;bensail\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;berating\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;beringleted\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;beswarming\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;bheesties\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;bibliomane\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;big-boned\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;bilk\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;black-and-tan\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;blackmail\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;blain\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;blennometritis\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;blindfolding\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;block-book\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;boanergism\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;bobowler\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;bogong\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;bombazette\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;booger\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;bopped\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;botticelli\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;brawlis\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;britchka\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;broken\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;brucite\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;&nbsp;&nbsp;buttered\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='font-weight:bold'><br/>
+Exp:&nbsp;\n</span><br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='color:white;background:red'>&nbsp;</span><span style='color:white;background:red'>&nbsp;</span><span style='font-weight:bold'><br/>
+Exp:&nbsp;Enter&nbsp;word:&nbsp;</span><br/>
+<span style='text-decoration:underline'>quit<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;<span style='font-weight:bold'><br/>
+Exp:&nbsp;Goodbye\n</span><br/>
+Program&nbsp;terminated&nbsp;successfully<br/>
+<br/>
+<span style='font-weight:bold'>Failed&nbsp;3/3&nbsp;tests<br/>
+</span><br/>
+</p>
+<p style="font-family:Consolas;font-size:11;margin-top:0pt;margin-bottom:0pt"><a href="mailto:twa11001@byui.edu?subject=CS%20241:%20Assignment%2012">twa11001@byui.edu</a></p>
+</div></body></html>

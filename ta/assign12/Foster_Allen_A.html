@@ -1,0 +1,231 @@
+<html><head><title>15-F/Foster_Allen_A</title>
+<style><!--
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+  {margin:0in;margin-bottom:.0001pt;font-size:11.0pt;
+   font-family:"Arial","sans-serif";}
+h1
+  {margin-top:0.0pt;margin-right:0in; margin-bottom:0.0pt;
+   margin-left:0in;page-break-after:avoid;background:white;
+   border:none;padding:0in;font-size:14.0pt;color:#4F81BD;
+   font-family:"Arial","sans-serif";font-weight:normal;}
+p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
+  {margin:0in;margin-bottom:.0001pt;font-size:8.0pt;
+   font-family:Consolas;}
+@page WordSection1
+  {size:8.5in 11.0in;
+   margin: 0in .5in 0in .5in;
+   mso-header-margin:.5in;mso-footer-margin:.5in;}
+div.WordSection1
+  {page:WordSection1;}
+--></style>
+</head>
+<body><div class=WordSection1><table border=1 cellspacing=0 cellpadding=0 width="100%"
+       style='width:100.0%;background:#4F81BD;
+              mso-padding-alt:0in 0in 0in 0in;
+              border-collapse:collapse;border:none;'>
+  <tr>
+    <td width="37%" valign=top 
+        style='width:37.18%;
+               border-top:solid windowtext 2.25pt;
+               border-bottom:solid windowtext 2.25pt;
+               border-left:none;border-right:none;
+               padding:0in 0in 0in 0in'>
+      <p class=MsoNormal style='font-size:6.0pt'>&nbsp;</p>
+      <p class=MsoNormal><b>
+       <span style='font-size:14.0pt;color:white'>&nbsp;Foster, Allen A  </span></b></p>
+    <p class=MsoNormal style='font-size:6.0pt'>&nbsp;</p>
+</td>
+  <td width="14%" valign=top 
+      style='width:14.24%;
+             border-top:solid windowtext 2.25pt;
+             border-bottom:solid windowtext 2.25pt;
+             border-left:none;border-right:none;
+             padding:0in 0in 0in 0in'>
+  <p class=MsoNormal style='font-size:6.0pt'>&nbsp;</p>
+  <p class=MsoNormal align=center style='text-align:center'><b>
+     <span style='font-size:14.0pt;color:white'>CS 241     </span></b></p>
+  </td>
+  <td width="48%" valign=top 
+       style='width:48.58%;
+              border-top:solid windowtext 2.25pt;
+              border-bottom:solid windowtext 2.25pt;
+              border-left:none;border-right:none;
+              padding:0in 0in 0in 0in'>
+     <p class=MsoNormal style='font-size:6.0pt'>&nbsp;</p>
+     <p class=MsoNormal align=right style='text-align:right'><b>
+       <span style='font-size:14.0pt;color:white'>Assignment 12&nbsp;</span></b></p></td></tr></table><p>&nbsp;</p>
+<p style="font-family:Consolas;font-size:11;margin-top:6pt;margin-bottom:6pt"><span style="color:#929ca0">/***********************************************************************<br/>
+*&nbsp;Program:<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;Assignment&nbsp;12,&nbsp;Spelling<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;Brother&nbsp;Burton,&nbsp;CS241<br/>
+*&nbsp;Author:<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;Allen&nbsp;Foster<br/>
+*&nbsp;Summary:<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;Write&nbsp;a&nbsp;program&nbsp;to&nbsp;check&nbsp;the&nbsp;spelling&nbsp;of&nbsp;words&nbsp;and&nbsp;also&nbsp;suggest&nbsp;other<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;auto-completions&nbsp;of&nbsp;a&nbsp;word.<br/>
+*<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;Estimated:&nbsp;&nbsp;7.5&nbsp;hrs&nbsp;&nbsp;&nbsp;<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;Actual:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.0&nbsp;hrs<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I&nbsp;dont&nbsp;quite&nbsp;understand&nbsp;how&nbsp;to&nbsp;get&nbsp;the&nbsp;sort&nbsp;function&nbsp;to&nbsp;work&nbsp;with<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;data&nbsp;I&nbsp;retrieve&nbsp;from&nbsp;the&nbsp;file.&nbsp;I&nbsp;struggled&nbsp;to&nbsp;get&nbsp;the&nbsp;info<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;the&nbsp;file&nbsp;into&nbsp;a&nbsp;data&nbsp;structure.&nbsp;I&nbsp;tried&nbsp;to&nbsp;get&nbsp;it&nbsp;into&nbsp;a&nbsp;set,<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then&nbsp;to&nbsp;organize&nbsp;the&nbsp;set&nbsp;into&nbsp;a&nbsp;vector&nbsp;using&nbsp;a&nbsp;binary&nbsp;search&nbsp;tree.<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;However,&nbsp;getting&nbsp;the&nbsp;sort&nbsp;to&nbsp;even&nbsp;work&nbsp;was&nbsp;a&nbsp;struggle&nbsp;for&nbsp;me.&nbsp;If<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I&nbsp;comment&nbsp;out&nbsp;the&nbsp;sort&nbsp;function,&nbsp;the&nbsp;basic&nbsp;functions&nbsp;seem&nbsp;to&nbsp;work,<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;but&nbsp;the&nbsp;sorting/implementing&nbsp;of&nbsp;data&nbsp;from&nbsp;another&nbsp;part&nbsp;in&nbsp;the<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;program&nbsp;is&nbsp;where&nbsp;I&nbsp;fell.<br/>
+************************************************************************/</span><br/>
+<span style="color:#2c62ba">#include</span>&nbsp;&lt;iostream&gt;<br/>
+<span style="color:#2c62ba">#include</span>&nbsp;&lt;string&gt;<br/>
+<span style="color:#2c62ba">#include</span>&nbsp;&lt;set&gt;<br/>
+<span style="color:#2c62ba">#include</span>&nbsp;&lt;vector&gt;<br/>
+<span style="color:#2c62ba">#include</span>&nbsp;&lt;fstream&gt;<br/>
+<span style="color:#2c62ba">using</span>&nbsp;<span style="color:#2c62ba">namespace</span>&nbsp;<span style="color:#2c62ba">std</span>;<br/>
+<br/>
+<span style="color:#929ca0">/**************************************************************<br/>
+&nbsp;*&nbsp;Function:&nbsp;getFile<br/>
+&nbsp;*&nbsp;Description:&nbsp;Prompts&nbsp;user&nbsp;for&nbsp;the&nbsp;location&nbsp;of&nbsp;the&nbsp;txt&nbsp;file<br/>
+&nbsp;**************************************************************/</span><br/>
+<span style="color:#2c62ba">int</span>&nbsp;getFile(<span style="color:#2c62ba">string</span>&nbsp;file)<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Enter&nbsp;word&nbsp;bank&nbsp;file:&nbsp;"</span>;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cin</span>&nbsp;&gt;&gt;&nbsp;file;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">ifstream</span>&nbsp;<span style="color:#2c62ba">fin</span>(file.c_str());<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">if</span>&nbsp;(<span style="color:#2c62ba">fin</span>.fail())<br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Error&nbsp;reading&nbsp;file:&nbsp;"</span>&nbsp;&lt;&lt;&nbsp;file&nbsp;&lt;&lt;&nbsp;<span style="color:#2c62ba">endl</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">return</span>&nbsp;-1;<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">else</span><br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Word&nbsp;bank&nbsp;loaded."</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#2c62ba">endl</span>;<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+<br/>
+<span style="color:#929ca0">/**************************************************************<br/>
+&nbsp;*&nbsp;Function:&nbsp;readFile<br/>
+&nbsp;*&nbsp;Description:&nbsp;Sorts&nbsp;the&nbsp;information&nbsp;from&nbsp;the&nbsp;file&nbsp;into&nbsp;a&nbsp;set.<br/>
+&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It&nbsp;then&nbsp;moves&nbsp;the&nbsp;set&nbsp;info&nbsp;(using&nbsp;binary&nbsp;search<br/>
+&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;method)&nbsp;into&nbsp;a&nbsp;vector&nbsp;to&nbsp;be&nbsp;more&nbsp;easily&nbsp;ready&nbsp;to<br/>
+&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;look&nbsp;through.<br/>
+&nbsp;**************************************************************/</span><br/>
+<span style="color:#2c62ba">void</span>&nbsp;readFile(<span style="color:#2c62ba">string</span>&nbsp;file,&nbsp;vector&lt;string&gt;&nbsp;&amp;words,&nbsp;<span style="color:#2c62ba">string</span>&nbsp;word,&nbsp;<span style="color:#2c62ba">string</span>&nbsp;start,&nbsp;<span style="color:#2c62ba">string</span>&nbsp;end)<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;set&lt;string&gt;&nbsp;bank;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">ifstream</span>&nbsp;<span style="color:#2c62ba">fin</span>(file.c_str());<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">string</span>&nbsp;word;<br/>
+&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">while</span>&nbsp;(<span style="color:#2c62ba">fin</span>&nbsp;&gt;&gt;&nbsp;word)<br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;bank.insert(word);<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">if</span>&nbsp;(start&nbsp;&gt;&nbsp;end)<br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Incorrect&nbsp;spelling"</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">return</span>&nbsp;-1;<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">string</span>&nbsp;midIndex&nbsp;=&nbsp;(end&nbsp;-&nbsp;start)&nbsp;/&nbsp;2&nbsp;+&nbsp;start;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">string</span>&nbsp;midValue&nbsp;=&nbsp;words[midIndex];<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">if</span>&nbsp;(midValue&nbsp;==&nbsp;word)<br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">return</span>&nbsp;midIndex;<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">else</span>&nbsp;<span style="color:#2c62ba">if</span>&nbsp;(word&nbsp;&lt;&nbsp;midValue)<br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">string</span>&nbsp;newStart&nbsp;=&nbsp;start;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">string</span>&nbsp;newEnd&nbsp;=&nbsp;midIndex&nbsp;-&nbsp;1;<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">return</span>&nbsp;binarySearch(words,&nbsp;word,&nbsp;newStart,&nbsp;newEnd);<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">else</span><br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">string</span>&nbsp;newStart&nbsp;=&nbsp;midIndex&nbsp;+&nbsp;1;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">string</span>&nbsp;newEnd&nbsp;=&nbsp;end;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">return</span>&nbsp;binarySearch(words,&nbsp;word,&nbsp;newStart,&nbsp;newEnd);<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+<br/>
+<span style="color:#929ca0">/**************************************************************<br/>
+&nbsp;*&nbsp;Function:&nbsp;enterWord<br/>
+&nbsp;*&nbsp;Description:&nbsp;Prompts&nbsp;user&nbsp;for&nbsp;a&nbsp;word&nbsp;to&nbsp;compare/search&nbsp;in&nbsp;the<br/>
+&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file<br/>
+&nbsp;**************************************************************/</span><br/>
+<span style="color:#2c62ba">void</span>&nbsp;enterWord(<span style="color:#2c62ba">string</span>&nbsp;file)<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">string</span>&nbsp;word;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cin</span>.ignore();<br/>
+&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">do</span><br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Enter&nbsp;word:&nbsp;"</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getline&nbsp;(cin,word);<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">while</span>(word&nbsp;!=&nbsp;<span style="color:#466ba6">"quit"</span>);<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">if</span>(word&nbsp;==&nbsp;<span style="color:#466ba6">"quit"</span>)<br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Goodbye"</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#2c62ba">endl</span>;<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+<br/>
+<span style="color:#929ca0">/**************************************************************<br/>
+&nbsp;*&nbsp;Function:&nbsp;displayResults<br/>
+&nbsp;*&nbsp;Description:&nbsp;After&nbsp;reading&nbsp;through&nbsp;and&nbsp;sorting&nbsp;the&nbsp;file,&nbsp;this<br/>
+&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;looks&nbsp;at&nbsp;the&nbsp;word&nbsp;that&nbsp;the&nbsp;user&nbsp;entered,<br/>
+&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;looks&nbsp;through&nbsp;the&nbsp;vector&nbsp;of&nbsp;file&nbsp;info&nbsp;to&nbsp;give<br/>
+&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;us&nbsp;possibilities.<br/>
+&nbsp;**************************************************************/</span><br/>
+<span style="color:#2c62ba">void</span>&nbsp;displayResults(file,&nbsp;word)<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">do</span><br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;word&nbsp;&lt;&lt;&nbsp;<span style="color:#2c62ba">endl</span>;<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">while</span>&nbsp;(word&nbsp;=&nbsp;word.file&nbsp;&amp;&amp;&nbsp;word&nbsp;&lt;&nbsp;end);<br/>
+}<br/>
+*/<br/>
+<br/>
+<span style="color:#929ca0">/**************************************************************<br/>
+&nbsp;*&nbsp;Function:&nbsp;main<br/>
+&nbsp;*&nbsp;Description:&nbsp;The&nbsp;driver&nbsp;function&nbsp;for&nbsp;the&nbsp;program.<br/>
+&nbsp;**************************************************************/</span><br/>
+<span style="color:#2c62ba">int</span>&nbsp;<span style="color:#2c62ba">main</span>()<br/>
+{&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">string</span>&nbsp;file;<br/>
+&nbsp;&nbsp;&nbsp;vector&lt;string&gt;&nbsp;words;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">string</span>&nbsp;word;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">string</span>&nbsp;start;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">string</span>&nbsp;end;<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;getFile(file);<br/>
+&nbsp;&nbsp;&nbsp;readFile(file,&nbsp;words,&nbsp;word,&nbsp;start,&nbsp;end);<br/>
+&nbsp;&nbsp;&nbsp;enterWord(file);<br/>
+&nbsp;&nbsp;&nbsp;displayResults(file,&nbsp;word);<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">return</span>&nbsp;0;<br/>
+}<br/>
+ </p>
+<div style='border-top:solid #4F81BD 3.0pt;border-left:none;
+     border-bottom:solid #4F81BD 3.0pt;border-right:none;
+     padding:1.0pt 0in 1.0pt 0in;background:white'>
+<h1>Compile Errors</h1></div>
+<p style="font-family:Consolas;font-size:11;margin-top:6pt;margin-bottom:6pt">/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_bvector.h:179:&nbsp;note:&nbsp;candidates&nbsp;are:&nbsp;ptrdiff_t&nbsp;std::operator-(const&nbsp;std::_Bit_iterator_base&amp;,&nbsp;const&nbsp;std::_Bit_iterator_base&amp;)<br/>
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_vector.h:610:&nbsp;note:&nbsp;candidates&nbsp;are:&nbsp;typename&nbsp;std::_Vector_base&lt;_Tp,&nbsp;_Alloc&gt;::_Tp_alloc_type::reference&nbsp;std::vector&lt;_Tp,&nbsp;_Alloc&gt;::operator[](size_t)&nbsp;[with&nbsp;_Tp&nbsp;=&nbsp;std::basic_string&lt;char,&nbsp;std::char_traits&lt;char&gt;,&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;,&nbsp;_Alloc&nbsp;=&nbsp;std::allocator&lt;std::basic_string&lt;char,&nbsp;std::char_traits&lt;char&gt;,&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;&nbsp;&gt;]<br/>
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_vector.h:625:&nbsp;note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typename&nbsp;std::_Vector_base&lt;_Tp,&nbsp;_Alloc&gt;::_Tp_alloc_type::const_reference&nbsp;std::vector&lt;_Tp,&nbsp;_Alloc&gt;::operator[](size_t)&nbsp;const&nbsp;[with&nbsp;_Tp&nbsp;=&nbsp;std::basic_string&lt;char,&nbsp;std::char_traits&lt;char&gt;,&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;,&nbsp;_Alloc&nbsp;=&nbsp;std::allocator&lt;std::basic_string&lt;char,&nbsp;std::char_traits&lt;char&gt;,&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;&nbsp;&gt;]<br/>
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_bvector.h:179:&nbsp;note:&nbsp;candidates&nbsp;are:&nbsp;ptrdiff_t&nbsp;std::operator-(const&nbsp;std::_Bit_iterator_base&amp;,&nbsp;const&nbsp;std::_Bit_iterator_base&amp;)<br/>
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_bvector.h:264:&nbsp;note:&nbsp;candidates&nbsp;are:&nbsp;std::_Bit_iterator&nbsp;std::operator+(ptrdiff_t,&nbsp;const&nbsp;std::_Bit_iterator&amp;)<br/>
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_bvector.h:350:&nbsp;note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;std::_Bit_const_iterator&nbsp;std::operator+(ptrdiff_t,&nbsp;const&nbsp;std::_Bit_const_iterator&amp;)<br/>
+</p>
+<div style='border-top:solid #4F81BD 3.0pt;border-left:none;
+     border-bottom:solid #4F81BD 3.0pt;border-right:none;
+     padding:1.0pt 0in 1.0pt 0in;background:white'>
+<h1>Test Bed Results</h1></div>
+<p style="font-family:Consolas;font-size:11;margin-top:6pt;margin-bottom:6pt">The&nbsp;file&nbsp;15-F/Foster_Allen_A.out&nbsp;failed&nbsp;to&nbsp;compile<br/>
+file&nbsp;or&nbsp;directory<br/>
+</p>
+<p style="font-family:Consolas;font-size:11;margin-top:0pt;margin-bottom:0pt"><a href="mailto:fos12021@byui.edu?subject=CS%20241:%20Assignment%2012">fos12021@byui.edu</a></p>
+</div></body></html>

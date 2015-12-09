@@ -1,0 +1,34 @@
+::::::::::::::
+log.txt
+::::::::::::::
+mkdir 15-F/Bridenstine_Michael_Roy.dir 2> /dev/null ; 
+mv -f michae1b.tar 15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.tar; 
+tar -xf 15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.tar -C 15-F/Bridenstine_Michael_Roy.dir; 
+rm -f 15-F/Bridenstine_Michael_Roy.dir/*.o 15-F/Bridenstine_Michael_Roy.dir/a.out
+perl /mnt/local/utilities/compileAll.pl 15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.tar 15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.out 2> 15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.compile
+cp 15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.tar 15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.html
+more log.txt     15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.compile       >> 15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.log 2> /dev/null ; 
+rm -f log.txt     15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.compile      
+::::::::::::::
+15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.compile
+::::::::::::::
+
+# mkdir 15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.tar.dir 2>> 15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.compile 
+
+# cp 15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.tar 15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.tar.dir/tar.tar 2>> 15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.compile 
+
+# tar -xf  15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.tar.dir/tar.tar -C 15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.tar.dir 2>> 15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.compile >> 15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.compile 
+
+# make a.out -C 15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.tar.dir 2>> 15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.compile >> 15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.compile 
+make: Entering directory `/home/burtons/cs241/prj10/15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.tar.dir'
+g++ -c game.cpp
+g++ -c uiInteract.cpp
+g++ -c uiDraw.cpp
+g++ -c point.cpp
+g++ -c bird.cpp
+g++ game.o uiInteract.o uiDraw.o point.o bird.o -lglut -lGLU -lGL
+make: Leaving directory `/home/burtons/cs241/prj10/15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.tar.dir'
+
+# mv 15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.tar.dir/a.out 15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.out 2>> 15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.compile >> 15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.compile 
+
+# rm -rf 15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.tar.dir 2>> 15-F/Bridenstine_Michael_Roy.dir/Bridenstine_Michael_Roy.compile 

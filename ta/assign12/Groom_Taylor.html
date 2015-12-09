@@ -1,0 +1,353 @@
+<html><head><title>15-F/Groom_Taylor</title>
+<style><!--
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+  {margin:0in;margin-bottom:.0001pt;font-size:11.0pt;
+   font-family:"Arial","sans-serif";}
+h1
+  {margin-top:0.0pt;margin-right:0in; margin-bottom:0.0pt;
+   margin-left:0in;page-break-after:avoid;background:white;
+   border:none;padding:0in;font-size:14.0pt;color:#4F81BD;
+   font-family:"Arial","sans-serif";font-weight:normal;}
+p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
+  {margin:0in;margin-bottom:.0001pt;font-size:8.0pt;
+   font-family:Consolas;}
+@page WordSection1
+  {size:8.5in 11.0in;
+   margin: 0in .5in 0in .5in;
+   mso-header-margin:.5in;mso-footer-margin:.5in;}
+div.WordSection1
+  {page:WordSection1;}
+--></style>
+</head>
+<body><div class=WordSection1><table border=1 cellspacing=0 cellpadding=0 width="100%"
+       style='width:100.0%;background:#4F81BD;
+              mso-padding-alt:0in 0in 0in 0in;
+              border-collapse:collapse;border:none;'>
+  <tr>
+    <td width="37%" valign=top 
+        style='width:37.18%;
+               border-top:solid windowtext 2.25pt;
+               border-bottom:solid windowtext 2.25pt;
+               border-left:none;border-right:none;
+               padding:0in 0in 0in 0in'>
+      <p class=MsoNormal style='font-size:6.0pt'>&nbsp;</p>
+      <p class=MsoNormal><b>
+       <span style='font-size:14.0pt;color:white'>&nbsp;Groom, Taylor  </span></b></p>
+    <p class=MsoNormal style='font-size:6.0pt'>&nbsp;</p>
+</td>
+  <td width="14%" valign=top 
+      style='width:14.24%;
+             border-top:solid windowtext 2.25pt;
+             border-bottom:solid windowtext 2.25pt;
+             border-left:none;border-right:none;
+             padding:0in 0in 0in 0in'>
+  <p class=MsoNormal style='font-size:6.0pt'>&nbsp;</p>
+  <p class=MsoNormal align=center style='text-align:center'><b>
+     <span style='font-size:14.0pt;color:white'>CS 241     </span></b></p>
+  </td>
+  <td width="48%" valign=top 
+       style='width:48.58%;
+              border-top:solid windowtext 2.25pt;
+              border-bottom:solid windowtext 2.25pt;
+              border-left:none;border-right:none;
+              padding:0in 0in 0in 0in'>
+     <p class=MsoNormal style='font-size:6.0pt'>&nbsp;</p>
+     <p class=MsoNormal align=right style='text-align:right'><b>
+       <span style='font-size:14.0pt;color:white'>Assignment 12&nbsp;</span></b></p></td></tr></table><p>&nbsp;</p>
+<p style="font-family:Consolas;font-size:11;margin-top:6pt;margin-bottom:6pt"><span style="color:#929ca0">/***********************************************************************<br/>
+*&nbsp;Program:<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;Assignment&nbsp;12,&nbsp;Spelling<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;Brother&nbsp;Burton,&nbsp;CS241<br/>
+*&nbsp;Author:<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;Taylor&nbsp;Groom<br/>
+*&nbsp;Summary:&nbsp;<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;Enter&nbsp;a&nbsp;brief&nbsp;description&nbsp;of&nbsp;your&nbsp;program&nbsp;here!&nbsp;&nbsp;Please&nbsp;note&nbsp;that&nbsp;if<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;you&nbsp;do&nbsp;not&nbsp;take&nbsp;the&nbsp;time&nbsp;to&nbsp;fill&nbsp;out&nbsp;this&nbsp;block,&nbsp;YOU&nbsp;WILL&nbsp;LOSE&nbsp;POINTS.<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;Before&nbsp;you&nbsp;begin&nbsp;working,&nbsp;estimate&nbsp;the&nbsp;time&nbsp;you&nbsp;think&nbsp;it&nbsp;will<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;take&nbsp;you&nbsp;to&nbsp;do&nbsp;the&nbsp;assignment&nbsp;and&nbsp;include&nbsp;it&nbsp;in&nbsp;this&nbsp;header&nbsp;block.<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;Before&nbsp;you&nbsp;submit&nbsp;the&nbsp;assignment&nbsp;include&nbsp;the&nbsp;actual&nbsp;time&nbsp;it&nbsp;took.<br/>
+*<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;Estimated:&nbsp;&nbsp;0.0&nbsp;hrs&nbsp;&nbsp;&nbsp;<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;Actual:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.0&nbsp;hrs<br/>
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please&nbsp;describe&nbsp;briefly&nbsp;what&nbsp;was&nbsp;the&nbsp;most&nbsp;difficult&nbsp;part.<br/>
+************************************************************************/</span><br/>
+<br/>
+<span style="color:#2c62ba">#include</span>&nbsp;&lt;iostream&gt;<br/>
+<span style="color:#2c62ba">#include</span>&nbsp;&lt;vector&gt;<br/>
+<span style="color:#2c62ba">#include</span>&nbsp;&lt;fstream&gt;<br/>
+<span style="color:#2c62ba">#include</span>&nbsp;&lt;set&gt;<br/>
+<span style="color:#2c62ba">#include</span>&nbsp;&lt;string&gt;<br/>
+<span style="color:#2c62ba">using</span>&nbsp;<span style="color:#2c62ba">namespace</span>&nbsp;<span style="color:#2c62ba">std</span>;<br/>
+<br/>
+<span style="color:#929ca0">/**********************************************************************<br/>
+&nbsp;*&nbsp;Add&nbsp;text&nbsp;here&nbsp;to&nbsp;describe&nbsp;what&nbsp;the&nbsp;function&nbsp;"main"&nbsp;does.&nbsp;Also&nbsp;don't&nbsp;forget<br/>
+&nbsp;*&nbsp;to&nbsp;fill&nbsp;this&nbsp;out&nbsp;with&nbsp;meaningful&nbsp;text&nbsp;or&nbsp;YOU&nbsp;WILL&nbsp;LOSE&nbsp;POINTS.<br/>
+&nbsp;***********************************************************************/</span><br/>
+<br/>
+<span style="color:#2c62ba">void</span>&nbsp;fillArray(vector&lt;string&gt;&nbsp;&amp;words,&nbsp;<span style="color:#2c62ba">string</span>&nbsp;fileName)<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;set&lt;string&gt;&nbsp;wordSet;<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">ifstream</span>&nbsp;<span style="color:#2c62ba">fin</span>(fileName.c_str());<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">if</span>(<span style="color:#2c62ba">fin</span>.fail())<br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"error&nbsp;loading&nbsp;file"</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">return</span>;<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">while</span>(!fin.eof())<br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">string</span>&nbsp;temp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">fin</span>&nbsp;&gt;&gt;&nbsp;temp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wordSet.insert(temp);<br/>
+&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">for</span>&nbsp;(set&lt;string&gt;::iterator&nbsp;it&nbsp;=&nbsp;wordSet.begin();<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it&nbsp;!=&nbsp;wordSet.end();&nbsp;it++)<br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;words.push_back(*it);<br/>
+<span style="color:#929ca0">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;*it&nbsp;&lt;&lt;&nbsp;endl;</span><br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">fin</span>.close();<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Word&nbsp;bank&nbsp;loaded."</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#2c62ba">endl</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#2c62ba">endl</span>;<br/>
+}<br/>
+<br/>
+<span style="color:#2c62ba">void</span>&nbsp;binarySearch(vector&lt;string&gt;&nbsp;&amp;words,&nbsp;<span style="color:#2c62ba">string</span>&nbsp;lookUp,&nbsp;<span style="color:#2c62ba">int</span>&nbsp;start,&nbsp;<span style="color:#2c62ba">int</span>&nbsp;end)<br/>
+{<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">if</span>(start&nbsp;&gt;&nbsp;end)<br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Incorrect&nbsp;spelling"</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#2c62ba">endl</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#929ca0">//cout&nbsp;&lt;&lt;&nbsp;"Matching&nbsp;words:"&nbsp;&lt;&lt;&nbsp;endl;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">return</span>;<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">int</span>&nbsp;midIndex&nbsp;=&nbsp;(end&nbsp;-&nbsp;start)&nbsp;/&nbsp;2&nbsp;+&nbsp;start;<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#929ca0">//&nbsp;cout&nbsp;&lt;&lt;&nbsp;"start:&nbsp;"&nbsp;&lt;&lt;&nbsp;start&nbsp;&lt;&lt;&nbsp;",&nbsp;mid:&nbsp;"&nbsp;&lt;&lt;&nbsp;midIndex&nbsp;&lt;&lt;&nbsp;",&nbsp;end:&nbsp;"&nbsp;&lt;&lt;&nbsp;end&nbsp;&lt;&lt;&nbsp;endl;</span><br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">string</span>&nbsp;midValue&nbsp;=&nbsp;words[midIndex];<br/>
+<br/>
+<span style="color:#929ca0">//&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;"Comparing&nbsp;mid&nbsp;value&nbsp;and&nbsp;num:&nbsp;";</span><br/>
+&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">if</span>(midValue&nbsp;==&nbsp;lookUp)<br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+<span style="color:#929ca0">//Word&nbsp;is&nbsp;found&nbsp;in&nbsp;the&nbsp;list</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Correct&nbsp;spelling"</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#2c62ba">endl</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#929ca0">//&nbsp;cout&nbsp;&lt;&lt;&nbsp;"Matching&nbsp;words:"&nbsp;&lt;&lt;&nbsp;endl;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">return</span>;<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">else</span>&nbsp;<span style="color:#2c62ba">if</span>(lookUp&nbsp;&lt;&nbsp;midValue)<br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#929ca0">//Look&nbsp;to&nbsp;the&nbsp;smaller&nbsp;numbers</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">int</span>&nbsp;newStart&nbsp;=&nbsp;start;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">int</span>&nbsp;newEnd&nbsp;=&nbsp;midIndex&nbsp;-&nbsp;1;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;binarySearch(words,&nbsp;lookUp,&nbsp;newStart,&nbsp;newEnd);<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">else</span>&nbsp;<span style="color:#929ca0">//&nbsp;num&nbsp;&gt;&nbsp;midValue</span><br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#929ca0">//Look&nbsp;to&nbsp;the&nbsp;right&nbsp;side</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">int</span>&nbsp;newStart&nbsp;=&nbsp;midIndex&nbsp;+&nbsp;1;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">int</span>&nbsp;newEnd&nbsp;=&nbsp;end;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;binarySearch(words,&nbsp;lookUp,&nbsp;newStart,&nbsp;newEnd);&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+<br/>
+<span style="color:#2c62ba">void</span>&nbsp;likeWords(vector&lt;string&gt;&nbsp;&amp;words,&nbsp;<span style="color:#2c62ba">string</span>&nbsp;lookUp)<br/>
+{<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">bool</span>&nbsp;found&nbsp;=&nbsp;<span style="color:#2c62ba">true</span>;<br/>
+<span style="color:#929ca0">//&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;"In&nbsp;like&nbsp;words"&nbsp;&lt;&lt;&nbsp;endl;</span><br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">int</span>&nbsp;pos&nbsp;=&nbsp;0;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">while</span>&nbsp;(lookUp&nbsp;!=&nbsp;words[pos].substr(0,lookUp.size()))<br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">if</span>(pos&nbsp;&lt;&nbsp;words.size()&nbsp;-&nbsp;1)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pos++;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#929ca0">//cout&nbsp;&lt;&lt;&nbsp;"less"&nbsp;&lt;&lt;&nbsp;endl;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">else</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+<span style="color:#929ca0">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;"more"&nbsp;&lt;&lt;&nbsp;endl;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;found&nbsp;=&nbsp;<span style="color:#2c62ba">false</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#2c62ba">endl</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">return</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">while</span>(found&nbsp;!=&nbsp;<span style="color:#2c62ba">false</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">string</span>&nbsp;substring&nbsp;=&nbsp;words[pos].substr(0,&nbsp;lookUp.size());<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">if</span>(substring&nbsp;==&nbsp;lookUp)&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;found&nbsp;==&nbsp;<span style="color:#2c62ba">true</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"&nbsp;&nbsp;"</span>&nbsp;&lt;&lt;&nbsp;words[pos]&nbsp;&lt;&lt;&nbsp;<span style="color:#2c62ba">endl</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pos++;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">else</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#929ca0">//cout&nbsp;&lt;&lt;&nbsp;"Found&nbsp;nothing"&nbsp;&lt;&lt;&nbsp;endl;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#2c62ba">endl</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;found&nbsp;=&nbsp;<span style="color:#2c62ba">false</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">return</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;<br/>
+}<br/>
+<br/>
+<span style="color:#2c62ba">void</span>&nbsp;search(vector&lt;string&gt;&nbsp;&amp;words,&nbsp;<span style="color:#2c62ba">string</span>&nbsp;lookUp)<br/>
+{<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;binarySearch(words,&nbsp;lookUp,&nbsp;0,&nbsp;words.size()&nbsp;-&nbsp;1);<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">return</span>;<br/>
+}<br/>
+<br/>
+<span style="color:#2c62ba">void</span>&nbsp;promptWord(vector&lt;string&gt;&nbsp;words)<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">string</span>&nbsp;lookUp;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">int</span>&nbsp;check;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">while</span>(lookUp&nbsp;!=&nbsp;<span style="color:#466ba6">"quit"</span>)<br/>
+&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Enter&nbsp;word:&nbsp;"</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cin</span>&nbsp;&gt;&gt;&nbsp;lookUp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">if</span>&nbsp;(lookUp&nbsp;!=&nbsp;<span style="color:#466ba6">"quit"</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;search(words,&nbsp;lookUp);&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Matching&nbsp;words:"</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#2c62ba">endl</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;likeWords(words,&nbsp;lookUp);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+<br/>
+<span style="color:#2c62ba">int</span>&nbsp;<span style="color:#2c62ba">main</span>()<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">vector</span>&nbsp;&lt;string&gt;&nbsp;words;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">string</span>&nbsp;fileName;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">int</span>&nbsp;check;<br/>
+&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Enter&nbsp;word&nbsp;bank&nbsp;file:&nbsp;"</span>;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cin</span>&nbsp;&gt;&gt;&nbsp;fileName;<br/>
+&nbsp;&nbsp;&nbsp;fillArray(words,&nbsp;fileName);<br/>
+&nbsp;&nbsp;&nbsp;promptWord(words);<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">cout</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#466ba6">"Goodbye"</span>&nbsp;&lt;&lt;&nbsp;<span style="color:#2c62ba">endl</span>;<br/>
+&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#2c62ba">return</span>&nbsp;0;<br/>
+}<br/>
+ </p>
+<div style='border-top:solid #4F81BD 3.0pt;border-left:none;
+     border-bottom:solid #4F81BD 3.0pt;border-right:none;
+     padding:1.0pt 0in 1.0pt 0in;background:white'>
+<h1>Compile Errors</h1></div>
+<div style='border-top:solid #4F81BD 3.0pt;border-left:none;
+     border-bottom:solid #4F81BD 3.0pt;border-right:none;
+     padding:1.0pt 0in 1.0pt 0in;background:white'>
+<h1>Test Bed Results</h1></div>
+<p style="font-family:Consolas;font-size:11;margin-top:6pt;margin-bottom:6pt"><br/>
+Groom_Taylor.out:<br/>
+<br/>
+Started&nbsp;program<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Enter&nbsp;word&nbsp;bank&nbsp;file:&nbsp;<span style='text-decoration:underline'>/home/cs241/words_tiny.txt<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;Word&nbsp;bank&nbsp;loaded.<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Enter&nbsp;word:&nbsp;<span style='text-decoration:underline'>con<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;Incorrect&nbsp;spelling<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Matching&nbsp;words:<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;concessit<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;conflicted<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;confrontationist<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;conquistador<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;constitutionalist<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;contemplativeness<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Enter&nbsp;word:&nbsp;<span style='text-decoration:underline'>conflicted<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;Correct&nbsp;spelling<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Matching&nbsp;words:<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;conflicted<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Enter&nbsp;word:&nbsp;<span style='text-decoration:underline'>quit<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;Goodbye<br/>
+Program&nbsp;terminated&nbsp;successfully<br/>
+<br/>
+Started&nbsp;program<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Enter&nbsp;word&nbsp;bank&nbsp;file:&nbsp;<span style='text-decoration:underline'>/home/cs241/words_tiny.txt<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;Word&nbsp;bank&nbsp;loaded.<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Enter&nbsp;word:&nbsp;<span style='text-decoration:underline'>asdklfj<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;Incorrect&nbsp;spelling<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Matching&nbsp;words:<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Enter&nbsp;word:&nbsp;<span style='text-decoration:underline'>the<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;Correct&nbsp;spelling<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Matching&nbsp;words:<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;the<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;theeked<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Enter&nbsp;word:&nbsp;<span style='text-decoration:underline'>cat<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;Correct&nbsp;spelling<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Matching&nbsp;words:<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;cat<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;cata-<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;catalan<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;cateran<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;cathection<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Enter&nbsp;word:&nbsp;<span style='text-decoration:underline'>quit<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;Goodbye<br/>
+Program&nbsp;terminated&nbsp;successfully<br/>
+<br/>
+Started&nbsp;program<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Enter&nbsp;word&nbsp;bank&nbsp;file:&nbsp;<span style='text-decoration:underline'>/home/cs241/words_tiny.txt<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;Word&nbsp;bank&nbsp;loaded.<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Enter&nbsp;word:&nbsp;<span style='text-decoration:underline'>b<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;Incorrect&nbsp;spelling<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Matching&nbsp;words:<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;babasu<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;baboons<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;backwashing<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;bake<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;barberess<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;barely<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;basidiomycetous<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;basketballer<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;battery-powered<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;bavin<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;beadleship<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;beaten<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;bensail<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;berating<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;beringleted<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;beswarming<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;bheesties<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;bibliomane<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;big-boned<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;bilk<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;black-and-tan<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;blackmail<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;blain<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;blennometritis<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;blindfolding<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;block-book<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;boanergism<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;bobowler<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;bogong<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;bombazette<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;booger<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;bopped<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;botticelli<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;brawlis<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;britchka<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;broken<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;brucite<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;buttered<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&gt;&nbsp;Enter&nbsp;word:&nbsp;<span style='text-decoration:underline'>quit<br/>
+</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;Goodbye<br/>
+Program&nbsp;terminated&nbsp;successfully<br/>
+<br/>
+No&nbsp;Errors<br/>
+</p>
+<p style="font-family:Consolas;font-size:11;margin-top:0pt;margin-bottom:0pt"><a href="mailto:gro11017@byui.edu?subject=CS%20241:%20Assignment%2012">gro11017@byui.edu</a></p>
+</div></body></html>

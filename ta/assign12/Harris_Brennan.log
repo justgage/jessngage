@@ -1,0 +1,172 @@
+::::::::::::::
+log.txt
+::::::::::::::
+mv -f harrisbk.cpp 15-F/Harris_Brennan.cpp
+perl /mnt/local/utilities/compileAll.pl 15-F/Harris_Brennan.cpp 15-F/Harris_Brennan.out 2> 15-F/Harris_Brennan.compile
+/mnt/local/testbed/testBed cs241/assign12 15-F/Harris_Brennan.out  > 15-F/Harris_Brennan.bed 2> 15-F/Harris_Brennan.bed
+cp 15-F/Harris_Brennan.cpp 15-F/Harris_Brennan.html
+more log.txt     15-F/Harris_Brennan.compile 15-F/Harris_Brennan.bed      >> 15-F/Harris_Brennan.log 2> /dev/null ; 
+rm -f log.txt     15-F/Harris_Brennan.compile 15-F/Harris_Brennan.bed     
+::::::::::::::
+15-F/Harris_Brennan.compile
+::::::::::::::
+::::::::::::::
+15-F/Harris_Brennan.bed
+::::::::::::::
+
+Harris_Brennan.out:
+
+Started program
+   > Enter word bank file: [4m/home/cs241/words_tiny.txt
+[0m   > Word bank loaded.
+   > 
+   > Enter word: [4mcon
+[0m   > Incorrect spelling
+   > Matching words:
+   > [37;41mc[0m[37;41mo[0m[37;41mn[0m[37;41mc[0m[37;41me[0m[37;41ms[0m[37;41ms[0m[37;41mi[0m[37;41mt[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   concessit\n[0m
+   > [37;41mc[0m[37;41mo[0m[37;41mn[0m[37;41mf[0m[37;41ml[0m[37;41mi[0m[37;41mc[0m[37;41mt[0m[37;41me[0m[37;41md[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   conflicted\n[0m
+   > [37;41mc[0m[37;41mo[0m[37;41mn[0m[37;41mf[0m[37;41mr[0m[37;41mo[0m[37;41mn[0m[37;41mt[0m[37;41ma[0m[37mt[0m[37;41mi[0m[37;41mo[0m[37;41mn[0m[37;41mi[0m[37;41ms[0m[37;41mt[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   confrontationist\n[0m
+   > [37;41mc[0m[37;41mo[0m[37;41mn[0m[37;41mq[0m[37;41mu[0m[37;41mi[0m[37;41ms[0m[37;41mt[0m[37;41ma[0m[37;41md[0m[37;41mo[0m[37;41mr[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   conquistador\n[0m
+   > [37;41mc[0m[37;41mo[0m[37;41mn[0m[37;41ms[0m[37;41mt[0m[37;41mi[0m[37mt[0m[37;41mu[0m[37mt[0m[37;41mi[0m[37;41mo[0m[37;41mn[0m[37;41ma[0m[37;41ml[0m[37;41mi[0m[37;41ms[0m[37;41mt[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   constitutionalist\n[0m
+   > [37;41mc[0m[37;41mo[0m[37;41mn[0m[37;41mt[0m[37;41me[0m[37;41mm[0m[37;41mp[0m[37;41ml[0m[37;41ma[0m[37;41mt[0m[37;41mi[0m[37;41mv[0m[37;41me[0m[37;41mn[0m[37me[0m[37;41ms[0m[37;41ms[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   contemplativeness\n[0m
+   > 
+   > Enter word: [4mconflicted
+[0m   > Correct spelling
+   > Matching words:
+   > [37;41mc[0m[37;41mo[0m[37;41mn[0m[37;41mf[0m[37;41ml[0m[37;41mi[0m[37;41mc[0m[37;41mt[0m[37;41me[0m[37;41md[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   conflicted\n[0m
+   > 
+   > Enter word: [4mquit
+[0m   > Goodbye
+Program terminated successfully
+
+Started program
+   > Enter word bank file: [4m/home/cs241/words_tiny.txt
+[0m   > Word bank loaded.
+   > 
+   > Enter word: [4masdklfj
+[0m   > Incorrect spelling
+   > Matching words:
+   > 
+   > Enter word: [4mthe
+[0m   > Correct spelling
+   > Matching words:
+   > [37;41mt[0m[37;41mh[0m[37;41me[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   the\n[0m
+   > [37;41mt[0m[37;41mh[0m[37;41me[0m[37;41me[0m[37;41mk[0m[37me[0m[37;41md[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   theeked\n[0m
+   > 
+   > Enter word: [4mcat
+[0m   > Correct spelling
+   > Matching words:
+   > [37;41mc[0m[37;41ma[0m[37;41mt[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   cat\n[0m
+   > [37;41mc[0m[37;41ma[0m[37;41mt[0m[37ma[0m[37;41m-[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   cata-\n[0m
+   > [37;41mc[0m[37;41ma[0m[37;41mt[0m[37ma[0m[37;41ml[0m[37ma[0m[37;41mn[0m[37;41m\[0m[37mn[0m[7m
+Exp:   catalan\n[0m
+   > [37;41mc[0m[37;41ma[0m[37;41mt[0m[37;41me[0m[37;41mr[0m[37;41ma[0m[37;41mn[0m[37;41m\[0m[37mn[0m[7m
+Exp:   cateran\n[0m
+   > [37;41mc[0m[37;41ma[0m[37;41mt[0m[37;41mh[0m[37;41me[0m[37;41mc[0m[37;41mt[0m[37;41mi[0m[37;41mo[0m[37;41mn[0m[37;41m\[0m[37mn[0m[7m
+Exp:   cathection\n[0m
+   > 
+   > Enter word: [4mquit
+[0m   > Goodbye
+Program terminated successfully
+
+Started program
+   > Enter word bank file: [4m/home/cs241/words_tiny.txt
+[0m   > Word bank loaded.
+   > 
+   > Enter word: [4mb
+[0m   > Incorrect spelling
+   > Matching words:
+   > [37;41mb[0m[37;41ma[0m[37mb[0m[37ma[0m[37;41ms[0m[37;41mu[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   babasu\n[0m
+   > [37;41mb[0m[37;41ma[0m[37mb[0m[37;41mo[0m[37;41mo[0m[37;41mn[0m[37;41ms[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   baboons\n[0m
+   > [37;41mb[0m[37;41ma[0m[37;41mc[0m[37;41mk[0m[37;41mw[0m[37;41ma[0m[37;41ms[0m[37;41mh[0m[37;41mi[0m[37;41mn[0m[37;41mg[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   backwashing\n[0m
+   > [37;41mb[0m[37;41ma[0m[37;41mk[0m[37;41me[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   bake\n[0m
+   > [37;41mb[0m[37;41ma[0m[37;41mr[0m[37;41mb[0m[37;41me[0m[37;41mr[0m[37me[0m[37;41ms[0m[37;41ms[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   barberess\n[0m
+   > [37;41mb[0m[37;41ma[0m[37;41mr[0m[37;41me[0m[37;41ml[0m[37;41my[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   barely\n[0m
+   > [37;41mb[0m[37;41ma[0m[37;41ms[0m[37;41mi[0m[37;41md[0m[37mi[0m[37;41mo[0m[37;41mm[0m[37;41my[0m[37;41mc[0m[37;41me[0m[37;41mt[0m[37;41mo[0m[37;41mu[0m[37;41ms[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   basidiomycetous\n[0m
+   > [37;41mb[0m[37;41ma[0m[37;41ms[0m[37;41mk[0m[37;41me[0m[37;41mt[0m[37;41mb[0m[37;41ma[0m[37;41ml[0m[37;41ml[0m[37;41me[0m[37;41mr[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   basketballer\n[0m
+   > [37;41mb[0m[37;41ma[0m[37;41mt[0m[37;41mt[0m[37;41me[0m[37;41mr[0m[37;41my[0m[37;41m-[0m[37;41mp[0m[37;41mo[0m[37;41mw[0m[37;41me[0m[37;41mr[0m[37me[0m[37;41md[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   battery-powered\n[0m
+   > [37;41mb[0m[37;41ma[0m[37;41mv[0m[37;41mi[0m[37;41mn[0m[37;41m\[0m[37mn[0m[7m
+Exp:   bavin\n[0m
+   > [37;41mb[0m[37;41me[0m[37;41ma[0m[37;41md[0m[37;41ml[0m[37;41me[0m[37;41ms[0m[37;41mh[0m[37;41mi[0m[37;41mp[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   beadleship\n[0m
+   > [37;41mb[0m[37;41me[0m[37;41ma[0m[37;41mt[0m[37;41me[0m[37;41mn[0m[37;41m\[0m[37mn[0m[7m
+Exp:   beaten\n[0m
+   > [37;41mb[0m[37;41me[0m[37;41mn[0m[37;41ms[0m[37;41ma[0m[37;41mi[0m[37;41ml[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   bensail\n[0m
+   > [37;41mb[0m[37;41me[0m[37;41mr[0m[37;41ma[0m[37;41mt[0m[37;41mi[0m[37;41mn[0m[37;41mg[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   berating\n[0m
+   > [37;41mb[0m[37;41me[0m[37;41mr[0m[37;41mi[0m[37;41mn[0m[37;41mg[0m[37;41ml[0m[37;41me[0m[37;41mt[0m[37me[0m[37;41md[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   beringleted\n[0m
+   > [37;41mb[0m[37;41me[0m[37;41ms[0m[37;41mw[0m[37;41ma[0m[37;41mr[0m[37;41mm[0m[37;41mi[0m[37;41mn[0m[37;41mg[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   beswarming\n[0m
+   > [37;41mb[0m[37;41mh[0m[37;41me[0m[37;41me[0m[37;41ms[0m[37;41mt[0m[37;41mi[0m[37;41me[0m[37;41ms[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   bheesties\n[0m
+   > [37;41mb[0m[37;41mi[0m[37mb[0m[37;41ml[0m[37;41mi[0m[37;41mo[0m[37;41mm[0m[37;41ma[0m[37;41mn[0m[37;41me[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   bibliomane\n[0m
+   > [37;41mb[0m[37;41mi[0m[37;41mg[0m[37;41m-[0m[37;41mb[0m[37;41mo[0m[37;41mn[0m[37;41me[0m[37;41md[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   big-boned\n[0m
+   > [37;41mb[0m[37;41mi[0m[37;41ml[0m[37;41mk[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   bilk\n[0m
+   > [37;41mb[0m[37;41ml[0m[37;41ma[0m[37;41mc[0m[37;41mk[0m[37;41m-[0m[37;41ma[0m[37;41mn[0m[37;41md[0m[37;41m-[0m[37;41mt[0m[37;41ma[0m[37;41mn[0m[37;41m\[0m[37mn[0m[7m
+Exp:   black-and-tan\n[0m
+   > [37;41mb[0m[37;41ml[0m[37;41ma[0m[37;41mc[0m[37;41mk[0m[37;41mm[0m[37;41ma[0m[37;41mi[0m[37;41ml[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   blackmail\n[0m
+   > [37;41mb[0m[37;41ml[0m[37;41ma[0m[37;41mi[0m[37;41mn[0m[37;41m\[0m[37mn[0m[7m
+Exp:   blain\n[0m
+   > [37;41mb[0m[37;41ml[0m[37;41me[0m[37;41mn[0m[37;41mn[0m[37;41mo[0m[37;41mm[0m[37;41me[0m[37;41mt[0m[37;41mr[0m[37;41mi[0m[37;41mt[0m[37mi[0m[37;41ms[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   blennometritis\n[0m
+   > [37;41mb[0m[37;41ml[0m[37;41mi[0m[37;41mn[0m[37;41md[0m[37;41mf[0m[37;41mo[0m[37;41ml[0m[37;41md[0m[37;41mi[0m[37;41mn[0m[37;41mg[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   blindfolding\n[0m
+   > [37;41mb[0m[37;41ml[0m[37;41mo[0m[37;41mc[0m[37;41mk[0m[37;41m-[0m[37;41mb[0m[37;41mo[0m[37;41mo[0m[37;41mk[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   block-book\n[0m
+   > [37;41mb[0m[37;41mo[0m[37;41ma[0m[37;41mn[0m[37;41me[0m[37;41mr[0m[37;41mg[0m[37;41mi[0m[37;41ms[0m[37;41mm[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   boanergism\n[0m
+   > [37;41mb[0m[37;41mo[0m[37mb[0m[37mo[0m[37;41mw[0m[37;41ml[0m[37;41me[0m[37;41mr[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   bobowler\n[0m
+   > [37;41mb[0m[37;41mo[0m[37;41mg[0m[37mo[0m[37;41mn[0m[37;41mg[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   bogong\n[0m
+   > [37;41mb[0m[37;41mo[0m[37;41mm[0m[37;41mb[0m[37;41ma[0m[37;41mz[0m[37;41me[0m[37;41mt[0m[37;41mt[0m[37;41me[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   bombazette\n[0m
+   > [37;41mb[0m[37;41mo[0m[37;41mo[0m[37;41mg[0m[37;41me[0m[37;41mr[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   booger\n[0m
+   > [37;41mb[0m[37;41mo[0m[37;41mp[0m[37;41mp[0m[37;41me[0m[37;41md[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   bopped\n[0m
+   > [37;41mb[0m[37;41mo[0m[37;41mt[0m[37;41mt[0m[37;41mi[0m[37;41mc[0m[37;41me[0m[37;41ml[0m[37;41ml[0m[37;41mi[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   botticelli\n[0m
+   > [37;41mb[0m[37;41mr[0m[37;41ma[0m[37;41mw[0m[37;41ml[0m[37;41mi[0m[37;41ms[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   brawlis\n[0m
+   > [37;41mb[0m[37;41mr[0m[37;41mi[0m[37;41mt[0m[37;41mc[0m[37;41mh[0m[37;41mk[0m[37;41ma[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   britchka\n[0m
+   > [37;41mb[0m[37;41mr[0m[37;41mo[0m[37;41mk[0m[37;41me[0m[37;41mn[0m[37;41m\[0m[37mn[0m[7m
+Exp:   broken\n[0m
+   > [37;41mb[0m[37;41mr[0m[37;41mu[0m[37;41mc[0m[37;41mi[0m[37;41mt[0m[37;41me[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   brucite\n[0m
+   > [37;41mb[0m[37;41mu[0m[37;41mt[0m[37;41mt[0m[37;41me[0m[37;41mr[0m[37me[0m[37;41md[0m[37;41m\[0m[37;41mn[0m[7m
+Exp:   buttered\n[0m
+   > 
+   > Enter word: [4mquit
+[0m   > Goodbye
+Program terminated successfully
+
+[1;4mFailed 3/3 tests
+[0m
