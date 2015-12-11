@@ -80,6 +80,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
 		Font.registerFont (__ASSET__assets_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__assets_fonts_arial_ttf);
 		
@@ -87,6 +88,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -620,6 +622,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -651,6 +654,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/middle-ground.png", AssetType.IMAGE);
 		path.set ("assets/images/images-go-here.txt", "assets/images/images-go-here.txt");
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
+		path.set ("assets/images/jess-tiles.png", "assets/images/jess-tiles.png");
+		type.set ("assets/images/jess-tiles.png", AssetType.IMAGE);
 		path.set ("assets/images/jess.png", "assets/images/jess.png");
 		type.set ("assets/images/jess.png", AssetType.IMAGE);
 		path.set ("assets/images/jess-tiles.xcf", "assets/images/jess-tiles.xcf");
@@ -720,6 +725,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/images-go-here.txt";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
+		id = "assets/images/jess-tiles.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/jess.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
@@ -781,6 +789,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -1553,11 +1562,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_arial_ttf extends null { }
 
 
 #elseif html5
+
 
 
 

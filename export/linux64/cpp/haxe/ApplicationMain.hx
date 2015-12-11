@@ -129,7 +129,7 @@ class ApplicationMain {
 			},
 			640, 480, 
 			60, 
-			0,
+			16777215,
 			(true ? flash.Lib.HARDWARE : 0) |
 			(false ? flash.Lib.ALLOW_SHADERS : 0) |
 			(false ? flash.Lib.REQUIRE_SHADERS : 0) |
@@ -499,7 +499,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "37",
+			build: "46",
 			company: "HaxeFlixel",
 			file: "HelloWorld",
 			fps: 60,
@@ -511,7 +511,7 @@ class ApplicationMain {
 				
 				{
 					antialiasing: 0,
-					background: 0,
+					background: 16777215,
 					borderless: false,
 					depthBuffer: false,
 					display: 0,

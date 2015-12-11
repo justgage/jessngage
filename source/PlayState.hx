@@ -20,6 +20,7 @@ class PlayState extends FlxState
 	private var tileMap:FlxTilemap;
 	static var TILE_WIDTH:Int = 24;
 	static var TILE_HEIGHT:Int = 24;
+	
 
 	private var  jess:JessSprite;
 
@@ -29,6 +30,8 @@ class PlayState extends FlxState
 	override public function create():Void
 	{
 		super.create();
+
+		this.bgColor = 77777777;
 
 		tileMap = new FlxTilemap();
 		tileMap.loadMap(Assets.getText("assets/data/level1.csv"), "assets/images/ground-tiles.png", TILE_WIDTH, TILE_HEIGHT, 0, 0);

@@ -15,20 +15,20 @@
 
 Void __ASSET__assets_fonts_nokiafc22_ttf_obj::__construct(::String __o_filename,::openfl::_legacy::text::FontStyle style,::openfl::_legacy::text::FontType type)
 {
-HX_STACK_FRAME("__ASSET__assets_fonts_nokiafc22_ttf","new",0x9dff4251,"__ASSET__assets_fonts_nokiafc22_ttf.new","DefaultAssetLibrary.hx",525,0x0fc48912)
+HX_STACK_FRAME("__ASSET__assets_fonts_nokiafc22_ttf","new",0x9dff4251,"__ASSET__assets_fonts_nokiafc22_ttf.new","DefaultAssetLibrary.hx",527,0x0fc48912)
 HX_STACK_THIS(this)
 HX_STACK_ARG(__o_filename,"filename")
 HX_STACK_ARG(style,"style")
 HX_STACK_ARG(type,"type")
 ::String filename = __o_filename.Default(HX_HCSTRING("","\x00","\x00","\x00","\x00"));
 {
-	HX_STACK_LINE(525)
+	HX_STACK_LINE(527)
 	::String tmp = filename;		HX_STACK_VAR(tmp,"tmp");
-	HX_STACK_LINE(525)
+	HX_STACK_LINE(527)
 	::openfl::_legacy::text::FontStyle tmp1 = style;		HX_STACK_VAR(tmp1,"tmp1");
-	HX_STACK_LINE(525)
+	HX_STACK_LINE(527)
 	::openfl::_legacy::text::FontType tmp2 = type;		HX_STACK_VAR(tmp2,"tmp2");
-	HX_STACK_LINE(525)
+	HX_STACK_LINE(527)
 	super::__construct(tmp,tmp1,tmp2);
 }
 ;

@@ -48,13 +48,13 @@ HX_STACK_ARG(x,"x")
 HX_STACK_ARG(y,"y")
 {
 	HX_STACK_LINE(8)
-	this->maxvy = (int)10;
+	this->maxvy = (int)100;
 	HX_STACK_LINE(7)
 	this->maxvx = (int)10;
 	HX_STACK_LINE(11)
 	super::__construct();
 	HX_STACK_LINE(13)
-	this->loadGraphic(HX_HCSTRING("assets/images/jess.png","\x81","\xe7","\xe2","\x25"),true,(int)24,(int)24,null(),null());
+	this->loadGraphic(HX_HCSTRING("assets/images/jess-tiles.png","\x39","\x96","\x22","\x83"),true,(int)24,(int)24,null(),null());
 	HX_STACK_LINE(14)
 	::flixel::animation::FlxAnimationController tmp = this->animation;		HX_STACK_VAR(tmp,"tmp");
 	HX_STACK_LINE(14)
@@ -62,19 +62,35 @@ HX_STACK_ARG(y,"y")
 	HX_STACK_LINE(15)
 	::flixel::animation::FlxAnimationController tmp1 = this->animation;		HX_STACK_VAR(tmp1,"tmp1");
 	HX_STACK_LINE(15)
-	tmp1->play(HX_HCSTRING("stand","\xd6","\x70","\x0b","\x84"),null(),null());
+	tmp1->add(HX_HCSTRING("bow","\x0a","\xbe","\x4a","\x00"),Array_obj< int >::__new().Add((int)1),null(),null());
+	HX_STACK_LINE(16)
+	::flixel::animation::FlxAnimationController tmp2 = this->animation;		HX_STACK_VAR(tmp2,"tmp2");
+	HX_STACK_LINE(16)
+	tmp2->add(HX_HCSTRING("run","\x4b","\xe7","\x56","\x00"),Array_obj< int >::__new().Add((int)2).Add((int)3).Add((int)4).Add((int)5).Add((int)6),null(),null());
 	HX_STACK_LINE(17)
-	int tmp2 = x;		HX_STACK_VAR(tmp2,"tmp2");
+	::flixel::animation::FlxAnimationController tmp3 = this->animation;		HX_STACK_VAR(tmp3,"tmp3");
 	HX_STACK_LINE(17)
-	this->set_x(tmp2);
-	HX_STACK_LINE(18)
-	int tmp3 = y;		HX_STACK_VAR(tmp3,"tmp3");
-	HX_STACK_LINE(18)
-	this->set_y(tmp3);
+	tmp3->play(HX_HCSTRING("stand","\xd6","\x70","\x0b","\x84"),null(),null());
+	HX_STACK_LINE(19)
+	int tmp4 = x;		HX_STACK_VAR(tmp4,"tmp4");
+	HX_STACK_LINE(19)
+	this->set_x(tmp4);
 	HX_STACK_LINE(20)
-	::flixel::util::FlxPoint tmp4 = this->maxVelocity;		HX_STACK_VAR(tmp4,"tmp4");
+	int tmp5 = y;		HX_STACK_VAR(tmp5,"tmp5");
 	HX_STACK_LINE(20)
-	tmp4->set((int)80,(int)200);
+	this->set_y(tmp5);
+	HX_STACK_LINE(21)
+	this->set_width((int)10);
+	HX_STACK_LINE(22)
+	this->set_height((int)24);
+	HX_STACK_LINE(23)
+	::flixel::util::FlxPoint tmp6 = this->offset;		HX_STACK_VAR(tmp6,"tmp6");
+	HX_STACK_LINE(23)
+	tmp6->set((int)7,(int)0);
+	HX_STACK_LINE(25)
+	::flixel::util::FlxPoint tmp7 = this->maxVelocity;		HX_STACK_VAR(tmp7,"tmp7");
+	HX_STACK_LINE(25)
+	tmp7->set((int)80,(int)200);
 }
 ;
 	return null();
@@ -95,78 +111,114 @@ Dynamic JessSprite_obj::__Create(hx::DynamicArray inArgs)
 
 Void JessSprite_obj::update( ){
 {
-		HX_STACK_FRAME("JessSprite","update",0x9a4b3017,"JessSprite.update","JessSprite.hx",23,0x5748661e)
+		HX_STACK_FRAME("JessSprite","update",0x9a4b3017,"JessSprite.update","JessSprite.hx",28,0x5748661e)
 		HX_STACK_THIS(this)
-		HX_STACK_LINE(24)
+		HX_STACK_LINE(29)
 		::flixel::input::keyboard::FlxKeyboard tmp = ::flixel::FlxG_obj::keys;		HX_STACK_VAR(tmp,"tmp");
-		HX_STACK_LINE(24)
+		HX_STACK_LINE(29)
 		::flixel::input::keyboard::FlxKeyboard tmp1 = ::flixel::FlxG_obj::keys;		HX_STACK_VAR(tmp1,"tmp1");
-		HX_STACK_LINE(24)
+		HX_STACK_LINE(29)
 		int tmp2 = tmp1->pressed->checkStatus;		HX_STACK_VAR(tmp2,"tmp2");
-		HX_STACK_LINE(24)
+		HX_STACK_LINE(29)
 		bool tmp3 = tmp->checkStatus((int)37,tmp2);		HX_STACK_VAR(tmp3,"tmp3");
-		HX_STACK_LINE(24)
+		HX_STACK_LINE(29)
 		if ((tmp3)){
-			HX_STACK_LINE(25)
-			::flixel::util::FlxPoint tmp4 = this->velocity;		HX_STACK_VAR(tmp4,"tmp4");
-			HX_STACK_LINE(25)
-			::flixel::util::FlxPoint _g = tmp4;		HX_STACK_VAR(_g,"_g");
-			HX_STACK_LINE(25)
-			Float tmp5 = _g->x;		HX_STACK_VAR(tmp5,"tmp5");
-			HX_STACK_LINE(25)
-			int tmp6 = this->maxvx;		HX_STACK_VAR(tmp6,"tmp6");
-			HX_STACK_LINE(25)
-			Float tmp7 = (tmp5 - tmp6);		HX_STACK_VAR(tmp7,"tmp7");
-			HX_STACK_LINE(25)
-			_g->set_x(tmp7);
+			HX_STACK_LINE(30)
+			{
+				HX_STACK_LINE(30)
+				::flixel::util::FlxPoint tmp4 = this->velocity;		HX_STACK_VAR(tmp4,"tmp4");
+				HX_STACK_LINE(30)
+				::flixel::util::FlxPoint _g = tmp4;		HX_STACK_VAR(_g,"_g");
+				HX_STACK_LINE(30)
+				Float tmp5 = _g->x;		HX_STACK_VAR(tmp5,"tmp5");
+				HX_STACK_LINE(30)
+				int tmp6 = this->maxvx;		HX_STACK_VAR(tmp6,"tmp6");
+				HX_STACK_LINE(30)
+				Float tmp7 = (tmp5 - tmp6);		HX_STACK_VAR(tmp7,"tmp7");
+				HX_STACK_LINE(30)
+				_g->set_x(tmp7);
+			}
+			HX_STACK_LINE(31)
+			::flixel::animation::FlxAnimationController tmp4 = this->animation;		HX_STACK_VAR(tmp4,"tmp4");
+			HX_STACK_LINE(31)
+			tmp4->play(HX_HCSTRING("run","\x4b","\xe7","\x56","\x00"),null(),null());
+			HX_STACK_LINE(32)
+			this->set_flipX(true);
 		}
-		HX_STACK_LINE(28)
+		else{
+			HX_STACK_LINE(34)
+			::flixel::input::keyboard::FlxKeyboard tmp4 = ::flixel::FlxG_obj::keys;		HX_STACK_VAR(tmp4,"tmp4");
+			HX_STACK_LINE(34)
+			::flixel::input::keyboard::FlxKeyboard tmp5 = ::flixel::FlxG_obj::keys;		HX_STACK_VAR(tmp5,"tmp5");
+			HX_STACK_LINE(34)
+			int tmp6 = tmp5->pressed->checkStatus;		HX_STACK_VAR(tmp6,"tmp6");
+			HX_STACK_LINE(34)
+			bool tmp7 = tmp4->checkStatus((int)39,tmp6);		HX_STACK_VAR(tmp7,"tmp7");
+			HX_STACK_LINE(34)
+			if ((tmp7)){
+				HX_STACK_LINE(35)
+				{
+					HX_STACK_LINE(35)
+					::flixel::util::FlxPoint tmp8 = this->velocity;		HX_STACK_VAR(tmp8,"tmp8");
+					HX_STACK_LINE(35)
+					::flixel::util::FlxPoint _g = tmp8;		HX_STACK_VAR(_g,"_g");
+					HX_STACK_LINE(35)
+					Float tmp9 = _g->x;		HX_STACK_VAR(tmp9,"tmp9");
+					HX_STACK_LINE(35)
+					int tmp10 = this->maxvx;		HX_STACK_VAR(tmp10,"tmp10");
+					HX_STACK_LINE(35)
+					Float tmp11 = (tmp9 + tmp10);		HX_STACK_VAR(tmp11,"tmp11");
+					HX_STACK_LINE(35)
+					_g->set_x(tmp11);
+				}
+				HX_STACK_LINE(36)
+				this->set_flipX(true);
+				HX_STACK_LINE(37)
+				::flixel::animation::FlxAnimationController tmp8 = this->animation;		HX_STACK_VAR(tmp8,"tmp8");
+				HX_STACK_LINE(37)
+				tmp8->play(HX_HCSTRING("run","\x4b","\xe7","\x56","\x00"),null(),null());
+			}
+			else{
+				HX_STACK_LINE(39)
+				::flixel::animation::FlxAnimationController tmp8 = this->animation;		HX_STACK_VAR(tmp8,"tmp8");
+				HX_STACK_LINE(39)
+				tmp8->play(HX_HCSTRING("stand","\xd6","\x70","\x0b","\x84"),null(),null());
+				HX_STACK_LINE(40)
+				::flixel::util::FlxPoint tmp9 = this->velocity;		HX_STACK_VAR(tmp9,"tmp9");
+				HX_STACK_LINE(40)
+				::flixel::util::FlxPoint tmp10 = this->velocity;		HX_STACK_VAR(tmp10,"tmp10");
+				HX_STACK_LINE(40)
+				Float tmp11 = tmp10->x;		HX_STACK_VAR(tmp11,"tmp11");
+				HX_STACK_LINE(40)
+				Float tmp12 = (tmp11 * ((Float)0.9));		HX_STACK_VAR(tmp12,"tmp12");
+				HX_STACK_LINE(40)
+				tmp9->set_x(tmp12);
+			}
+		}
+		HX_STACK_LINE(43)
 		::flixel::input::keyboard::FlxKeyboard tmp4 = ::flixel::FlxG_obj::keys;		HX_STACK_VAR(tmp4,"tmp4");
-		HX_STACK_LINE(28)
+		HX_STACK_LINE(43)
 		::flixel::input::keyboard::FlxKeyboard tmp5 = ::flixel::FlxG_obj::keys;		HX_STACK_VAR(tmp5,"tmp5");
-		HX_STACK_LINE(28)
+		HX_STACK_LINE(43)
 		int tmp6 = tmp5->pressed->checkStatus;		HX_STACK_VAR(tmp6,"tmp6");
-		HX_STACK_LINE(28)
-		bool tmp7 = tmp4->checkStatus((int)39,tmp6);		HX_STACK_VAR(tmp7,"tmp7");
-		HX_STACK_LINE(28)
+		HX_STACK_LINE(43)
+		bool tmp7 = tmp4->checkStatus((int)38,tmp6);		HX_STACK_VAR(tmp7,"tmp7");
+		HX_STACK_LINE(43)
 		if ((tmp7)){
-			HX_STACK_LINE(29)
+			HX_STACK_LINE(44)
 			::flixel::util::FlxPoint tmp8 = this->velocity;		HX_STACK_VAR(tmp8,"tmp8");
-			HX_STACK_LINE(29)
+			HX_STACK_LINE(44)
 			::flixel::util::FlxPoint _g = tmp8;		HX_STACK_VAR(_g,"_g");
-			HX_STACK_LINE(29)
-			Float tmp9 = _g->x;		HX_STACK_VAR(tmp9,"tmp9");
-			HX_STACK_LINE(29)
+			HX_STACK_LINE(44)
+			Float tmp9 = _g->y;		HX_STACK_VAR(tmp9,"tmp9");
+			HX_STACK_LINE(44)
 			int tmp10 = this->maxvx;		HX_STACK_VAR(tmp10,"tmp10");
-			HX_STACK_LINE(29)
-			Float tmp11 = (tmp9 + tmp10);		HX_STACK_VAR(tmp11,"tmp11");
-			HX_STACK_LINE(29)
-			_g->set_x(tmp11);
+			HX_STACK_LINE(44)
+			Float tmp11 = (tmp9 - tmp10);		HX_STACK_VAR(tmp11,"tmp11");
+			HX_STACK_LINE(44)
+			_g->set_y(tmp11);
 		}
-		HX_STACK_LINE(32)
-		::flixel::input::keyboard::FlxKeyboard tmp8 = ::flixel::FlxG_obj::keys;		HX_STACK_VAR(tmp8,"tmp8");
-		HX_STACK_LINE(32)
-		::flixel::input::keyboard::FlxKeyboard tmp9 = ::flixel::FlxG_obj::keys;		HX_STACK_VAR(tmp9,"tmp9");
-		HX_STACK_LINE(32)
-		int tmp10 = tmp9->pressed->checkStatus;		HX_STACK_VAR(tmp10,"tmp10");
-		HX_STACK_LINE(32)
-		bool tmp11 = tmp8->checkStatus((int)38,tmp10);		HX_STACK_VAR(tmp11,"tmp11");
-		HX_STACK_LINE(32)
-		if ((tmp11)){
-			HX_STACK_LINE(33)
-			::flixel::util::FlxPoint tmp12 = this->velocity;		HX_STACK_VAR(tmp12,"tmp12");
-			HX_STACK_LINE(33)
-			::flixel::util::FlxPoint _g = tmp12;		HX_STACK_VAR(_g,"_g");
-			HX_STACK_LINE(33)
-			Float tmp13 = _g->y;		HX_STACK_VAR(tmp13,"tmp13");
-			HX_STACK_LINE(33)
-			int tmp14 = this->maxvx;		HX_STACK_VAR(tmp14,"tmp14");
-			HX_STACK_LINE(33)
-			Float tmp15 = (tmp13 - tmp14);		HX_STACK_VAR(tmp15,"tmp15");
-			HX_STACK_LINE(33)
-			_g->set_y(tmp15);
-		}
-		HX_STACK_LINE(36)
+		HX_STACK_LINE(47)
 		this->super::update();
 	}
 return null();

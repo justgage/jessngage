@@ -79,45 +79,47 @@ Dynamic PlayState_obj::__Create(hx::DynamicArray inArgs)
 
 Void PlayState_obj::create( ){
 {
-		HX_STACK_FRAME("PlayState","create",0x82220fed,"PlayState.create","PlayState.hx",30,0xb30d7781)
+		HX_STACK_FRAME("PlayState","create",0x82220fed,"PlayState.create","PlayState.hx",31,0xb30d7781)
 		HX_STACK_THIS(this)
-		HX_STACK_LINE(31)
+		HX_STACK_LINE(32)
 		this->super::create();
-		HX_STACK_LINE(33)
+		HX_STACK_LINE(34)
+		this->set_bgColor((int)77777777);
+		HX_STACK_LINE(36)
 		::flixel::tile::FlxTilemap tmp = ::flixel::tile::FlxTilemap_obj::__new();		HX_STACK_VAR(tmp,"tmp");
-		HX_STACK_LINE(33)
+		HX_STACK_LINE(36)
 		this->tileMap = tmp;
-		HX_STACK_LINE(34)
+		HX_STACK_LINE(37)
 		::flixel::tile::FlxTilemap tmp1 = this->tileMap;		HX_STACK_VAR(tmp1,"tmp1");
-		HX_STACK_LINE(34)
+		HX_STACK_LINE(37)
 		::String tmp2 = ::openfl::_legacy::Assets_obj::getText(HX_HCSTRING("assets/data/level1.csv","\x3e","\x8f","\xff","\xae"));		HX_STACK_VAR(tmp2,"tmp2");
-		HX_STACK_LINE(34)
+		HX_STACK_LINE(37)
 		int tmp3 = ::PlayState_obj::TILE_WIDTH;		HX_STACK_VAR(tmp3,"tmp3");
-		HX_STACK_LINE(34)
+		HX_STACK_LINE(37)
 		int tmp4 = ::PlayState_obj::TILE_HEIGHT;		HX_STACK_VAR(tmp4,"tmp4");
-		HX_STACK_LINE(34)
+		HX_STACK_LINE(37)
 		tmp1->loadMap(tmp2,HX_HCSTRING("assets/images/ground-tiles.png","\x65","\xa2","\xae","\xb6"),tmp3,tmp4,(int)0,(int)0,null(),null());
-		HX_STACK_LINE(35)
+		HX_STACK_LINE(38)
 		::flixel::tile::FlxTilemap tmp5 = this->tileMap;		HX_STACK_VAR(tmp5,"tmp5");
-		HX_STACK_LINE(35)
+		HX_STACK_LINE(38)
 		this->add(tmp5);
-		HX_STACK_LINE(37)
+		HX_STACK_LINE(40)
 		int tmp6 = (int)72;		HX_STACK_VAR(tmp6,"tmp6");
-		HX_STACK_LINE(37)
+		HX_STACK_LINE(40)
 		int tmp7 = (int)72;		HX_STACK_VAR(tmp7,"tmp7");
-		HX_STACK_LINE(37)
+		HX_STACK_LINE(40)
 		::JessSprite tmp8 = ::JessSprite_obj::__new(tmp6,tmp7);		HX_STACK_VAR(tmp8,"tmp8");
-		HX_STACK_LINE(37)
+		HX_STACK_LINE(40)
 		this->jess = tmp8;
-		HX_STACK_LINE(39)
+		HX_STACK_LINE(42)
 		::JessSprite tmp9 = this->jess;		HX_STACK_VAR(tmp9,"tmp9");
-		HX_STACK_LINE(39)
+		HX_STACK_LINE(42)
 		this->add(tmp9);
-		HX_STACK_LINE(41)
+		HX_STACK_LINE(44)
 		::flixel::FlxCamera tmp10 = ::flixel::FlxG_obj::camera;		HX_STACK_VAR(tmp10,"tmp10");
-		HX_STACK_LINE(41)
+		HX_STACK_LINE(44)
 		::JessSprite tmp11 = this->jess;		HX_STACK_VAR(tmp11,"tmp11");
-		HX_STACK_LINE(41)
+		HX_STACK_LINE(44)
 		tmp10->follow(tmp11,(int)1,null(),null());
 	}
 return null();
@@ -126,9 +128,9 @@ return null();
 
 Void PlayState_obj::destroy( ){
 {
-		HX_STACK_FRAME("PlayState","destroy",0x6ec756e9,"PlayState.destroy","PlayState.hx",50,0xb30d7781)
+		HX_STACK_FRAME("PlayState","destroy",0x6ec756e9,"PlayState.destroy","PlayState.hx",53,0xb30d7781)
 		HX_STACK_THIS(this)
-		HX_STACK_LINE(50)
+		HX_STACK_LINE(53)
 		this->super::destroy();
 	}
 return null();
@@ -137,17 +139,17 @@ return null();
 
 Void PlayState_obj::update( ){
 {
-		HX_STACK_FRAME("PlayState","update",0x8d182efa,"PlayState.update","PlayState.hx",57,0xb30d7781)
+		HX_STACK_FRAME("PlayState","update",0x8d182efa,"PlayState.update","PlayState.hx",60,0xb30d7781)
 		HX_STACK_THIS(this)
-		HX_STACK_LINE(58)
+		HX_STACK_LINE(61)
 		::JessSprite tmp = this->jess;		HX_STACK_VAR(tmp,"tmp");
-		HX_STACK_LINE(58)
+		HX_STACK_LINE(61)
 		::flixel::tile::FlxTilemap tmp1 = this->tileMap;		HX_STACK_VAR(tmp1,"tmp1");
-		HX_STACK_LINE(58)
+		HX_STACK_LINE(61)
 		Dynamic tmp2 = ::flixel::FlxObject_obj::separate_dyn();		HX_STACK_VAR(tmp2,"tmp2");
-		HX_STACK_LINE(58)
+		HX_STACK_LINE(61)
 		::flixel::FlxG_obj::overlap(tmp,tmp1,null(),tmp2);
-		HX_STACK_LINE(60)
+		HX_STACK_LINE(63)
 		this->super::update();
 	}
 return null();

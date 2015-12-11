@@ -321,7 +321,7 @@ Void ApplicationMain_obj::main( ){
 		HX_END_LOCAL_FUNC0((void))
 
 		HX_STACK_LINE(52)
-		::openfl::_legacy::Lib_obj::create( Dynamic(new _Function_1_1()),(int)640,(int)480,(int)60,(int)0,tmp22,HX_HCSTRING("HelloWorld","\x00","\x76","\xb5","\xbd"),null(),null());
+		::openfl::_legacy::Lib_obj::create( Dynamic(new _Function_1_1()),(int)640,(int)480,(int)60,(int)16777215,tmp22,HX_HCSTRING("HelloWorld","\x00","\x76","\xb5","\xbd"),null(),null());
 	}
 return null();
 }
