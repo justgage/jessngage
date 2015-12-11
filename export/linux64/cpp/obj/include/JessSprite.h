@@ -38,8 +38,10 @@ class HXCPP_CLASS_ATTRIBUTES  JessSprite_obj : public ::PlayerSprite_obj{
 		static void __register();
 		::String __ToString() const { return HX_HCSTRING("JessSprite","\xa0","\x00","\xbd","\x26"); }
 
-		int maxvx;
-		int maxvy;
+		int ax;
+		int ay;
+		int vxmax;
+		int vymax;
 		virtual Void update( );
 
 };

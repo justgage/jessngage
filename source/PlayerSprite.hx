@@ -12,7 +12,7 @@ class PlayerSprite extends FlxSprite  {
 
 	override public function new() {
 		super();
-		acceleration.y = 200;
+		acceleration.y = 400;
 	}
 
 	override public function update(/*level:FlxTilemap*/):Void

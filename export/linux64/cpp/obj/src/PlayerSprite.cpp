@@ -32,7 +32,7 @@ HX_STACK_THIS(this)
 	HX_STACK_LINE(15)
 	::flixel::util::FlxPoint tmp = this->acceleration;		HX_STACK_VAR(tmp,"tmp");
 	HX_STACK_LINE(15)
-	tmp->set_y((int)200);
+	tmp->set_y((int)400);
 }
 ;
 	return null();
