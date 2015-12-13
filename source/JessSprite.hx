@@ -1,17 +1,24 @@
 package; 
 
 import flixel.FlxG;
+import flixel.tile.FlxTilemap;
+import flixel.FlxObject;
+import flixel.group.FlxGroup;
 
 class JessSprite extends PlayerSprite {
 
 	private var ax = 20;
-	private var ay = 100;
+	public var ay = 500;
 
 	private var vxmax = 100;
 	private var vymax = 700;
 
-	override public function new(x:Int, y:Int) {
+	private var floor : FlxGroup;
+
+	override public function new(x:Int, y:Int, ground) {
 		super();
+
+		this.floor = ground;
 
 		loadGraphic("assets/images/jess-tiles.png", true, 24, 24);
 		animation.add("stand", [0]);
@@ -25,6 +32,7 @@ class JessSprite extends PlayerSprite {
 		this.width = 10;
 		this.height = 24;
 		this.offset.set(7,0);
+		this.acceleration.y = 1600;
 
 		maxVelocity.set(vxmax, vymax);
 	}
@@ -44,11 +52,35 @@ class JessSprite extends PlayerSprite {
 			this.velocity.x = this.velocity.x * 0.9; 
 		}
 
-		if (FlxG.keys.pressed.UP) {
-			this.velocity.y -= ay;
+		if (this.isTouching(FlxObject.FLOOR)) {
+			if (FlxG.keys.pressed.UP) {
+				this.velocity.y -= ay;
+			}
+		} else {
+			animation.play("jump");
+		}
+
+		if (FlxG.keys.pressed.I) {
+			trace(this.acceleration.y);	
+			this.acceleration.y += 10;
+		}
+		if (FlxG.keys.pressed.K) {
+			trace(this.acceleration.y);	
+			this.acceleration.y -= 10;
+		}
+
+		if (FlxG.keys.pressed.W) {
+			trace(this.ay);	
+			this.ay += 25;
+		}
+		if (FlxG.keys.pressed.S) {
+			trace(this.ay);	
+			this.ay -= 25;
 		}
 
 		super.update();
 	}
+
+	
 
 }
