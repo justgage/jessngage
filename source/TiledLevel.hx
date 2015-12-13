@@ -41,9 +41,7 @@ class TiledLevel extends TiledMap
 		// Load Tile Maps
 		for (tileLayer in layers)
 		{
-			trace("working with layer", tileLayer.tileArray == null);
 			var tileSheetName:String = tileLayer.properties.get("tileset");
-			trace("working on tileSheetName", tileSheetName);
 			
 			if (tileSheetName == null)
 				throw "'tileset' property not defined for the '" + tileLayer.name + "' layer. Please add the property to the layer.";
@@ -64,18 +62,11 @@ class TiledLevel extends TiledMap
 				
 			var imagePath = new Path(tileSet.imageSource);
 			var processedPath = c_PATH_LEVEL_TILESHEETS + imagePath.file + "." + imagePath.ext;
-			trace("processedPath", processedPath);
 			
 			var tilemap:FlxTilemap = new FlxTilemap();
 			tilemap.widthInTiles = width;
 			tilemap.heightInTiles = height;
-			trace("tilemap loading---------------");
-			trace(tileLayer.tileArray);
-			trace(processedPath);
-			trace(tileSet.tileWidth);
-			trace(tileSet.tileHeight);
 			tilemap.loadMap(tileLayer.tileArray, processedPath, tileSet.tileWidth, tileSet.tileHeight, 0, 1, 1, 1);
-			trace("tilemap loaded!");
 			
 			if (tileLayer.properties.contains("nocollide"))
 			{

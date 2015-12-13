@@ -26,6 +26,7 @@ class PlayState extends FlxState
 
 	public var jess:JessSprite;
 	public var ground:FlxGroup;
+	public var level:TiledLevel;
 
 	/**
 	 * Function that is called up when to state is created to set it up. 
@@ -40,7 +41,8 @@ class PlayState extends FlxState
 		//tileMap.loadMap(Assets.getText("assets/data/level1.csv"), "assets/images/ground-tiles.png", TILE_WIDTH, TILE_HEIGHT, 0, 0);
 		//add(tileMap);
 
-		var level =  new TiledLevel("assets/data/level1.tmx");
+		this.level =  new TiledLevel("assets/data/level1.tmx");
+
 		add(level.foregroundTiles);
 
 		level.loadObjects(this);
@@ -64,7 +66,8 @@ class PlayState extends FlxState
 	override public function update():Void
 	{
 		//FlxG.collide(jess, tileMap);
-		FlxG.collide(jess, ground);
+		//FlxG.collide(jess, ground);
+		level.collideWithLevel(jess);
 
 		super.update();
 	}	
