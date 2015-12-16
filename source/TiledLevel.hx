@@ -70,10 +70,13 @@ class TiledLevel extends TiledMap
 			
 			if (tileLayer.properties.contains("nocollide"))
 			{
+				trace("added nocollide tilemap!");
 				backgroundTiles.add(tilemap);
 			}
 			else
 			{
+				trace("added collideable tilemap!");
+
 				if (collidableTileLayers == null)
 					collidableTileLayers = new Array<FlxTilemap>();
 				
@@ -102,22 +105,40 @@ class TiledLevel extends TiledMap
 		// objects in tiled are aligned bottom-left (top-left in flixel)
 		if (o.gid != -1)
 			y -= g.map.getGidOwner(o.gid).tileHeight;
-		
+
+		trace("loading object: ", o.type.toLowerCase());
+
 		switch (o.type.toLowerCase())
 		{
 			case "player1_start":
 				state.jess = new JessSprite(x, y, state.ground);
 				state.add(state.jess);
-				FlxG.camera.follow(state.jess, FlxCamera.STYLE_PLATFORMER);
+				FlxG.camera.follow(state.jess, FlxCamera.STYLE_SCREEN_BY_SCREEN);
 				
 			// case "floor":
 				// var floor = new FlxObject(x, y, o.width, o.height);
 				// state.floor = floor;
 				
-			// case "coin":
-			// 	var tileset = g.map.getGidOwner(o.gid);
-			// 	var coin = new FlxSprite(x, y, c_PATH_LEVEL_TILESHEETS + tileset.imageSource);
-			// 	state.coins.add(coin);
+			case "shroom":
+				var tileset = g.map.getGidOwner(o.gid);
+				var shroom = new FlxSprite(x, y);
+
+				shroom.loadGraphic("assets/images/shroom.png", true, 24, 24);
+				shroom.animation.add("bounce", [0], 10);
+				shroom.animation.play("bounce");
+				shroom.moves = false;
+				
+				state.shroom.add(shroom);
+
+			case "mail":
+				var tileset = g.map.getGidOwner(o.gid);
+				var mail = new FlxSprite(x, y);
+
+				mail.loadGraphic("assets/images/mail.png", true, 24, 24);
+				mail.animation.add("shine", [0,1], 10);
+				mail.animation.play("shine");
+				
+				state.mail.add(mail);
 				
 			case "exit":
 				// Create the level exit
@@ -127,8 +148,8 @@ class TiledLevel extends TiledMap
 				// state.exit = exit;
 				// state.add(exit);
 			default:
-				var floor = new FlxObject(x, y, o.width, o.height);
-				state.ground.add(floor);
+				// var floor = new FlxObject(x, y, o.width, o.height);
+				// state.ground.add(floor);
 		}
 	}
 	

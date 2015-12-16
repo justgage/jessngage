@@ -15,9 +15,8 @@ class PlayerSprite extends FlxSprite  {
 		acceleration.y = 400;
 	}
 
-	override public function update(/*level:FlxTilemap*/):Void
+	override public function update():Void
 	{
-		//FlxG.collide(level, this);
 		super.update();
 	}
 

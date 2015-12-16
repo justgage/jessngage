@@ -10,8 +10,8 @@ class JessSprite extends PlayerSprite {
 	private var ax = 20;
 	public var ay = 500;
 
-	private var vxmax = 100;
-	private var vymax = 700;
+	private var vxmax = 150;
+	private var vymax = 800;
 
 	private var floor : FlxGroup;
 
@@ -21,10 +21,11 @@ class JessSprite extends PlayerSprite {
 		this.floor = ground;
 
 		loadGraphic("assets/images/jess-tiles.png", true, 24, 24);
+
 		animation.add("stand", [0]);
 		animation.add("bow", [1]);
 		animation.add("jump", [2]);
-		animation.add("run", [3, 4, 5, 6]);
+		animation.add("run", [3, 4, 5, 6], 30);
 		animation.play("stand");
 
 		this.x = x;
@@ -35,6 +36,9 @@ class JessSprite extends PlayerSprite {
 		this.acceleration.y = 1600;
 
 		maxVelocity.set(vxmax, vymax);
+
+		this.x = Math.round(this.x);
+		this.y = Math.round(this.y);
 	}
 
 	override public function update() {

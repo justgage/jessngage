@@ -3,6 +3,7 @@ package;
 import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.FlxObject;
 import flixel.FlxState;
 import flixel.group.FlxGroup;
 import flixel.text.FlxText;
@@ -27,28 +28,32 @@ class PlayState extends FlxState
 	public var jess:JessSprite;
 	public var ground:FlxGroup;
 	public var level:TiledLevel;
+	public var mail:FlxGroup;
+	public var shroom:FlxGroup;
 
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
 	override public function create():Void
 	{
+
+		bgColor = 0x5b726d;
+
 		super.create();
-
-		// trace("bgColor", this.bgColor);
-
-		//tileMap = new FlxTilemap();
-		//tileMap.loadMap(Assets.getText("assets/data/level1.csv"), "assets/images/ground-tiles.png", TILE_WIDTH, TILE_HEIGHT, 0, 0);
-		//add(tileMap);
 
 		this.level =  new TiledLevel("assets/data/level1.tmx");
 
-		add(level.foregroundTiles);
-
-		level.loadObjects(this);
+		this.mail = new FlxGroup();
+		this.shroom = new FlxGroup();
 
 		add(level.backgroundTiles);
 
+		level.loadObjects(this);
+
+		add(level.foregroundTiles);
+
+		add(mail);
+		add(shroom);
 	}
 	
 	/**
@@ -65,10 +70,30 @@ class PlayState extends FlxState
 	 */
 	override public function update():Void
 	{
-		//FlxG.collide(jess, tileMap);
-		//FlxG.collide(jess, ground);
+		// FlxG.collide(jess, level.foregroundTiles);
 		level.collideWithLevel(jess);
+		FlxG.overlap(mail, jess, getMail);
+		FlxG.overlap(shroom, jess, hitShroom);
 
 		super.update();
 	}	
+	public function getMail(m:FlxObject, Player:PlayerSprite):Void
+	{
+		m.kill();
+	}
+
+	public function hitShroom(sh:FlxObject, pl:PlayerSprite):Void
+	{
+		if (pl.y < sh.y && pl.velocity.y != 0) {
+			pl.velocity.y = pl.velocity.y * -1.2;
+			pl.y = sh.y - 24;
+		} else {
+			if (pl.x < sh.x) {
+				pl.x = sh.x - pl.width;
+			} else {
+				pl.x = sh.x + 24;
+			}
+		}
+	}
+
 }
