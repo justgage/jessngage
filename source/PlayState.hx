@@ -10,6 +10,7 @@ import flixel.text.FlxText;
 import flixel.tile.FlxTilemap;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
+import flixel.util.FlxColor;
 import openfl.Assets;
 
 // my stuff 
@@ -30,6 +31,9 @@ class PlayState extends FlxState
 	public var level:TiledLevel;
 	public var mail:FlxGroup;
 	public var shroom:FlxGroup;
+	public var arrows:FlxGroup;
+	public var mailCount:Int;
+	public var mailCountText:FlxText;
 
 	/**
 	 * Function that is called up when to state is created to set it up. 
@@ -37,14 +41,16 @@ class PlayState extends FlxState
 	override public function create():Void
 	{
 
-		bgColor = 0x5b726d;
+		//FlxG.camera.bgColor = 0x333333;
 
 		super.create();
 
-		this.level =  new TiledLevel("assets/data/level1.tmx");
-
+		this.level = new TiledLevel("assets/data/level1.tmx");
 		this.mail = new FlxGroup();
 		this.shroom = new FlxGroup();
+		this.arrows = new FlxGroup();
+		this.mailCountText = new FlxText(2, 2, -1, "Mail Count: 0");
+		this.mailCountText.setBorderStyle(FlxText.BORDER_SHADOW, FlxColor.GRAY, 1, 1);
 
 		add(level.backgroundTiles);
 
@@ -54,6 +60,8 @@ class PlayState extends FlxState
 
 		add(mail);
 		add(shroom);
+		add(arrows);
+		add(mailCountText);
 	}
 	
 	/**
@@ -74,11 +82,28 @@ class PlayState extends FlxState
 		level.collideWithLevel(jess);
 		FlxG.overlap(mail, jess, getMail);
 		FlxG.overlap(shroom, jess, hitShroom);
+		//FlxG.overlap(arrows, level, arrowBlock);
+		level.collideWithLevel(arrows, arrowBlock);
+
+		if (jess.requestShoot == true) {
+			var arrow = new ArrowSprite(jess.x, jess.y, jess.flipX == true);
+			arrows.add(arrow);
+			jess.requestShoot = false;
+		}
 
 		super.update();
 	}	
+
+
+	public function arrowBlock(arrow:FlxObject, block:FlxObject):Void
+	{
+		arrow.velocity.x *= 0.1;
+	}
+
 	public function getMail(m:FlxObject, Player:PlayerSprite):Void
 	{
+		mailCount++;
+		mailCountText.text = "Mail Count: " + mailCount;
 		m.kill();
 	}
 

@@ -4,6 +4,7 @@ import openfl.Assets;
 import haxe.io.Path;
 import haxe.xml.Parser;
 import flixel.FlxG;
+import flixel.FlxBasic;
 import flixel.FlxCamera;
 import flixel.FlxObject;
 import flixel.FlxSprite;
@@ -153,7 +154,7 @@ class TiledLevel extends TiledMap
 		}
 	}
 	
-	public function collideWithLevel(obj:FlxObject, ?notifyCallback:FlxObject->FlxObject->Void, ?processCallback:FlxObject->FlxObject->Bool):Bool
+	public function collideWithLevel(obj:FlxBasic, ?notifyCallback:FlxObject->FlxObject->Void, ?processCallback:FlxBasic->FlxBasic->Bool):Bool
 	{
 		if (collidableTileLayers != null)
 		{

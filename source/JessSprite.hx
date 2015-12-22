@@ -7,8 +7,9 @@ import flixel.group.FlxGroup;
 
 class JessSprite extends PlayerSprite {
 
-	private var ax = 20;
+	public var ax = 20;
 	public var ay = 500;
+	public var requestShoot = false;
 
 	private var vxmax = 150;
 	private var vymax = 800;
@@ -64,22 +65,12 @@ class JessSprite extends PlayerSprite {
 			animation.play("jump");
 		}
 
-		if (FlxG.keys.pressed.I) {
-			trace(this.acceleration.y);	
-			this.acceleration.y += 10;
-		}
-		if (FlxG.keys.pressed.K) {
-			trace(this.acceleration.y);	
-			this.acceleration.y -= 10;
+		if (FlxG.keys.pressed.SPACE) {
+			animation.play("bow");
 		}
 
-		if (FlxG.keys.pressed.W) {
-			trace(this.ay);	
-			this.ay += 25;
-		}
-		if (FlxG.keys.pressed.S) {
-			trace(this.ay);	
-			this.ay -= 25;
+		if (FlxG.keys.justReleased.SPACE) {
+			this.requestShoot = true;
 		}
 
 		super.update();
