@@ -4,6 +4,7 @@ import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxObject;
+import flixel.FlxBasic;
 import flixel.FlxState;
 import flixel.group.FlxGroup;
 import flixel.text.FlxText;
@@ -11,6 +12,7 @@ import flixel.tile.FlxTilemap;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
 import flixel.util.FlxColor;
+import flixel.system.scaleModes.PixelPerfectScaleMode;
 import openfl.Assets;
 
 // my stuff 
@@ -42,6 +44,8 @@ class PlayState extends FlxState
 	{
 
 		//FlxG.camera.bgColor = 0x333333;
+		FlxG.debugger.drawDebug = true;
+		FlxG.scaleMode = new PixelPerfectScaleMode();
 
 		super.create();
 
@@ -82,7 +86,7 @@ class PlayState extends FlxState
 		level.collideWithLevel(jess);
 		FlxG.overlap(mail, jess, getMail);
 		FlxG.overlap(shroom, jess, hitShroom);
-		//FlxG.overlap(arrows, level, arrowBlock);
+		// FlxG.overlap(level.foregroundTiles, arrows, arrowBlock);
 		level.collideWithLevel(arrows, arrowBlock);
 
 		if (jess.requestShoot == true) {
@@ -95,9 +99,10 @@ class PlayState extends FlxState
 	}	
 
 
-	public function arrowBlock(arrow:FlxObject, block:FlxObject):Void
+	public function arrowBlock(block:FlxObject, arrow:FlxObject):Void
 	{
-		arrow.velocity.x *= 0.1;
+		arrow.velocity.x *= 0.9;
+		arrow.velocity.y = 0;
 	}
 
 	public function getMail(m:FlxObject, Player:PlayerSprite):Void

@@ -114,7 +114,7 @@ class TiledLevel extends TiledMap
 			case "player1_start":
 				state.jess = new JessSprite(x, y, state.ground);
 				state.add(state.jess);
-				FlxG.camera.follow(state.jess, FlxCamera.STYLE_SCREEN_BY_SCREEN);
+				FlxG.camera.follow(state.jess, FlxCamera.STYLE_SCREEN_BY_SCREEN, 1);
 				
 			// case "floor":
 				// var floor = new FlxObject(x, y, o.width, o.height);
@@ -154,7 +154,22 @@ class TiledLevel extends TiledMap
 		}
 	}
 	
-	public function collideWithLevel(obj:FlxBasic, ?notifyCallback:FlxObject->FlxObject->Void, ?processCallback:FlxBasic->FlxBasic->Bool):Bool
+	public function overlapWithLevel(obj:FlxBasic,
+			?notifyCallback:FlxObject->FlxObject->Void,
+			?processCallback:FlxBasic->FlxBasic->Bool):Bool
+	{
+		if (collidableTileLayers != null) 
+		{
+			for (map in collidableTileLayers) {
+				return FlxG.overlap(map, obj, notifyCallback);
+			}
+		}
+		return false;
+	}
+
+	public function collideWithLevel(obj:FlxBasic,
+			?notifyCallback:FlxObject->FlxObject->Void,
+			?processCallback:FlxBasic->FlxBasic->Bool):Bool
 	{
 		if (collidableTileLayers != null)
 		{
@@ -162,7 +177,8 @@ class TiledLevel extends TiledMap
 			{
 				// IMPORTANT: Always collide the map with objects, not the other way around. 
 				//			  This prevents odd collision errors (collision separation code off by 1 px).
-				return FlxG.overlap(map, obj, notifyCallback, processCallback != null ? processCallback : FlxObject.separate);
+				return FlxG.overlap(map, obj, notifyCallback, 
+						processCallback != null ? processCallback : FlxObject.separate);
 			}
 		}
 		return false;
