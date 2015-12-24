@@ -71,12 +71,10 @@ class TiledLevel extends TiledMap
 			
 			if (tileLayer.properties.contains("nocollide"))
 			{
-				trace("added nocollide tilemap!");
 				backgroundTiles.add(tilemap);
 			}
 			else
 			{
-				trace("added collideable tilemap!");
 
 				if (collidableTileLayers == null)
 					collidableTileLayers = new Array<FlxTilemap>();
@@ -109,16 +107,23 @@ class TiledLevel extends TiledMap
 
 		trace("loading object: ", o.type.toLowerCase());
 
+		function makeJess(x:Float, y:Float) {
+			state.jess = new JessSprite(Math.floor(x), Math.floor(y), state.ground);
+			state.add(state.jess);
+			FlxG.camera.follow(state.jess, FlxCamera.STYLE_SCREEN_BY_SCREEN, 1);
+		}
+
 		switch (o.type.toLowerCase())
 		{
 			case "player1_start":
-				state.jess = new JessSprite(x, y, state.ground);
-				state.add(state.jess);
-				FlxG.camera.follow(state.jess, FlxCamera.STYLE_SCREEN_BY_SCREEN, 1);
-				
-			// case "floor":
-				// var floor = new FlxObject(x, y, o.width, o.height);
-				// state.floor = floor;
+				if (Reg.enterX == -1 && Reg.enterY == -1) {
+					makeJess(x, y);
+				} 				
+			case "exit":
+				var exit = new ExitObject(x, y, o.width, o.height);
+				exit.where = o.custom.get("where");
+				exit.dir = o.custom.get("dir");
+				state.exit.add(exit);
 				
 			case "shroom":
 				var shroom = new FlxSprite(x, y);
@@ -156,17 +161,13 @@ class TiledLevel extends TiledMap
 				mail.animation.play("shine");
 				
 				state.mail.add(mail);
-				
-			case "exit":
-				// Create the level exit
-				var exit = new FlxSprite(x, y);
-				exit.makeGraphic(32, 32, 0xff3f3f3f);
-				exit.exists = false;
-				// state.exit = exit;
-				// state.add(exit);
 			default:
 				// var floor = new FlxObject(x, y, o.width, o.height);
 				// state.ground.add(floor);
+		}
+
+		if (state.jess == null) {
+			makeJess(Reg.enterX, Reg.enterY);
 		}
 	}
 	
