@@ -108,7 +108,7 @@ class TiledLevel extends TiledMap
 		trace("loading object: ", o.type.toLowerCase());
 
 		function makeJess(x:Float, y:Float) {
-			state.jess = new JessSprite(Math.floor(x), Math.floor(y), state.ground);
+			state.jess = new JessSprite(Math.floor(x), Math.floor(y));
 			state.add(state.jess);
 			FlxG.camera.follow(state.jess, FlxCamera.STYLE_SCREEN_BY_SCREEN, 1);
 		}
