@@ -34,4 +34,10 @@ class Reg
 	 * Especially useful for setting up multiple save slots.
 	 */
 	public static var saves:Array<FlxSave> = [];
+
+	/**
+	 * To hold how many letters you've gotten
+	 */
+	public static var mailCount:Int = 0;
+	public static var blueKeys:Int = 0;
 }

@@ -33,8 +33,9 @@ class PlayState extends FlxState
 	public var level:TiledLevel;
 	public var mail:FlxGroup;
 	public var shroom:FlxGroup;
+	public var blueDoors:FlxGroup;
+	public var blueKeys:FlxGroup;
 	public var arrows:FlxGroup;
-	public var mailCount:Int;
 	public var mailCountText:FlxText;
 
 	/**
@@ -52,7 +53,9 @@ class PlayState extends FlxState
 		this.level = new TiledLevel("assets/data/level1.tmx");
 		this.mail = new FlxGroup();
 		this.shroom = new FlxGroup();
+		this.blueDoors = new FlxGroup();
 		this.arrows = new FlxGroup();
+		this.blueKeys = new FlxGroup();
 		this.mailCountText = new FlxText(2, 2, -1, "Mail Count: 0");
 		this.mailCountText.setBorderStyle(FlxText.BORDER_SHADOW, FlxColor.GRAY, 1, 1);
 
@@ -65,6 +68,8 @@ class PlayState extends FlxState
 		add(mail);
 		add(shroom);
 		add(arrows);
+		add(blueKeys);
+		add(blueDoors);
 		add(mailCountText);
 	}
 	
@@ -86,6 +91,8 @@ class PlayState extends FlxState
 		level.collideWithLevel(jess);
 		FlxG.overlap(mail, jess, getMail);
 		FlxG.overlap(shroom, jess, hitShroom);
+		FlxG.overlap(blueDoors, jess, hitBlueDoor);
+		FlxG.overlap(blueKeys, jess, hitBlueKey);
 		// FlxG.overlap(level.foregroundTiles, arrows, arrowBlock);
 		level.collideWithLevel(arrows, arrowBlock);
 
@@ -107,14 +114,14 @@ class PlayState extends FlxState
 
 	public function getMail(m:FlxObject, Player:PlayerSprite):Void
 	{
-		mailCount++;
-		mailCountText.text = "Mail Count: " + mailCount;
+		Reg.mailCount++;
+		mailCountText.text = "Mail Count: " + Reg.mailCount;
 		m.kill();
 	}
 
 	public function hitShroom(sh:FlxObject, pl:PlayerSprite):Void
 	{
-		if (pl.y < sh.y && pl.velocity.y != 0) {
+		if (pl.y < sh.y && pl.velocity.y > 0) {
 			pl.velocity.y = pl.velocity.y * -1.2;
 			pl.y = sh.y - 24;
 		} else {
@@ -122,6 +129,27 @@ class PlayState extends FlxState
 				pl.x = sh.x - pl.width;
 			} else {
 				pl.x = sh.x + 24;
+			}
+		}
+	}
+
+	public function hitBlueKey(key:FlxObject, pl:PlayerSprite):Void
+	{
+		Reg.blueKeys++;
+		//mailCountText.text = "Mail Count: " + Reg.blueKeys;
+		key.kill();
+	}
+
+	public function hitBlueDoor(door:FlxObject, pl:PlayerSprite):Void
+	{
+		if (Reg.blueKeys > 0) {
+			Reg.blueKeys--;
+			door.destroy();
+		} else {
+			if (pl.x < door.x) {
+				pl.x = door.x - pl.width;
+			} else {
+				pl.x = door.x + door.width;
 			}
 		}
 	}

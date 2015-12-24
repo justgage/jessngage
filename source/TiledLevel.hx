@@ -121,7 +121,6 @@ class TiledLevel extends TiledMap
 				// state.floor = floor;
 				
 			case "shroom":
-				var tileset = g.map.getGidOwner(o.gid);
 				var shroom = new FlxSprite(x, y);
 
 				shroom.loadGraphic("assets/images/shroom.png", true, 24, 24);
@@ -131,8 +130,25 @@ class TiledLevel extends TiledMap
 				
 				state.shroom.add(shroom);
 
+			case "blue_door":
+				var blueDoor = new FlxSprite(x, y);
+				blueDoor.loadGraphic("assets/images/blue-door.png", true, 5, 23);
+				blueDoor.animation.add("closed", [0], 0);
+				blueDoor.animation.play("closed");
+				blueDoor.moves = false;
+
+				state.blueDoors.add(blueDoor);
+
+			case "blue_key":
+				var key = new FlxSprite(x, y);
+
+				key.loadGraphic("assets/images/blue-key.png", true, 7, 3);
+				key.animation.add("key", [0,1], 0);
+				key.animation.play("key");
+				
+				state.blueKeys.add(key);
+
 			case "mail":
-				var tileset = g.map.getGidOwner(o.gid);
 				var mail = new FlxSprite(x, y);
 
 				mail.loadGraphic("assets/images/mail.png", true, 24, 24);
