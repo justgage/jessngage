@@ -39,6 +39,7 @@ class PlayState extends FlxState
 	public var blueKeys:FlxGroup;
 	public var arrows:FlxGroup;
 	public var mailCountText:FlxText;
+	public var blueText:FlxText;
 	public var exit:FlxGroup;
 	public var levelName:String;
 
@@ -62,16 +63,21 @@ class PlayState extends FlxState
 
 		this.level= new TiledLevel("assets/data/" + levelName + ".tmx");
 
-		this.players   = new FlxGroup();
-		this.mail      = new FlxGroup();
-		this.shroom    = new FlxGroup();
-		this.blueDoors = new FlxGroup();
-		this.arrows    = new FlxGroup();
-		this.blueKeys  = new FlxGroup();
-		this.exit = new FlxGroup();
+		players   = new FlxGroup();
+		mail      = new FlxGroup();
+		shroom    = new FlxGroup();
+		blueDoors = new FlxGroup();
+		arrows    = new FlxGroup();
+		blueKeys  = new FlxGroup();
+		exit = new FlxGroup();
 
 		this.mailCountText = new FlxText(2, 2, -1, "Mail Count: 0");
-		this.mailCountText.setBorderStyle(FlxText.BORDER_SHADOW, FlxColor.GRAY, 1, 1);
+		mailCountText.setBorderStyle(FlxText.BORDER_SHADOW, FlxColor.GRAY, 1, 1);
+		mailCountText.scrollFactor.set(0, 0); 
+
+		this.blueText = new FlxText(2, 20, -1, "keys 0");
+		blueText.setBorderStyle(FlxText.BORDER_SHADOW, FlxColor.GRAY, 1, 1);
+		blueText.scrollFactor.set(0, 0); 
 
 		add(level.backgroundTiles);
 
@@ -85,9 +91,12 @@ class PlayState extends FlxState
 		add(blueKeys);
 		add(blueDoors);
 		add(mailCountText);
+		add(blueText);
 		add(exit);
 		add(jess);
 		add(gage);
+
+		mailCountText.text = "MAIL: " + mail.countDead() + " of " + mail.countLiving();
 	}
 	
 	/**
@@ -105,7 +114,6 @@ class PlayState extends FlxState
 	override public function update():Void
 	{
 		FlxG.collide(jess, gage);
-		level.collideWithLevel(players);
 		FlxG.overlap(mail, players, getMail);
 		FlxG.overlap(shroom, players, hitShroom);
 		FlxG.overlap(blueDoors, players, hitBlueDoor);
@@ -113,6 +121,7 @@ class PlayState extends FlxState
 		FlxG.overlap(exit, players, exitRoom);
 		// FlxG.overlap(level.foregroundTiles, arrows, arrowBlock);
 		level.collideWithLevel(arrows, arrowBlock);
+		level.collideWithLevel(players);
 
 		if (jess.requestShoot == true) {
 			var arrow = new ArrowSprite(jess.x, jess.y, jess.flipX == true);
@@ -133,8 +142,12 @@ class PlayState extends FlxState
 	public function getMail(m:FlxObject, Player:PlayerSprite):Void
 	{
 		Reg.mailCount++;
-		mailCountText.text = "Mail Count: " + Reg.mailCount;
+		mailCountText.text = "MAIL: " + mail.countDead() + " of " + mail.countLiving();
 		m.kill();
+
+		if (mail.countLiving() == 0) {
+			FlxG.switchState(new WinState());
+		}
 	}
 
 	public function hitShroom(sh:FlxObject, pl:PlayerSprite):Void
@@ -154,7 +167,7 @@ class PlayState extends FlxState
 	public function hitBlueKey(key:FlxObject, pl:PlayerSprite):Void
 	{
 		Reg.blueKeys++;
-		//mailCountText.text = "Mail Count: " + Reg.blueKeys;
+		blueText.text = "keys: " + Reg.blueKeys;
 		key.kill();
 	}
 
@@ -195,6 +208,7 @@ class PlayState extends FlxState
 	{
 		if (Reg.blueKeys > 0) {
 			Reg.blueKeys--;
+			blueText.text = "keys: " + Reg.blueKeys;
 			door.destroy();
 		} else {
 			if (pl.x < door.x) {

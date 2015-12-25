@@ -36,7 +36,7 @@ class TiledLevel extends TiledMap
 		
 		foregroundTiles = new FlxGroup();
 		backgroundTiles = new FlxGroup();
-		
+
 		FlxG.camera.setBounds(0, 0, fullWidth, fullHeight, true);
 		
 		// Load Tile Maps
@@ -112,7 +112,7 @@ class TiledLevel extends TiledMap
 			state.gage = new GageSprite(Math.floor(x-12), Math.floor(y));
 			state.players.add(state.jess);
 			state.players.add(state.gage);
-			FlxG.camera.follow(state.jess, FlxCamera.STYLE_SCREEN_BY_SCREEN, 1);
+			FlxG.camera.follow(state.jess, FlxCamera.STYLE_PLATFORMER, 1);
 		}
 
 		switch (o.type.toLowerCase())

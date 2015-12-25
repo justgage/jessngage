@@ -10,7 +10,7 @@ import flixel.util.FlxMath;
 /**
  * A FlxState which can be used for the game's menu.
  */
-class MenuState extends FlxState
+class WinState extends FlxState
 {
 	/**
 	 * Function that is called up when to state is created to set it up. 
@@ -19,12 +19,11 @@ class MenuState extends FlxState
 	{
 		super.create();
 
-		add(new FlxText(20, 20, 100, "Jess & Gage"));
-		add(new FlxText(20, 40, 100, "This is a story about a boy and a girl...\nThey both met a dance long ago.. and fell in love\nHowever their love letters seem to be scattered all over the forest due to some unknown being..."));
+		add(new FlxText(20, 20, 100, "They finally collected all their mail...  \n and lived happily ever after!"));
 		var init_x:Int = Math.floor(FlxG.width / 2 - 40);
 		var init_y:Int = Math.floor(FlxG.height / 2 - 40);
 
-		var start_btn = new FlxButton(init_x, init_y, "Start", start);
+		var start_btn = new FlxButton(init_x, init_y, "Again?", start);
 
 		add(start_btn);
 
