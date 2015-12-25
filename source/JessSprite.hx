@@ -25,16 +25,13 @@ class JessSprite extends PlayerSprite {
 
 	override public function update() {
 		super.update();
-		if (FlxG.keys.pressed.SPACE) {
+		if (bFire()) {
 			animation.play("bow");
 		}
 
-		if (FlxG.keys.justReleased.SPACE) {
+		if (bFire()) {
 			this.requestShoot = true;
 		}
 
 	}
-
-	
-
 }

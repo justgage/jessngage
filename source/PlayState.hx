@@ -29,6 +29,8 @@ class PlayState extends FlxState
 	
 
 	public var jess:JessSprite;
+	public var gage:GageSprite;
+	public var players:FlxGroup;
 	public var ground:FlxGroup;
 	public var level:TiledLevel;
 	public var mail:FlxGroup;
@@ -58,15 +60,18 @@ class PlayState extends FlxState
 
 		super.create();
 
-		this.level = new TiledLevel("assets/data/" + levelName + ".tmx");
-		this.mail = new FlxGroup();
-		this.shroom = new FlxGroup();
+		this.level= new TiledLevel("assets/data/" + levelName + ".tmx");
+
+		this.players   = new FlxGroup();
+		this.mail      = new FlxGroup();
+		this.shroom    = new FlxGroup();
 		this.blueDoors = new FlxGroup();
-		this.arrows = new FlxGroup();
-		this.blueKeys = new FlxGroup();
+		this.arrows    = new FlxGroup();
+		this.blueKeys  = new FlxGroup();
+		this.exit = new FlxGroup();
+
 		this.mailCountText = new FlxText(2, 2, -1, "Mail Count: 0");
 		this.mailCountText.setBorderStyle(FlxText.BORDER_SHADOW, FlxColor.GRAY, 1, 1);
-		this.exit = new FlxGroup();
 
 		add(level.backgroundTiles);
 
@@ -81,6 +86,8 @@ class PlayState extends FlxState
 		add(blueDoors);
 		add(mailCountText);
 		add(exit);
+		add(jess);
+		add(gage);
 	}
 	
 	/**
@@ -97,13 +104,13 @@ class PlayState extends FlxState
 	 */
 	override public function update():Void
 	{
-		// FlxG.collide(jess, level.foregroundTiles);
-		level.collideWithLevel(jess);
-		FlxG.overlap(mail, jess, getMail);
-		FlxG.overlap(shroom, jess, hitShroom);
-		FlxG.overlap(blueDoors, jess, hitBlueDoor);
-		FlxG.overlap(blueKeys, jess, hitBlueKey);
-		FlxG.overlap(exit, jess, exitRoom);
+		FlxG.collide(jess, gage);
+		level.collideWithLevel(players);
+		FlxG.overlap(mail, players, getMail);
+		FlxG.overlap(shroom, players, hitShroom);
+		FlxG.overlap(blueDoors, players, hitBlueDoor);
+		FlxG.overlap(blueKeys, players, hitBlueKey);
+		FlxG.overlap(exit, players, exitRoom);
 		// FlxG.overlap(level.foregroundTiles, arrows, arrowBlock);
 		level.collideWithLevel(arrows, arrowBlock);
 

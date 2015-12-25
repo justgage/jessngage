@@ -107,9 +107,11 @@ class TiledLevel extends TiledMap
 
 		trace("loading object: ", o.type.toLowerCase());
 
-		function makeJess(x:Float, y:Float) {
+		function makePlayers(x:Float, y:Float) {
 			state.jess = new JessSprite(Math.floor(x), Math.floor(y));
-			state.add(state.jess);
+			state.gage = new GageSprite(Math.floor(x-12), Math.floor(y));
+			state.players.add(state.jess);
+			state.players.add(state.gage);
 			FlxG.camera.follow(state.jess, FlxCamera.STYLE_SCREEN_BY_SCREEN, 1);
 		}
 
@@ -117,7 +119,7 @@ class TiledLevel extends TiledMap
 		{
 			case "player1_start":
 				if (Reg.enterX == -1 && Reg.enterY == -1) {
-					makeJess(x, y);
+					makePlayers(x, y);
 				} 				
 			case "exit":
 				var exit = new ExitObject(x, y, o.width, o.height);
@@ -167,7 +169,7 @@ class TiledLevel extends TiledMap
 		}
 
 		if (state.jess == null) {
-			makeJess(Reg.enterX, Reg.enterY);
+			makePlayers(Reg.enterX, Reg.enterY);
 		}
 	}
 	

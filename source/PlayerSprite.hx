@@ -6,10 +6,10 @@ import flixel.FlxObject;
 
 class PlayerSprite extends FlxSprite  {
 	
-	private var bLeft:String;
-	private var bRight:String;
-	private var bJump:String;
-	private var bItem:String;
+	private var bLeft = function () { return FlxG.keys.pressed.LEFT;};
+	private var bRight= function () { return FlxG.keys.pressed.RIGHT; };
+	private var bJump = function () { return FlxG.keys.pressed.UP; };
+	private var bFire = function () { return FlxG.keys.pressed.SPACE; };
 
 	public var ax = 20;
 	public var ay = 500;
@@ -33,12 +33,12 @@ class PlayerSprite extends FlxSprite  {
 
 	override public function update():Void
 	{
-		if (FlxG.keys.pressed.LEFT) {
+		if (bLeft()) {
 			this.velocity.x -= ax;
 			animation.play("run");
 			this.flipX = false;
 
-		} else if (FlxG.keys.pressed.RIGHT) {
+		} else if (bRight()) {
 			this.velocity.x += ax;
 			this.flipX = true;
 			animation.play("run");
@@ -48,7 +48,7 @@ class PlayerSprite extends FlxSprite  {
 		}
 
 		if (this.isTouching(FlxObject.FLOOR)) {
-			if (FlxG.keys.pressed.UP) {
+			if (bJump()) {
 				this.velocity.y -= ay;
 			}
 		} else {
