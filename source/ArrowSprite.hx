@@ -17,8 +17,9 @@ class ArrowSprite extends FlxSprite {
 		animation.play("fly");
 		this.x = Math.round(x);
 		this.y = Math.round(y);
+		this.acceleration.y = 100;
 
-		this.velocity.y = FlxRandom.float() * 10 - 5;
+		this.velocity.y = FlxRandom.float() * -10 - 10;
 
 		if (right) {
 			this.velocity.x = maxvx;

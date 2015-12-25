@@ -137,6 +137,7 @@ class PlayState extends FlxState
 	{
 		arrow.velocity.x *= 0.9;
 		arrow.velocity.y = 0;
+		arrow.acceleration.y = 0;
 	}
 
 	public function getMail(m:FlxObject, Player:PlayerSprite):Void

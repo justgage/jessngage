@@ -10,6 +10,7 @@ class PlayerSprite extends FlxSprite  {
 	private var bRight= function () { return FlxG.keys.pressed.RIGHT; };
 	private var bJump = function () { return FlxG.keys.pressed.UP; };
 	private var bFire = function () { return FlxG.keys.pressed.SPACE; };
+	private var bFire1 = function () { return FlxG.keys.justReleased.SPACE; };
 
 	public var ax = 20;
 	public var ay = 500;
