@@ -163,9 +163,14 @@ class TiledLevel extends TiledMap
 				mail.animation.play("shine");
 				
 				state.mail.add(mail);
-			default:
-				// var floor = new FlxObject(x, y, o.width, o.height);
-				// state.ground.add(floor);
+			case "water":
+				var water = new FlxSprite(x, y);
+
+				water.loadGraphic("assets/images/pool.png", true, 24, 24);
+				water.animation.add("wave", [0,1], 10);
+				water.animation.play("wave");
+				
+				state.pools.add(water);
 		}
 
 		if (state.jess == null) {

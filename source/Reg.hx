@@ -42,4 +42,6 @@ class Reg
 	public static var blueKeys:Int = 0;
 	public static var enterX:Float = -1.0;
 	public static var enterY:Float = -1.0;
+	public static var hasBow:Bool = true;
+	public static var waterLevel:Int = 10;
 }

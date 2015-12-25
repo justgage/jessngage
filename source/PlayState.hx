@@ -13,6 +13,7 @@ import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
 import flixel.util.FlxColor;
 import flixel.system.scaleModes.PixelPerfectScaleMode;
+import flixel.system.scaleModes.FillScaleMode;
 import openfl.Assets;
 
 // my stuff 
@@ -38,15 +39,26 @@ class PlayState extends FlxState
 	public var blueDoors:FlxGroup;
 	public var blueKeys:FlxGroup;
 	public var arrows:FlxGroup;
-	public var mailCountText:FlxText;
-	public var blueText:FlxText;
+	public var droplets:FlxGroup;
+	public var pools:FlxGroup;
 	public var exit:FlxGroup;
 	public var levelName:String;
+
+	// HUD
+	public var mailCountText:FlxText;
+	public var blueText:FlxText;
+	public var messageText:FlxText;
+	public var messageShow:Int = 60 * 3;
 
 
 	override public function new(ln:String = "level1", ?MaxSize:Int = 0) {
 		this.levelName = ln;
 		super(maxSize);
+	}
+
+	public function message(message) {
+		messageText.text = message;
+		messageShow = 60 * 4;
 	}
 
 	/**
@@ -57,7 +69,7 @@ class PlayState extends FlxState
 
 		//FlxG.camera.bgColor = 0x333333;
 		//FlxG.debugger.drawDebug = true;
-		FlxG.scaleMode = new PixelPerfectScaleMode();
+		//FlxG.scaleMode = new FillScaleMode();
 
 		super.create();
 
@@ -68,6 +80,8 @@ class PlayState extends FlxState
 		shroom    = new FlxGroup();
 		blueDoors = new FlxGroup();
 		arrows    = new FlxGroup();
+		droplets    = new FlxGroup();
+		pools    = new FlxGroup();
 		blueKeys  = new FlxGroup();
 		exit = new FlxGroup();
 
@@ -79,6 +93,11 @@ class PlayState extends FlxState
 		blueText.setBorderStyle(FlxText.BORDER_SHADOW, FlxColor.GRAY, 1, 1);
 		blueText.scrollFactor.set(0, 0); 
 
+		this.messageText = new FlxText(20, 24 * 18, 24*25, "Hm... this cave seems to have some of you're mail it it!");
+		messageText.setBorderStyle(FlxText.BORDER_SHADOW, FlxColor.BLACK, 1, 1);
+		messageText.scrollFactor.set(0, 0); 
+		messageText.alignment = "center";
+
 		add(level.backgroundTiles);
 
 		level.loadObjects(this);
@@ -88,13 +107,17 @@ class PlayState extends FlxState
 		add(mail);
 		add(shroom);
 		add(arrows);
+		add(droplets);
 		add(blueKeys);
 		add(blueDoors);
-		add(mailCountText);
-		add(blueText);
 		add(exit);
 		add(jess);
 		add(gage);
+		add(pools);
+
+		add(mailCountText);
+		add(blueText);
+		add(messageText);
 
 		mailCountText.text = "MAIL: " + mail.countDead() + " of " + mail.countLiving();
 	}
@@ -113,15 +136,40 @@ class PlayState extends FlxState
 	 */
 	override public function update():Void
 	{
+
+		messageShow -= 1;
+
+		if (messageShow < 0) {
+			messageText.visible = false;
+		} else {
+			messageText.visible = true;
+		}
+
 		FlxG.collide(jess, gage);
+
+		FlxG.collide(droplets, jess);
+		FlxG.collide(droplets, mail);
+		FlxG.collide(droplets, blueKeys);
+
+		FlxG.collide(arrows, mail);
+		FlxG.collide(arrows, blueKeys);
+
 		FlxG.overlap(mail, players, getMail);
+		FlxG.overlap(pools, gage, function (p, g) {
+			if (Reg.waterLevel < 100) {
+				Reg.waterLevel++;
+			}
+
+		});
 		FlxG.overlap(shroom, players, hitShroom);
 		FlxG.overlap(blueDoors, players, hitBlueDoor);
 		FlxG.overlap(blueKeys, players, hitBlueKey);
 		FlxG.overlap(exit, players, exitRoom);
 		// FlxG.overlap(level.foregroundTiles, arrows, arrowBlock);
 		level.collideWithLevel(arrows, arrowBlock);
+		level.collideWithLevel(droplets, waterBlock);
 		level.collideWithLevel(players);
+		level.collideWithLevel(mail);
 
 		if (jess.requestShoot == true) {
 			var arrow = new ArrowSprite(jess.x, jess.y, jess.flipX == true);
@@ -129,9 +177,25 @@ class PlayState extends FlxState
 			jess.requestShoot = false;
 		}
 
+		if (gage.requestShoot == true) {
+			gage.requestShoot = false;
+			if (Reg.waterLevel > 0) {
+				trace("gage shoot!");
+				var drop = new WaterSprite(gage.x, gage.y, gage.flipX == true);
+				trace("drop created");
+				droplets.add(drop);
+				Reg.waterLevel--;
+
+			} else {
+				message("Hmmm... seems like your gun's out of water!");
+			}
+		}
+
 		super.update();
 	}	
 
+
+	public function waterBlock(FlxObject, water:FlxObject):Void { }
 
 	public function arrowBlock(block:FlxObject, arrow:FlxObject):Void
 	{
@@ -145,6 +209,7 @@ class PlayState extends FlxState
 		Reg.mailCount++;
 		mailCountText.text = "MAIL: " + mail.countDead() + " of " + mail.countLiving();
 		m.kill();
+		message("You got one of your letters!");
 
 		if (mail.countLiving() == 0) {
 			FlxG.switchState(new WinState());
@@ -170,6 +235,7 @@ class PlayState extends FlxState
 		Reg.blueKeys++;
 		blueText.text = "keys: " + Reg.blueKeys;
 		key.kill();
+		message("You found a little blue key. This will probably come in handy.");
 	}
 
 	public function exitRoom(exit:ExitObject, pl:PlayerSprite):Void {
@@ -208,10 +274,12 @@ class PlayState extends FlxState
 	public function hitBlueDoor(door:FlxObject, pl:PlayerSprite):Void
 	{
 		if (Reg.blueKeys > 0) {
+			message("Wow, that key seems to have made the door disappear... Creepy");
 			Reg.blueKeys--;
 			blueText.text = "keys: " + Reg.blueKeys;
 			door.destroy();
 		} else {
+			message("Hmm... Seems to be locked!");
 			if (pl.x < door.x) {
 				pl.x = door.x - pl.width;
 			} else {

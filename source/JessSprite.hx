@@ -25,13 +25,14 @@ class JessSprite extends PlayerSprite {
 
 	override public function update() {
 		super.update();
-		if (bFire()) {
-			animation.play("bow");
-		}
+		if (Reg.hasBow == true) {
+			if (bFire()) {
+				animation.play("bow");
+			}
 
-		if (bFire1()) {
-			this.requestShoot = true;
+			if (bFire1()) {
+				this.requestShoot = true;
+			}
 		}
-
 	}
 }

@@ -27,7 +27,6 @@ class GageSprite extends PlayerSprite {
 		bRight= function () { return FlxG.keys.pressed.D; };
 		bJump = function () { return FlxG.keys.pressed.W; };
 		bFire = function () { return FlxG.keys.pressed.ALT; };
-
 	}
 
 	override public function update() {
