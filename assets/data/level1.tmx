@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="24" tileheight="24" nextobjectid="183">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="24" tileheight="24" nextobjectid="186">
  <tileset firstgid="1" name="basic" tilewidth="24" tileheight="24" tilecount="168">
   <image source="../images/backgroud.png" width="168" height="576"/>
   <tile id="0">
@@ -105,12 +105,10 @@
  <objectgroup name="player">
   <object id="38" type="player1_start" x="694.005" y="-2.81297" width="24" height="24"/>
   <object id="147" type="blue_door" gid="21" x="2160" y="2136" width="24" height="24"/>
-  <object id="148" type="mail" gid="31" x="2290.24" y="2015.93" width="24" height="24"/>
-  <object id="149" type="mail" gid="31" x="2312.19" y="2004.96" width="24" height="24"/>
-  <object id="150" type="mail" gid="31" x="2302.21" y="2030.89" width="24" height="24"/>
   <object id="151" type="shroom" gid="28" x="2256" y="2136" width="24" height="24"/>
   <object id="152" type="shroom" gid="28" x="480" y="384" width="24" height="24"/>
   <object id="153" type="mail" gid="31" x="2136" y="48" width="24" height="24"/>
+  <object id="184" type="flying-power" x="2304" y="2016"/>
  </objectgroup>
  <objectgroup name="collectables">
   <object id="39" type="mail" gid="31" x="866" y="87" width="24" height="24"/>
@@ -175,7 +173,6 @@
   <object id="104" type="mail" gid="31" x="195.876" y="842.06" width="24" height="24"/>
   <object id="105" type="mail" gid="31" x="639.061" y="853.033" width="24" height="24"/>
   <object id="106" type="mail" gid="31" x="2201.48" y="555.545" width="24" height="24"/>
-  <object id="107" type="mail" gid="31" x="2325.84" y="2027.75" width="24" height="24"/>
   <object id="108" type="mail" gid="31" x="24" y="1848" width="24" height="24"/>
   <object id="109" type="mail" gid="31" x="81.2699" y="1511.41" width="24" height="24"/>
   <object id="110" type="mail" gid="31" x="759.153" y="1651.62" width="24" height="24"/>
