@@ -147,7 +147,7 @@ class PlayState extends FlxState
 
 		var i = 0;
 
-		var halfW = FlxG.width / 2;
+		var thirdW = FlxG.width / 3;
 		var halfH = FlxG.height / 2;
 
 		for( touch in FlxG.touches.list ){
@@ -155,11 +155,14 @@ class PlayState extends FlxState
 			trace(touch.touchPointID, touch.screenX);
 			if (touch.screenY < halfH) {
 				jess.touchUp = true;
-			} else if (touch.screenX < halfW && touch.pressed) {
+			} else if (touch.screenX < thirdW && touch.pressed) {
 				jess.touchLeft = true;
-			} else {
+			} else if (touch.screenX > thirdW * 2) {
 				jess.touchRight = true;
+			} else if (touch.justReleased) {
+				jess.touchShoot = true;
 			}
+
 		}
 
 		FlxG.collide(jess, gage);

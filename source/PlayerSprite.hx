@@ -15,6 +15,7 @@ class PlayerSprite extends FlxSprite  {
 	public var touchLeft = false;
 	public var touchRight = false;
 	public var touchUp = false;
+	public var touchShoot = false;
 	public var ax = 20;
 	public var ay = 500;
 

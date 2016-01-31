@@ -30,8 +30,9 @@ class JessSprite extends PlayerSprite {
 				animation.play("bow");
 			}
 
-			if (bFire1()) {
+			if (bFire1() || touchShoot) {
 				this.requestShoot = true;
+				this.touchShoot = false;
 			}
 		}
 	}
