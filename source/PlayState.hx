@@ -69,7 +69,7 @@ class PlayState extends FlxState
 
 		//FlxG.camera.bgColor = 0x333333;
 		//FlxG.debugger.drawDebug = true;
-		//FlxG.scaleMode = new FillScaleMode();
+		FlxG.scaleMode = new MyScaleMode();
 
 		super.create();
 
@@ -145,6 +145,23 @@ class PlayState extends FlxState
 			messageText.visible = true;
 		}
 
+		var i = 0;
+
+		var halfW = FlxG.width / 2;
+		var halfH = FlxG.height / 2;
+
+		for( touch in FlxG.touches.list ){
+			i += 1;
+			trace(touch.touchPointID, touch.screenX);
+			if (touch.screenY < halfH) {
+				jess.touchUp = true;
+			} else if (touch.screenX < halfW && touch.pressed) {
+				jess.touchLeft = true;
+			} else {
+				jess.touchRight = true;
+			}
+		}
+
 		FlxG.collide(jess, gage);
 
 		FlxG.collide(droplets, jess);
@@ -180,9 +197,7 @@ class PlayState extends FlxState
 		if (gage.requestShoot == true) {
 			gage.requestShoot = false;
 			if (Reg.waterLevel > 0) {
-				trace("gage shoot!");
 				var drop = new WaterSprite(gage.x, gage.y, gage.flipX == true);
-				trace("drop created");
 				droplets.add(drop);
 				Reg.waterLevel--;
 

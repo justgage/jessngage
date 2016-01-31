@@ -17,6 +17,7 @@ class MenuState extends FlxState
 	 */
 	override public function create():Void
 	{
+		FlxG.scaleMode = new MyScaleMode();
 		super.create();
 
 		add(new FlxText(20, 20, 100, "Jess & Gage"));

@@ -105,8 +105,6 @@ class TiledLevel extends TiledMap
 		if (o.gid != -1)
 			y -= g.map.getGidOwner(o.gid).tileHeight;
 
-		trace("loading object: ", o.type.toLowerCase());
-
 		function makePlayers(x:Float, y:Float) {
 			state.jess = new JessSprite(Math.floor(x), Math.floor(y));
 			state.gage = new GageSprite(Math.floor(x-12), Math.floor(y));

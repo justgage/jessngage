@@ -12,6 +12,9 @@ class PlayerSprite extends FlxSprite  {
 	private var bFire = function () { return FlxG.keys.pressed.SPACE; };
 	private var bFire1 = function () { return FlxG.keys.justReleased.SPACE; };
 
+	public var touchLeft = false;
+	public var touchRight = false;
+	public var touchUp = false;
 	public var ax = 20;
 	public var ay = 500;
 
@@ -34,25 +37,29 @@ class PlayerSprite extends FlxSprite  {
 
 	override public function update():Void
 	{
-		if (bLeft()) {
+		if (bLeft() || this.touchLeft) {
 			this.velocity.x -= ax;
 			animation.play("run");
 			this.flipX = false;
+			this.touchLeft = false;
 
-		} else if (bRight()) {
+		} else if (bRight() || this.touchRight) {
 			this.velocity.x += ax;
 			this.flipX = true;
 			animation.play("run");
+			this.touchRight = false;
 		} else {
 			animation.play("stand");
 			this.velocity.x = this.velocity.x * 0.9; 
 		}
 
 		if (this.isTouching(FlxObject.FLOOR)) {
-			if (bJump()) {
+			if (bJump() || this.touchUp) {
 				this.velocity.y -= ay;
+				this.touchUp = false;
 			}
 		} else {
+			this.touchUp = false;
 			animation.play("jump");
 		}
 		super.update();
