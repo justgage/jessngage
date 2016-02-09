@@ -110,7 +110,6 @@ class TiledLevel extends TiledMap
 			state.gage = new GageSprite(Math.floor(x-12), Math.floor(y));
 			state.players.add(state.jess);
 			state.players.add(state.gage);
-			FlxG.camera.follow(state.jess, FlxCamera.STYLE_PLATFORMER, 1);
 		}
 
 		switch (o.type.toLowerCase())

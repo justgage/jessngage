@@ -23,8 +23,9 @@ class JessSprite extends PlayerSprite {
 
 	}
 
-	override public function update() {
+	override public function update(): Void {
 		super.update();
+
 		if (Reg.hasBow == true) {
 			if (bFire()) {
 				animation.play("bow");

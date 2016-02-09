@@ -1,9 +1,9 @@
 package;
 
-import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxObject;
+import flixel.FlxCamera;
 import flixel.FlxBasic;
 import flixel.FlxState;
 import flixel.group.FlxGroup;
@@ -29,6 +29,7 @@ class PlayState extends FlxState
 	static var TILE_HEIGHT:Int = 24;
 	
 
+	public var cam:TouchCamera;
 	public var jess:JessSprite;
 	public var gage:GageSprite;
 	public var players:FlxGroup;
@@ -102,6 +103,9 @@ class PlayState extends FlxState
 
 		level.loadObjects(this);
 
+		// must be after all the other objects have loaded
+		cam = new TouchCamera(jess);
+
 		add(level.foregroundTiles);
 
 		add(mail);
@@ -114,12 +118,17 @@ class PlayState extends FlxState
 		add(jess);
 		add(gage);
 		add(pools);
+		add(cam);
+
 
 		add(mailCountText);
 		add(blueText);
 		add(messageText);
 
 		mailCountText.text = "MAIL: " + mail.countDead() + " of " + mail.countLiving();
+
+		FlxG.camera.follow(jess, FlxCamera.STYLE_LOCKON, 1);
+
 	}
 	
 	/**
@@ -145,25 +154,23 @@ class PlayState extends FlxState
 			messageText.visible = true;
 		}
 
-		var i = 0;
 
 		var thirdW = FlxG.width / 3;
 		var halfH = FlxG.height / 2;
 
-		for( touch in FlxG.touches.list ){
-			i += 1;
-			trace(touch.touchPointID, touch.screenX);
-			if (touch.screenY < halfH) {
-				jess.touchUp = true;
-			} else if (touch.screenX < thirdW && touch.pressed) {
-				jess.touchLeft = true;
-			} else if (touch.screenX > thirdW * 2) {
-				jess.touchRight = true;
-			} else if (touch.justReleased) {
-				jess.touchShoot = true;
-			}
-
-		}
+		// for( touch in FlxG.touches.list ){
+		// 	trace(touch.touchPointID, touch.screenX);
+		// 	if (touch.screenY < halfH) {
+		// 		jess.touchUp = true;
+		// 	} else if (touch.screenX < thirdW && touch.pressed) {
+		// 		jess.touchLeft = true;
+		// 	} else if (touch.screenX > thirdW * 2) {
+		// 		jess.touchRight = true;
+		// 	} else if (touch.justReleased) {
+		// 		jess.touchShoot = true;
+		// 	}
+      //
+		// }
 
 		FlxG.collide(jess, gage);
 
@@ -190,6 +197,7 @@ class PlayState extends FlxState
 		level.collideWithLevel(droplets, waterBlock);
 		level.collideWithLevel(players);
 		level.collideWithLevel(mail);
+		level.collideWithLevel(cam);
 
 		if (jess.requestShoot == true) {
 			var arrow = new ArrowSprite(jess.x, jess.y, jess.flipX == true);

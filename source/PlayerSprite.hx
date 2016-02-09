@@ -36,8 +36,7 @@ class PlayerSprite extends FlxSprite  {
 
 	}
 
-	override public function update():Void
-	{
+	override public function update():Void {
 		if (bLeft() || this.touchLeft) {
 			this.velocity.x -= ax;
 			animation.play("run");
