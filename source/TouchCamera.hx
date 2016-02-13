@@ -11,7 +11,7 @@ class TouchCamera extends FlxSprite  {
 
 	override public function new(p:PlayerSprite) {
 		super();
-		loadGraphic("assets/images/fairy.png", false, 24, 24);
+		loadGraphic("assets/images/fairy.png", false, 11, 13);
 		velocity.y = 10;
 		maxVelocity.set(150, 150);
 		x = p.x;
@@ -22,6 +22,8 @@ class TouchCamera extends FlxSprite  {
 
 
 	override public function update(): Void {
+
+		this.flipX = player.flipX;
 
 		var touch = FlxG.touches.getFirst();
 		if(touch != null) {
@@ -39,7 +41,9 @@ class TouchCamera extends FlxSprite  {
 			startX = -1;
 			startY = -1;
 
-			x = (x * 4 + player.x)/ 5;
+			var offset = player.flipX ? -4 : 4;
+
+			x = (x * 4 + player.x)/ 5 + offset;
 			y = (y * 4 + player.y)/ 5;
 		}
 

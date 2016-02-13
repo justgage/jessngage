@@ -16,6 +16,7 @@ class JessSprite extends PlayerSprite {
 		animation.add("bow", [1]);
 		animation.add("jump", [2]);
 		animation.add("run", [3, 4, 5, 6], 30);
+		animation.add("grab", [7]);
 		animation.play("stand");
 
 		this.width = 10;

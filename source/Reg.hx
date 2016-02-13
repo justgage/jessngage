@@ -13,7 +13,9 @@ class Reg
 	 * Generic levels Array that can be used for cross-state stuff.
 	 * Example usage: Storing the levels of a platformer.
 	 */
-	public static var levels:Array<Dynamic> = [];
+	public static var levels:Array<Dynamic> = [
+		"level1"
+	];
 	/**
 	 * Generic level variable that can be used for cross-state stuff.
 	 * Example usage: Storing the current level number.
@@ -44,4 +46,8 @@ class Reg
 	public static var enterY:Float = -1.0;
 	public static var hasBow:Bool = true;
 	public static var waterLevel:Int = 10;
+
+	public static function currentLevel() {
+		return levels[level];
+	}
 }

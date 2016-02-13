@@ -78,7 +78,7 @@ class TiledLevel extends TiledMap
 
 				if (collidableTileLayers == null)
 					collidableTileLayers = new Array<FlxTilemap>();
-				
+
 				foregroundTiles.add(tilemap);
 				collidableTileLayers.push(tilemap);
 			}
@@ -93,8 +93,7 @@ class TiledLevel extends TiledMap
 			{
 				loadObject(o, group, state);
 			}
-		}
-	}
+		} }
 	
 	private function loadObject(o:TiledObject, g:TiledObjectGroup, state:PlayState)
 	{
@@ -107,9 +106,9 @@ class TiledLevel extends TiledMap
 
 		function makePlayers(x:Float, y:Float) {
 			state.jess = new JessSprite(Math.floor(x), Math.floor(y));
-			state.gage = new GageSprite(Math.floor(x-12), Math.floor(y));
+			//state.gage = new GageSprite(Math.floor(x-12), Math.floor(y));
 			state.players.add(state.jess);
-			state.players.add(state.gage);
+			//state.players.add(state.gage);
 		}
 
 		switch (o.type.toLowerCase())
@@ -134,6 +133,13 @@ class TiledLevel extends TiledMap
 				
 				state.shroom.add(shroom);
 
+			case "ledge_right":
+				var ledge = new Ledge(false, x, y, o.width, o.height);
+				state.ledges.add(ledge); 
+			case "ledge_left":
+				var ledge = new Ledge(true, x, y, o.width, o.height);
+				state.ledges.add(ledge);
+			
 			case "blue_door":
 				var blueDoor = new FlxSprite(x, y);
 				blueDoor.loadGraphic("assets/images/blue-door.png", true, 5, 23);

@@ -31,19 +31,19 @@ class PlayState extends FlxState
 
 	public var cam:TouchCamera;
 	public var jess:JessSprite;
-	public var gage:GageSprite;
+	// public var gage:GageSprite;
 	public var players:FlxGroup;
 	public var ground:FlxGroup;
 	public var level:TiledLevel;
 	public var mail:FlxGroup;
 	public var shroom:FlxGroup;
+	public var ledges:FlxGroup;
 	public var blueDoors:FlxGroup;
 	public var blueKeys:FlxGroup;
 	public var arrows:FlxGroup;
 	public var droplets:FlxGroup;
 	public var pools:FlxGroup;
 	public var exit:FlxGroup;
-	public var levelName:String;
 
 	// HUD
 	public var mailCountText:FlxText;
@@ -53,7 +53,6 @@ class PlayState extends FlxState
 
 
 	override public function new(ln:String = "level1", ?MaxSize:Int = 0) {
-		this.levelName = ln;
 		super(maxSize);
 	}
 
@@ -74,11 +73,12 @@ class PlayState extends FlxState
 
 		super.create();
 
-		this.level= new TiledLevel("assets/data/" + levelName + ".tmx");
+		this.level= new TiledLevel("assets/data/" +  Reg.currentLevel()  + ".tmx");
 
 		players   = new FlxGroup();
 		mail      = new FlxGroup();
 		shroom    = new FlxGroup();
+		ledges    = new FlxGroup();
 		blueDoors = new FlxGroup();
 		arrows    = new FlxGroup();
 		droplets    = new FlxGroup();
@@ -110,13 +110,14 @@ class PlayState extends FlxState
 
 		add(mail);
 		add(shroom);
+		add(ledges);
 		add(arrows);
 		add(droplets);
 		add(blueKeys);
 		add(blueDoors);
 		add(exit);
 		add(jess);
-		add(gage);
+		// add(gage);
 		add(pools);
 		add(cam);
 
@@ -127,7 +128,7 @@ class PlayState extends FlxState
 
 		mailCountText.text = "MAIL: " + mail.countDead() + " of " + mail.countLiving();
 
-		FlxG.camera.follow(jess, FlxCamera.STYLE_LOCKON, 1);
+		FlxG.camera.follow(jess, FlxCamera.STYLE_LOCKON, 2);
 
 	}
 	
@@ -172,7 +173,7 @@ class PlayState extends FlxState
       //
 		// }
 
-		FlxG.collide(jess, gage);
+		//FlxG.collide(jess, gage);
 
 		FlxG.collide(droplets, jess);
 		FlxG.collide(droplets, mail);
@@ -181,13 +182,21 @@ class PlayState extends FlxState
 		FlxG.collide(arrows, mail);
 		FlxG.collide(arrows, blueKeys);
 
-		FlxG.overlap(mail, players, getMail);
-		FlxG.overlap(pools, gage, function (p, g) {
-			if (Reg.waterLevel < 100) {
-				Reg.waterLevel++;
-			}
-
+		FlxG.overlap(ledges, players, function(l, p) {
+		      if (l.isLeft &&  p.bLeft()) {
+			    p.grabbing = l;
+		      } else if (!l.isLeft &&  p.bRight()) {
+			    p.grabbing = l;
+		      }
 		});
+
+		FlxG.overlap(mail, players, getMail);
+		// FlxG.overlap(pools, gage, function (p, g) {
+		// 	if (Reg.waterLevel < 100) {
+		// 		Reg.waterLevel++;
+		// 	}
+                //
+		// });
 		FlxG.overlap(shroom, players, hitShroom);
 		FlxG.overlap(blueDoors, players, hitBlueDoor);
 		FlxG.overlap(blueKeys, players, hitBlueKey);
@@ -205,17 +214,17 @@ class PlayState extends FlxState
 			jess.requestShoot = false;
 		}
 
-		if (gage.requestShoot == true) {
-			gage.requestShoot = false;
-			if (Reg.waterLevel > 0) {
-				var drop = new WaterSprite(gage.x, gage.y, gage.flipX == true);
-				droplets.add(drop);
-				Reg.waterLevel--;
-
-			} else {
-				message("Hmmm... seems like your gun's out of water!");
-			}
-		}
+		// if (gage.requestShoot == true) {
+		// 	gage.requestShoot = false;
+		// 	if (Reg.waterLevel > 0) {
+		// 		var drop = new WaterSprite(gage.x, gage.y, gage.flipX == true);
+		// 		droplets.add(drop);
+		// 		Reg.waterLevel--;
+                //
+		// 	} else {
+		// 		message("Hmmm... seems like your gun's out of water!");
+		// 	}
+		// }
 
 		super.update();
 	}	
