@@ -44,6 +44,7 @@ class PlayState extends FlxState
 	public var droplets:FlxGroup;
 	public var pools:FlxGroup;
 	public var exit:FlxGroup;
+	public var signs:FlxGroup;
 
 	// HUD
 	public var mailCountText:FlxText;
@@ -58,7 +59,7 @@ class PlayState extends FlxState
 
 	public function message(message) {
 		messageText.text = message;
-		messageShow = 60 * 4;
+		messageShow = 60 * 12;
 	}
 
 	/**
@@ -69,7 +70,7 @@ class PlayState extends FlxState
 
 		//FlxG.camera.bgColor = 0x333333;
 		//FlxG.debugger.drawDebug = true;
-		FlxG.scaleMode = new MyScaleMode();
+		//FlxG.scaleMode = new MyScaleMode();
 
 		super.create();
 
@@ -85,6 +86,7 @@ class PlayState extends FlxState
 		pools    = new FlxGroup();
 		blueKeys  = new FlxGroup();
 		exit = new FlxGroup();
+		signs = new FlxGroup();
 
 		this.mailCountText = new FlxText(2, 2, -1, "Mail Count: 0");
 		mailCountText.setBorderStyle(FlxText.BORDER_SHADOW, FlxColor.GRAY, 1, 1);
@@ -94,7 +96,7 @@ class PlayState extends FlxState
 		blueText.setBorderStyle(FlxText.BORDER_SHADOW, FlxColor.GRAY, 1, 1);
 		blueText.scrollFactor.set(0, 0); 
 
-		this.messageText = new FlxText(20, 24 * 18, 24*25, "Hm... this cave seems to have some of you're mail it it!");
+		this.messageText = new FlxText(2, 24 * 20, 400, "Hm... this cave seems to have some of you're mail it it!");
 		messageText.setBorderStyle(FlxText.BORDER_SHADOW, FlxColor.BLACK, 1, 1);
 		messageText.scrollFactor.set(0, 0); 
 		messageText.alignment = "center";
@@ -116,6 +118,7 @@ class PlayState extends FlxState
 		add(blueKeys);
 		add(blueDoors);
 		add(exit);
+		add(signs);
 		add(jess);
 		// add(gage);
 		add(pools);
@@ -183,9 +186,9 @@ class PlayState extends FlxState
 		FlxG.collide(arrows, blueKeys);
 
 		FlxG.overlap(ledges, players, function(l, p) {
-		      if (l.isLeft &&  p.bLeft()) {
+		      if (l.isLeft &&  p.bLeft() || p.touchLeft) {
 			    p.grabbing = l;
-		      } else if (!l.isLeft &&  p.bRight()) {
+		      } else if (!l.isLeft &&  p.bRight() || p.touchRight) {
 			    p.grabbing = l;
 		      }
 		});
@@ -200,7 +203,10 @@ class PlayState extends FlxState
 		FlxG.overlap(shroom, players, hitShroom);
 		FlxG.overlap(blueDoors, players, hitBlueDoor);
 		FlxG.overlap(blueKeys, players, hitBlueKey);
-		FlxG.overlap(exit, players, exitRoom);
+		FlxG.overlap(exit, players, exitNext);
+		FlxG.overlap(signs, players, function(s,p) {
+		      message(s.message);
+		});
 		// FlxG.overlap(level.foregroundTiles, arrows, arrowBlock);
 		level.collideWithLevel(arrows, arrowBlock);
 		level.collideWithLevel(droplets, waterBlock);
@@ -244,10 +250,12 @@ class PlayState extends FlxState
 		Reg.mailCount++;
 		mailCountText.text = "MAIL: " + mail.countDead() + " of " + mail.countLiving();
 		m.kill();
-		message("You got one of your letters!");
 
 		if (mail.countLiving() == 0) {
-			FlxG.switchState(new WinState());
+		      message("You got all the mail!");
+			// FlxG.switchState(new WinState());
+		} else {
+		      message("You got one of your letters!");
 		}
 	}
 
@@ -270,7 +278,7 @@ class PlayState extends FlxState
 		Reg.blueKeys++;
 		blueText.text = "keys: " + Reg.blueKeys;
 		key.kill();
-		message("You found a little blue key. This will probably come in handy.");
+		message("You found a little blue key.");
 	}
 
 	public function exitNext(exit, pl) {
@@ -314,7 +322,7 @@ class PlayState extends FlxState
 	public function hitBlueDoor(door:FlxObject, pl:PlayerSprite):Void
 	{
 		if (Reg.blueKeys > 0) {
-			message("Wow, that key seems to have made the door disappear... Creepy");
+			message("The door dissapeared!\nCreepy...");
 			Reg.blueKeys--;
 			blueText.text = "keys: " + Reg.blueKeys;
 			door.destroy();

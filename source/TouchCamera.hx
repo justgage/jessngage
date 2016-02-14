@@ -5,12 +5,13 @@ class TouchCamera extends FlxSprite  {
 
 	public var startX:Float = -1;
 	public var startY:Float = -1;
-	public var dampening:Float = 2;
-	public var deadZone:Int = 50;
+	public var deadZone:Int = 40;
+	public var deadZoneX:Int = 40;
 	public var player:PlayerSprite;
 
 	override public function new(p:PlayerSprite) {
 		super();
+		this.offset.set(-7,9);
 		loadGraphic("assets/images/fairy.png", false, 11, 13);
 		velocity.y = 10;
 		maxVelocity.set(150, 150);
@@ -31,8 +32,8 @@ class TouchCamera extends FlxSprite  {
 			var point = touch.getWorldPosition();
 
 			if(startX != -1) {
-				x += (point.x - startX) / dampening ;
-				y += (point.y - startY) / dampening;
+				x += (point.x - startX);
+				y += (point.y - startY);
 			}
 
 			startX = point.x;
@@ -41,23 +42,45 @@ class TouchCamera extends FlxSprite  {
 			startX = -1;
 			startY = -1;
 
-			var offset = player.flipX ? -4 : 4;
+			//var offset = player.flipX ? -4 : 4;
 
-			x = (x * 4 + player.x)/ 5 + offset;
+			x = (x * 4 + player.x)/ 5;
 			y = (y * 4 + player.y)/ 5;
 		}
 
-		if (x - player.x > deadZone) {
+		if (x - player.x > deadZoneX) {
+			player.touchLeft = false;
 			player.touchRight = true;
+		} else if (x - player.x < -deadZoneX) {
+			player.touchLeft = true;
+			player.touchRight = false;
+		} else {
+			player.touchLeft = false;
+			player.touchRight = false;
 		}
 
-		if (x - player.x < -deadZone) {
-			player.touchLeft = true;
+		if (player.touchLeft || player.touchRight) {
+			player.touchX = x - player.x;
+		} else {
+			player.touchX = 0;
 		}
+
+		player.touchY = y - player.y;
 
 		if (y - player.y < -deadZone) {
 			player.touchUp = true;
 		}
+
+		if (y - player.y > deadZone * 3) {
+			player.touchDown = true;
+
+			if (touch != null && touch.justReleased == true) {
+				player.touchShoot = true;
+			}
+		} else {
+			player.touchDown = false;
+		}
+
 
 		super.update();
 	}

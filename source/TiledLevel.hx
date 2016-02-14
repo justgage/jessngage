@@ -123,6 +123,11 @@ class TiledLevel extends TiledMap
 				exit.dir = o.custom.get("dir");
 				state.exit.add(exit);
 				
+			case "sign":
+				var m = o.custom.get("message");
+				var sign = new Sign(x, y, m);
+				state.signs.add(sign);
+
 			case "shroom":
 				var shroom = new FlxSprite(x, y);
 
