@@ -7,12 +7,11 @@ class MyScaleMode extends BaseScaleMode {
 	}	
 	
 	override private function updateGameSize(Width:Int, Height:Int):Void {
-		var size = 0.0;
-
-		if (Width > Height) {
-			size = Math.round(Width / 24.0) * 24.0;
-		} else {
-			size = Math.round(Height / 24.0) * 24.0;
+		var size = 0;
+		if (landscape) {
+			size = Width;
+		}else {
+			size = Height;
 		}
 
 		gameSize.y = size;

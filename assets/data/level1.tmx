@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="24" tileheight="24" nextobjectid="192">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="24" tileheight="24" nextobjectid="237">
  <tileset firstgid="1" name="basic" tilewidth="24" tileheight="24" tilecount="168">
   <image source="../images/backgroud.png" width="168" height="576"/>
   <tile id="0">
@@ -109,6 +109,48 @@
   <object id="152" type="shroom" gid="28" x="480" y="384" width="24" height="24"/>
   <object id="153" type="mail" gid="31" x="2136" y="48" width="24" height="24"/>
   <object id="184" type="flying-power" x="2304" y="2016"/>
+  <object id="192" type="ledge_right" x="1728" y="72" width="24" height="24"/>
+  <object id="193" type="ledge_left" x="1584" y="168" width="24" height="24"/>
+  <object id="194" type="ledge_left" x="2136" y="144" width="24" height="24"/>
+  <object id="195" type="ledge_left" x="2016" y="720" width="24" height="24"/>
+  <object id="196" type="ledge_left" x="2208" y="888" width="24" height="24"/>
+  <object id="197" type="ledge_right" x="2256" y="888" width="24" height="24"/>
+  <object id="199" type="ledge_left" x="2136" y="1176" width="24" height="24"/>
+  <object id="200" type="ledge_left" x="1872" y="1416" width="24" height="24"/>
+  <object id="201" type="ledge_left" x="1704" y="1416" width="24" height="24"/>
+  <object id="202" type="ledge_left" x="1560" y="1320" width="24" height="24"/>
+  <object id="203" type="ledge_left" x="1824" y="1152" width="24" height="24"/>
+  <object id="204" type="ledge_left" x="1488" y="1536" width="24" height="24"/>
+  <object id="205" type="ledge_left" x="1368" y="1440" width="24" height="24"/>
+  <object id="206" type="ledge_left" x="1968" y="2208" width="24" height="24"/>
+  <object id="207" type="ledge_right" x="2040" y="2136" width="24" height="24"/>
+  <object id="208" type="ledge_left" x="1872" y="2256" width="24" height="24"/>
+  <object id="209" type="ledge_left" x="1704" y="2304" width="24" height="24"/>
+  <object id="210" type="ledge_left" x="600" y="1632" width="24" height="24"/>
+  <object id="211" type="ledge_left" x="216" y="1656" width="24" height="24"/>
+  <object id="212" type="ledge_left" x="600" y="1104" width="24" height="24"/>
+  <object id="213" type="ledge_left" x="1176" y="960" width="24" height="24"/>
+  <object id="214" type="ledge_right" x="936" y="816" width="24" height="24"/>
+  <object id="215" type="ledge_left" x="888" y="768" width="24" height="24"/>
+  <object id="216" type="ledge_right" x="912" y="768" width="24" height="24"/>
+  <object id="217" type="ledge_left" x="240" y="192" width="24" height="24"/>
+  <object id="219" type="ledge_left" x="360" y="144" width="24" height="24"/>
+  <object id="220" type="ledge_left" x="456" y="240" width="24" height="24"/>
+  <object id="221" type="ledge_right" x="432" y="144" width="24" height="24"/>
+  <object id="222" type="ledge_right" x="504" y="600" width="24" height="24"/>
+  <object id="223" type="ledge_left" x="792" y="600" width="24" height="24"/>
+  <object id="224" type="ledge_right" x="2016" y="936" width="24" height="24"/>
+  <object id="225" type="ledge_right" x="432" y="384" width="24" height="24"/>
+  <object id="226" type="ledge_right" x="792" y="192" width="24" height="24"/>
+  <object id="227" type="ledge_left" x="768" y="144" width="24" height="24"/>
+  <object id="228" type="ledge_left" x="936" y="192" width="24" height="24"/>
+  <object id="229" type="ledge_right" x="960" y="192" width="24" height="24"/>
+  <object id="230" type="ledge_left" x="1128" y="168" width="24" height="24"/>
+  <object id="231" type="ledge_right" x="624" y="1176" width="24" height="24"/>
+  <object id="233" type="ledge_left" x="792" y="2160" width="24" height="24"/>
+  <object id="234" type="ledge_right" x="672" y="2160" width="24" height="24"/>
+  <object id="235" type="ledge_left" x="2304" y="264" width="24" height="24"/>
+  <object id="236" type="ledge_right" x="2136" y="264" width="24" height="24"/>
  </objectgroup>
  <objectgroup name="collectables">
   <object id="39" type="mail" gid="31" x="866" y="87" width="24" height="24"/>
@@ -144,7 +186,6 @@
   <object id="70" type="shroom" gid="28" x="456" y="2112" width="24" height="24"/>
   <object id="71" type="shroom" gid="28" x="504" y="2040" width="24" height="24"/>
   <object id="72" type="shroom" gid="28" x="792" y="2376" width="24" height="24"/>
-  <object id="73" type="shroom" gid="28" x="624" y="2256" width="24" height="24"/>
   <object id="74" type="shroom" gid="28" x="1344" y="1896" width="24" height="24"/>
   <object id="75" type="shroom" gid="28" x="1320" y="1896" width="24" height="24"/>
   <object id="76" type="shroom" gid="28" x="1944" y="2208" width="24" height="24"/>

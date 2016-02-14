@@ -52,7 +52,7 @@ class PlayState extends FlxState
 	public var messageShow:Int = 60 * 3;
 
 
-	override public function new(ln:String = "level1", ?MaxSize:Int = 0) {
+	override public function new(?MaxSize:Int = 0) {
 		super(maxSize);
 	}
 
@@ -273,6 +273,11 @@ class PlayState extends FlxState
 		message("You found a little blue key. This will probably come in handy.");
 	}
 
+	public function exitNext(exit, pl) {
+	      Reg.level += 1;
+	      changeRoom();
+	}
+
 	public function exitRoom(exit:ExitObject, pl:PlayerSprite):Void {
 		function flipX() {
 			Reg.enterX = level.fullWidth - pl.x;
@@ -302,7 +307,7 @@ class PlayState extends FlxState
 			trace("Invalid direction", exit.dir);
 		}
 
-		changeRoom(exit.where);
+		//changeRoom(exit.where);
 	}
 
 
@@ -323,7 +328,8 @@ class PlayState extends FlxState
 		}
 	}
 
-	public function changeRoom(nextLevel:String) {
-		FlxG.switchState(new PlayState(nextLevel));
+	public function changeRoom() {
+		//FlxG.switchState(new PlayState(nextLevel));
+		FlxG.switchState(new PlayState());
 	}
 }

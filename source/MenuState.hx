@@ -3,9 +3,12 @@ package;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
+import flixel.system.scaleModes.PixelPerfectScaleMode;
+import flixel.system.scaleModes.FillScaleMode;
 
 /**
  * A FlxState which can be used for the game's menu.
@@ -17,7 +20,7 @@ class MenuState extends FlxState
 	 */
 	override public function create():Void
 	{
-		FlxG.scaleMode = new MyScaleMode();
+		FlxG.scaleMode = new PixelPerfectScaleMode();
 		super.create();
 
 		add(new FlxText(20, 20, 100, "Jess & Gage"));
